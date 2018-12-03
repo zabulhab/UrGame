@@ -1,0 +1,202 @@
+fileFormatVersion: 2
+guid: 3508453ccbbd0465f826e51da64142f0
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: E00
+    100002: E01
+    100004: E02
+    100006: E03
+    100008: E04
+    100010: E05
+    100012: EnemyTiles
+    100014: N00
+    100016: N01
+    100018: N02
+    100020: N03
+    100022: N04
+    100024: N05
+    100026: N06
+    100028: N07
+    100030: NeutralTiles
+    100032: P00
+    100034: P01
+    100036: P02
+    100038: P03
+    100040: P04
+    100042: P05
+    100044: PlayerTiles
+    100046: //RootNode
+    400000: E00
+    400002: E01
+    400004: E02
+    400006: E03
+    400008: E04
+    400010: E05
+    400012: EnemyTiles
+    400014: N00
+    400016: N01
+    400018: N02
+    400020: N03
+    400022: N04
+    400024: N05
+    400026: N06
+    400028: N07
+    400030: NeutralTiles
+    400032: P00
+    400034: P01
+    400036: P02
+    400038: P03
+    400040: P04
+    400042: P05
+    400044: PlayerTiles
+    400046: //RootNode
+    2100000: lambert1
+    2300000: E00
+    2300002: E01
+    2300004: E02
+    2300006: E03
+    2300008: E04
+    2300010: E05
+    2300012: N00
+    2300014: N01
+    2300016: N02
+    2300018: N03
+    2300020: N04
+    2300022: N05
+    2300024: N06
+    2300026: N07
+    2300028: P00
+    2300030: P01
+    2300032: P02
+    2300034: P03
+    2300036: P04
+    2300038: P05
+    3300000: E00
+    3300002: E01
+    3300004: E02
+    3300006: E03
+    3300008: E04
+    3300010: E05
+    3300012: N00
+    3300014: N01
+    3300016: N02
+    3300018: N03
+    3300020: N04
+    3300022: N05
+    3300024: N06
+    3300026: N07
+    3300028: P00
+    3300030: P01
+    3300032: P02
+    3300034: P03
+    3300036: P04
+    3300038: P05
+    4300000: N00
+    4300002: N01
+    4300004: N02
+    4300006: N03
+    4300008: N04
+    4300010: N05
+    4300012: N06
+    4300014: N07
+    4300016: P04
+    4300018: P05
+    4300020: P03
+    4300022: P02
+    4300024: P01
+    4300026: P00
+    4300028: E00
+    4300030: E04
+    4300032: E02
+    4300034: E03
+    4300036: E05
+    4300038: E01
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: 755dd22fa5cd74aa88bfc39ec6eb1b64, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

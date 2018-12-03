@@ -1,0 +1,29 @@
+﻿<Properties StartupConfiguration="{451C7463-D15C-7566-B64F-DD9A3A2269B3}|">
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GridSystem.cs">
+    <Files>
+      <File FileName="Assets/Scripts/Tiles/TwoPieceTile.cs" Line="11" Column="9" />
+      <File FileName="Assets/Scripts/Tiles/FourPieceTile.cs" Line="11" Column="25" />
+      <File FileName="Assets/Scripts/Tiles/RestartTile.cs" Line="16" Column="83" />
+      <File FileName="Assets/Scripts/Tiles/OnePieceTile.cs" Line="11" Column="29" />
+      <File FileName="Assets/Scripts/Tiles/RepeatTile.cs" Line="25" Column="6" />
+      <File FileName="Assets/Scripts/Tiles/FreezeTile.cs" Line="15" Column="92" />
+      <File FileName="Assets/Scripts/DiceRoll.cs" Line="17" Column="1" />
+      <File FileName="Assets/Scripts/Tiles/NormalTile.cs" Line="14" Column="41" />
+      <File FileName="Assets/Scripts/PlayerTurn.cs" Line="15" Column="9" />
+      <File FileName="Assets/Scripts/StateController.cs" Line="72" Column="36" />
+      <File FileName="Assets/Scripts/AIController.cs" Line="44" Column="5" />
+      <File FileName="Assets/Scripts/EnemyTurn.cs" Line="16" Column="9" />
+      <File FileName="Assets/Scripts/Piece.cs" Line="101" Column="20" />
+      <File FileName="Assets/Scripts/Turn.cs" Line="217" Column="24" />
+      <File FileName="Assets/Scripts/Tiles/Tile.cs" Line="35" Column="1" />
+      <File FileName="Assets/Scripts/GridSystem.cs" Line="29" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>
