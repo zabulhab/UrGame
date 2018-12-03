@@ -21,6 +21,10 @@ public abstract class Tile : MonoBehaviour //Scriptable Object?
     // A list of all pieces on top of this tile, which can be added to
     protected List<Piece> piecesOnTop;
 
+    protected string TileID;
+
+    public List<Piece> PiecesOnTop { get; private set; }
+
     // The piece that most recently landed on this tile
     protected Piece topMostPiece;
 

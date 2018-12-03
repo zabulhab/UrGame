@@ -498,4 +498,37 @@ public abstract class Turn : MonoBehaviour
         return false;
     }
 
+    /// <summary>
+    /// Returns the value of the current state of the board, for the CPU's side
+    /// </summary>
+    /// <returns>The board value.</returns>
+    protected int GetSideValue()
+    {
+        // check if no piece is deployed yet
+        foreach (Piece piece in allPieces)
+        {
+            if (piece.GetPieceStatus() != Piece.PieceStatus.Undeployed)
+            {
+                break;
+            }
+        }
+        int totalBoardValue = 0;
+        foreach (Piece piece in allPieces)
+        {
+            switch (piece.GetPieceStatus())
+            {
+                case Piece.PieceStatus.Finished:
+                    totalBoardValue += 15;
+                    break;
+                case Piece.PieceStatus.Deployed:
+                    totalBoardValue += piece.CurrentTileIdx;
+                    break;
+                case Piece.PieceStatus.Undeployed:
+                    totalBoardValue += 0;
+                    break;
+            }
+        }
+        return totalBoardValue;
+    }
+
 }

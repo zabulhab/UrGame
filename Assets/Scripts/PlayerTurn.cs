@@ -14,7 +14,7 @@ public class PlayerTurn :  Turn
         int i = 0;
         foreach (Piece piece in allPieces)
         {
-            piece.SetSideName(turnSideName);
+            piece.SideName = turnSideName;
             piece.SetAssociatedTurnObject(this);
 
             // store start location and index of each piece

@@ -13,8 +13,8 @@ public class GridSystem : MonoBehaviour
     [SerializeField]
     private GameObject board;
 
-    //[SerializeField]
-    //private Tile[] allTiles = new Tile[20];
+    [SerializeField]
+    private Tile[] allTiles = new Tile[20];
 
     [SerializeField]
     private Tile[] accessibleTilesPlayer = new Tile[TILE_COUNT];
@@ -70,4 +70,51 @@ public class GridSystem : MonoBehaviour
     //{
     //    return 14;
     //}
+
+    /// <summary>
+    /// Prints a string that shows how many pieces 
+    /// of each side a tile has on top of it, if any
+    /// </summary>
+    public void PrintBoardStatus()
+    {
+        int tileIdx = 0;
+        Debug.Log("------Tile Statuses------");
+        foreach (Tile tile in allTiles)
+        {
+            Dictionary<Turn.SideName, int> sidePieceCount = new Dictionary<Turn.SideName, int>();
+            sidePieceCount.Add(Turn.SideName.EnemySide, 0);
+            sidePieceCount.Add(Turn.SideName.PlayerSide, 0);
+            Debug.Log("{T" + tileIdx + "}:");
+            foreach (Piece piece in tile.PiecesOnTop)
+            {
+                Turn.SideName sidename = piece.SideName;
+                if (sidename == Turn.SideName.PlayerSide)
+                {
+                    // add 1 to the current count of that side
+                    sidePieceCount.Add(Turn.SideName.PlayerSide, 1);
+                }
+                else if (sidename == Turn.SideName.EnemySide)
+                {
+                    sidePieceCount.Add(Turn.SideName.EnemySide, 1);
+                }
+            }
+            foreach (Turn.SideName turn in sidePieceCount.Keys)
+            {
+                if (sidePieceCount[turn] > 0)
+                {
+                    Debug.Log(sidePieceCount[turn]);
+                }
+            }
+
+
+            tileIdx++;
+        }
+        Debug.Log("-----End Tile Statuses-----");
+    }
+    
+
+    public void ReadBoardTest()
+    {
+
+    }
 }

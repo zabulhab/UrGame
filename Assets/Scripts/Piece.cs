@@ -13,8 +13,7 @@ public class Piece : MonoBehaviour
     // The piece's actual current status
     private PieceStatus status;
 
-    // This piece's SideName, using the enum defined in Turn
-    private Turn.SideName sideName;
+    public Turn.SideName SideName { get; set; }
 
     // This piece's associated Turn object, and getter & setter
     private Turn associatedTurnObject;
@@ -63,14 +62,6 @@ public class Piece : MonoBehaviour
         status = PieceStatus.Undeployed;
     }
 
-    /// <summary>
-    /// Called in the turn start method on the list of all pieces,
-    /// and used to set the side string of each piece
-    /// </summary>
-    internal void SetSideName(Turn.SideName side)
-    {
-        sideName = side;
-    }
 
     // Assign the associated turn object. Used while initializing
     internal void SetAssociatedTurnObject(Turn turn)
@@ -105,7 +96,7 @@ public class Piece : MonoBehaviour
         tileDestination =
             grid.TileToLandOn
                 (desiredIdx,
-                 sideName);
+                 SideName);
         tileDestIndex = desiredIdx;
         Debug.Log("Moved " + numberOfSpaces + " space(s)!");
     }
@@ -127,7 +118,7 @@ public class Piece : MonoBehaviour
             desiredIdx = 0;
         }
 
-        return grid.TileToLandOn(desiredIdx, sideName);
+        return grid.TileToLandOn(desiredIdx, SideName);
     }
 
     /// <summary>

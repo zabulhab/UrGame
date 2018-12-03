@@ -22,7 +22,7 @@ public class AIController : Turn
         int i = 0;
         foreach (Piece piece in allPieces)
         {
-            piece.SetSideName(turnSideName);
+            piece.SideName = turnSideName;
             piece.SetAssociatedTurnObject(this);
 
             // store start location and index of each piece
@@ -88,7 +88,7 @@ public class AIController : Turn
     /// <returns>The optimal piece.</returns>
     private Piece GetOptimalPiece(Dictionary<Piece, Tile> pieceToTileMap)
     {
-        int CPUBoardVal = GetBoardValueCPUSide();
+        int CPUBoardVal = GetSideValue();
         // call ChoosePieceUsingPriorities(pieceToTileMap)
         return GetPieceFarthestOnBoard(pieceToTileMap);
     }
@@ -151,46 +151,7 @@ public class AIController : Turn
         // prioritize freezing over repeat tile when the CPUBoardVal is lower
         return null;
     }
-
-
-    /// <summary>
-    /// Returns the value of the current state of the board, for the CPU's side
-    /// </summary>
-    /// <returns>The board value.</returns>
-    private int GetBoardValueCPUSide()
-    {
-        // check if no piece is deployed yet
-        bool startOfGame = false;
-        foreach (Piece piece in allPieces)
-        {
-            if (piece.GetPieceStatus() != Piece.PieceStatus.Undeployed)
-            {
-                break;
-            }
-        }
-
-        if (startOfGame)
-        {
-            return 0;
-        }
-        else
-        {
-            int totalBoardValue = 0;
-            foreach (Piece piece in allPieces)
-            {
-                // Series of checks
-                if (piece.GetPieceStatus() == Piece.PieceStatus.Finished)
-                {
-                    totalBoardValue += 15;
-                }
-                else
-                {
-                    totalBoardValue += piece.CurrentTileIdx;
-                }
-            }
-            return totalBoardValue;
-        }
-    }
+   
 
     /// <summary>
     /// Returns the key-value pair map of the pieces and 
