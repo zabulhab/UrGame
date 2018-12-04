@@ -169,7 +169,8 @@ public class Piece : MonoBehaviour
     // Makes a piece that has finished the board disappear
     private void Disappear()
     {
-        Destroy(this.gameObject);
+        this.GetComponent<Renderer>().enabled = false;
+        //Destroy(this.gameObject);
     }
 
     /// <summary>

@@ -14,7 +14,7 @@ public class DiceRoll : MonoBehaviour
     public static int Roll()
     {
         int rolledNum = Random.Range(0, 4);
-        Debug.Log("Rolled a " + rolledNum + "!");
+        //Debug.Log("Rolled a " + rolledNum + "!");
         return rolledNum;
     }
 }

@@ -6,6 +6,7 @@ using System;
 
 public class AIController : Turn 
 {
+    [SerializeField]
     private GridSystem grid;
 
     // The amount of time to wait before moving a piece, 
@@ -89,7 +90,9 @@ public class AIController : Turn
     private Piece GetOptimalPiece(Dictionary<Piece, Tile> pieceToTileMap)
     {
         int CPUBoardVal = GetSideValue();
+        grid.WriteBoardStatusToFile();
         // call ChoosePieceUsingPriorities(pieceToTileMap)
+
         return GetPieceFarthestOnBoard(pieceToTileMap);
     }
 

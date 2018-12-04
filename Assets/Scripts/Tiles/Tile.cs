@@ -19,11 +19,9 @@ public abstract class Tile : MonoBehaviour //Scriptable Object?
     internal TileType TypeOfTile { get; set; }
 
     // A list of all pieces on top of this tile, which can be added to
-    protected List<Piece> piecesOnTop;
+    internal List<Piece> PiecesOnTop { get; set; }
 
-    protected string TileID;
-
-    public List<Piece> PiecesOnTop { get; private set; }
+    internal string TileID { get; set; }
 
     // The piece that most recently landed on this tile
     protected Piece topMostPiece;
@@ -52,19 +50,19 @@ public abstract class Tile : MonoBehaviour //Scriptable Object?
     // Adds a piece reference to this tile's piece list
     internal void AddPiece(Piece piece)
     {
-        piecesOnTop.Add(piece);
-        topMostPiece = piecesOnTop[piecesOnTop.Count - 1];
+        PiecesOnTop.Add(piece);
+        topMostPiece = PiecesOnTop[PiecesOnTop.Count - 1];
     }
 
     // Removes a piece from this tile's piece list
     internal void RemovePiece(Piece piece)
     {
-        piecesOnTop.Remove(piece);
+        PiecesOnTop.Remove(piece);
 
         // If this wasn't the only piece, set topmost piece to last in list
-        if (piecesOnTop.Count != 0)
+        if (PiecesOnTop.Count != 0)
         {
-            topMostPiece = piecesOnTop[piecesOnTop.Count - 1];
+            topMostPiece = PiecesOnTop[PiecesOnTop.Count - 1];
         }
         else // No more topmost piece
         {
@@ -80,8 +78,8 @@ public abstract class Tile : MonoBehaviour //Scriptable Object?
     /// <returns>The number pieces on tile.</returns>
     internal int GetNumPiecesOnTile()
     {
-        Debug.Log("PIECES ON TOP: " + piecesOnTop.Count);
-        return piecesOnTop.Count;
+        Debug.Log("PIECES ON TOP: " + PiecesOnTop.Count);
+        return PiecesOnTop.Count;
     }
 
     /// <summary>
@@ -92,7 +90,7 @@ public abstract class Tile : MonoBehaviour //Scriptable Object?
     internal bool IsMaxNumSamePieceOnTop()
     {
         int numCurSamePiece = 0;
-        foreach (Piece piece in piecesOnTop)
+        foreach (Piece piece in PiecesOnTop)
         {
             Turn.SideName pieceSide = piece.GetAssociatedTurnObject().getSideName();
             if (pieceSide == stateController.GetActiveTurn().getSideName())
@@ -133,7 +131,7 @@ public abstract class Tile : MonoBehaviour //Scriptable Object?
         if (GetNumPiecesOnTile() > 1)
         {
             List<Piece> piecesToRemove = new List<Piece>();
-            foreach (Piece piece in piecesOnTop)
+            foreach (Piece piece in PiecesOnTop)
             {
                 Turn.SideName pieceSide = piece.GetAssociatedTurnObject().getSideName();
                 if (pieceSide != stateController.GetActiveTurn().getSideName())
@@ -185,4 +183,12 @@ public abstract class Tile : MonoBehaviour //Scriptable Object?
     {
         TileDescriptionPanel.SetActive(false);
     }
+
+    /// <summary>
+    /// Hides tile info window
+    /// </summary>
+    //protected void HideTileInfo()
+    //{
+    //    TileDescriptionPanel.SetActive(false);
+    //}
 }

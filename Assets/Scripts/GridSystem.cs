@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
+using UnityEditor;
 
 /// <summary>
 /// Stores a list and sublists of all tiles on the board
@@ -28,6 +30,7 @@ public class GridSystem : MonoBehaviour
         {
             accessibleTilesEnemy[i].TileNumber = i;
         }
+        ClearBoardOutputFile(); // clear the board output file on restart
     }
 
    // private void OnValidate()
@@ -46,13 +49,9 @@ public class GridSystem : MonoBehaviour
    /// <param name="destTileIdx">Index of desired tile</param>
     internal Tile TileToLandOn(int destTileIdx, Turn.SideName playerName)
     {
-        //Debug.Log(index + playerName);
-        //Debug.Log(accessibleTilesEnemy);
-        //Debug.Log(accessibleTilesPlayer);
         if (playerName == Turn.SideName.PlayerSide)
         {
             return accessibleTilesPlayer[destTileIdx];
-
         }
         else if (playerName == Turn.SideName.EnemySide)
         {
@@ -72,49 +71,75 @@ public class GridSystem : MonoBehaviour
     //}
 
     /// <summary>
+    /// Clears the board output file so we can write newly to it on startup
+    /// </summary>
+    private void ClearBoardOutputFile()
+    {
+        string path = "Assets/Resources/GridStatuses.txt";
+
+        // Setup writer
+        StreamWriter writer = new StreamWriter(path, false);
+        writer.WriteLine("");
+    }
+
+    /// <summary>
     /// Prints a string that shows how many pieces 
     /// of each side a tile has on top of it, if any
     /// </summary>
-    public void PrintBoardStatus()
+    public void WriteBoardStatusToFile()
     {
+        string path = "Assets/Resources/GridStatuses.txt";
+
+        // Setup writer
+        StreamWriter writer = new StreamWriter(path, true);
+
+
         int tileIdx = 0;
-        Debug.Log("------Tile Statuses------");
+        writer.WriteLine("-------Tile Statuses-------");
         foreach (Tile tile in allTiles)
         {
             Dictionary<Turn.SideName, int> sidePieceCount = new Dictionary<Turn.SideName, int>();
+            sidePieceCount.Add(Turn.SideName.PlayerSide, 0); 
             sidePieceCount.Add(Turn.SideName.EnemySide, 0);
-            sidePieceCount.Add(Turn.SideName.PlayerSide, 0);
-            Debug.Log("{T" + tileIdx + "}:");
+            writer.WriteLine("{TILE " + tile.TileID + "}:");
             foreach (Piece piece in tile.PiecesOnTop)
             {
                 Turn.SideName sidename = piece.SideName;
                 if (sidename == Turn.SideName.PlayerSide)
                 {
                     // add 1 to the current count of that side
-                    sidePieceCount.Add(Turn.SideName.PlayerSide, 1);
+                    sidePieceCount[Turn.SideName.PlayerSide]++;
                 }
                 else if (sidename == Turn.SideName.EnemySide)
                 {
-                    sidePieceCount.Add(Turn.SideName.EnemySide, 1);
+                    sidePieceCount[Turn.SideName.EnemySide]++;
                 }
             }
+
             foreach (Turn.SideName turn in sidePieceCount.Keys)
             {
-                if (sidePieceCount[turn] > 0)
+                if (turn == Turn.SideName.EnemySide)
                 {
-                    Debug.Log(sidePieceCount[turn]);
+                    writer.WriteLine("EPieces: " + sidePieceCount[turn]);
+
+                }
+                else if (turn == Turn.SideName.PlayerSide)
+                {
+                    writer.WriteLine("PPieces: " + sidePieceCount[turn]);
                 }
             }
 
 
             tileIdx++;
         }
-        Debug.Log("-----End Tile Statuses-----");
-    }
-    
+        writer.WriteLine("-----End Tile Statuses-----");
 
-    public void ReadBoardTest()
-    {
+        // Close writer
+        writer.Close();
+
+        //Re-import the file to update the reference in the editor
+        AssetDatabase.ImportAsset(path);
+        TextAsset asset = (TextAsset)Resources.Load("test");
 
     }
 }

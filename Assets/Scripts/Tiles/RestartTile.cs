@@ -11,18 +11,23 @@ public class RestartTile : Tile {
 
     protected override void Start()
     {
-        piecesOnTop = new List<Piece>();
+        PiecesOnTop = new List<Piece>();
         maxNumberSamePiece = 1;
         setSummary("You might go back to start with a 50% chance. Holds one piece.");
         TypeOfTile = TileType.Restart;
+        TileID = gameObject.name;
     }
 
     internal override void ActivateTileFunction()
     {
-        // With 1/4 chance (roll dice?)
-        // TODO: Wait an amount of time to make the transition between
-        // landing on and leaving the space smooth
-        topMostPiece.KickBackToStart();
+        // With 1/2 chance, kick piece back to start
+        System.Random rand = new System.Random();
+        // TODO: Wait for some lag time before teleporting back to start
+        if (rand.Next(0, 2) != 0)
+        {
+            topMostPiece.KickBackToStart();
+            this.RemovePiece(topMostPiece);
+        }
         stateController.GetActiveTurn().EndTurn();
     }
 }
