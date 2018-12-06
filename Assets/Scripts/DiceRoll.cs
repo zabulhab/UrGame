@@ -13,7 +13,7 @@ public class DiceRoll : MonoBehaviour
    /// <returns>The random number rolled</returns>
     public static int Roll()
     {
-        int rolledNum = Random.Range(0, 4);
+        int rolledNum = Random.Range(1, 3);
         //Debug.Log("Rolled a " + rolledNum + "!");
         return rolledNum;
     }

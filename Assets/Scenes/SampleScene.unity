@@ -2973,6 +2973,7 @@ MonoBehaviour:
   movePhasePanel: {fileID: 1965025627}
   turnTitleText: {fileID: 1622679355}
   rolledNumberText: {fileID: 1780101628}
+  grid: {fileID: 1628778921}
 --- !u!1 &1300037883
 GameObject:
   m_ObjectHideFlags: 0
@@ -4012,6 +4013,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   board: {fileID: 1628778920}
+  allTiles:
+  - {fileID: 1547742418}
+  - {fileID: 559786928}
+  - {fileID: 1249098079}
+  - {fileID: 111132909}
+  - {fileID: 277640636}
+  - {fileID: 1180932318}
+  - {fileID: 850569960}
+  - {fileID: 462396131}
+  - {fileID: 1306621353}
+  - {fileID: 1234140362}
+  - {fileID: 2011942897}
+  - {fileID: 919342732}
+  - {fileID: 2109680316}
+  - {fileID: 86474661}
+  - {fileID: 1243624216}
+  - {fileID: 525133212}
+  - {fileID: 509971398}
+  - {fileID: 1446340833}
+  - {fileID: 1016935581}
+  - {fileID: 860245447}
   accessibleTilesPlayer:
   - {fileID: 1243624216}
   - {fileID: 525133212}

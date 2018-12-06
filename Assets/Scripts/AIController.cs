@@ -16,8 +16,6 @@ public class AIController : Turn
     // Set the side name for each piece
     protected override void Start()
     {
-        movePieceCoroutine = WaitAndTryMovePiece();
-
         // TODO: Make a new method to avoid code duplication in 2 turn objects
         turnSideName = SideName.EnemySide;
         int i = 0;
@@ -31,6 +29,8 @@ public class AIController : Turn
             piece.SetStartIndex(i);
             i++;
         }
+
+        movePieceCoroutine = WaitAndTryMovePiece();
     }
 
     /// <summary>
@@ -39,35 +39,45 @@ public class AIController : Turn
     /// <returns>The to move piece.</returns>
     private IEnumerator WaitAndTryMovePiece()
     {
-        yield return new WaitForSeconds(2f);
-        if (rolledNumber != 0)
+        if (!AreAllPiecesFrozen() && PreRollOpenSpacesAvailable())
         {
-            MakeIdealMove();
+            RollDice();
+            yield return new WaitForSeconds(2f);
+            if (rolledNumber != 0)
+            {
+                MakeIdealMove();  
+            }
         }
+        else
+        {
+            yield return new WaitForSeconds(2f);
+        }
+
         EndTurn(true);
     }
 
     internal override void ActivatePhase()
     {
         DisableTurnStartPanel();
-        rolledNumberText.SetActive(false); // TODO: make a real solution for this
-        //Debug.Log("Enemy phase activated");
-        if (!AreAllPiecesFrozen() && PreRollOpenSpacesAvailable())
-        {
-            RollDice();
-            StartCoroutine(WaitAndTryMovePiece());
-        }
-        else
-        {
-            EndTurn(true);
-        }
+        rolledNumberText.SetActive(false); // TODO: make an elegant solution for this
+        // Don't execute if all pieces are frozen or no tile 
+        // could be reached no matter which number is rolled
+
+        StartCoroutine(WaitAndTryMovePiece());
+
     }
 
+    /// <summary>
+    /// Makes the ideal move, or no move, if none are possible.
+    /// </summary>
     private void MakeIdealMove()
     {
         Piece piece = GetIdealPieceToMove();
-        piece.SetNumSpacesToMove(rolledNumber);
-        piece.MoveToTargetTile();
+        if (piece != null)
+        {
+            piece.SetNumSpacesToMove(rolledNumber);
+            piece.MoveToTargetTile();
+        }
     }
 
     /// <summary>
@@ -77,10 +87,15 @@ public class AIController : Turn
     private Piece GetIdealPieceToMove()
     {
         Dictionary<Piece,Tile> possibleTiles = GetPossibleTileDestinations(rolledNumber);
-        // Which tile is farthest on the board?
-        //Piece idealPiece = GetPieceFarthestOnBoard(possibleTiles);
-        Piece idealPiece = GetOptimalPiece(possibleTiles);
-        return idealPiece;
+        if (possibleTiles.Count == 0)
+        {
+            return null; // can't make any moves
+        }
+        else
+        {
+            Piece idealPiece = GetOptimalPiece(possibleTiles);
+            return idealPiece;
+        }
     }
 
     /// <summary>
@@ -92,7 +107,6 @@ public class AIController : Turn
         int CPUBoardVal = GetSideValue();
         grid.WriteBoardStatusToFile();
         // call ChoosePieceUsingPriorities(pieceToTileMap)
-
         return GetPieceFarthestOnBoard(pieceToTileMap);
     }
 
@@ -169,12 +183,18 @@ public class AIController : Turn
 
         foreach (Piece piece in allPieces)
         {
+            if (piece.GetPieceStatus() == Piece.PieceStatus.Finished)
+            {
+                continue;
+            }
+            if (!CheckPieceCanMoveToTile(piece))
+            {
+                Debug.Log("Cannot move to tile");
+                continue;
+            }
             if (!isFrozen)
             {
-                if (CheckPieceCanMoveToTile(piece))
-                {
-                    tileDict.Add(piece, piece.GetTargetTile(rolledNum));
-                }
+                tileDict.Add(piece, piece.GetTargetTile(rolledNum));
             }
             else // it is frozen
             {
@@ -206,6 +226,7 @@ public class AIController : Turn
         }
 
         pieceDistanceList.OrderBy(x => x.Value); // ascending order
+        Debug.Log(pieceDistanceList.Count);
         Piece piece = pieceDistanceList[pieceDistanceList.Count-1].Key; // last piece
         // TODO: check here if best piece lands on restart tile
         piece.MoveValue = 1;

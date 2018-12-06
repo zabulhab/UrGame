@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 1
-  lastUpdatedAtString: 2018-12-03T14:12:22.759-05:00
-  initializedAtString: 2018-12-03T14:12:22.759-05:00
+  lastUpdatedAtString: 2018-12-06T15:48:03.308-05:00
+  initializedAtString: 2018-12-06T15:48:03.308-05:00
   currentGitRemote:
     name: origin
     url: https://github.com/zabulhab/UrGameV2.git
@@ -23,10 +23,10 @@ MonoBehaviour:
     function: 0
     token: 
   currentGitBranch:
-    name: master
-    tracking: origin/master
+    name: DebugLandingOnTiles
+    tracking: origin/DebugLandingOnTiles
   currentConfigBranch:
-    name: master
+    name: DebugLandingOnTiles
     remote:
       name: origin
       url: https://github.com/zabulhab/UrGameV2.git

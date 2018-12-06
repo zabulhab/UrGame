@@ -1,24 +1,22 @@
 ﻿<Properties StartupConfiguration="{0B8D570A-930F-49C7-9D97-6D62E27DA68D}|">
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/StateController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/EnemyTurn.cs">
     <Files>
-      <File FileName="Assets/Scripts/Turn.cs" Line="505" Column="14" />
-      <File FileName="Assets/Scripts/AIController.cs" Line="92" Column="1" />
-      <File FileName="Assets/Scripts/Piece.cs" Line="251" Column="19" />
-      <File FileName="Assets/Scripts/GridSystem.cs" Line="51" Column="6" />
+      <File FileName="Assets/Scripts/AIController.cs" Line="54" Column="10" />
+      <File FileName="Assets/Scripts/Turn.cs" Line="224" Column="1" />
+      <File FileName="Assets/Scripts/Piece.cs" Line="202" Column="26" />
+      <File FileName="Assets/Scripts/GridSystem.cs" Line="104" Column="1" />
       <File FileName="Assets/Scripts/AILogicTester.cs" Line="15" Column="6" />
-      <File FileName="Assets/Scripts/Tiles/Tile.cs" Line="139" Column="27" />
       <File FileName="Assets/Scripts/Tiles/RestartTile.cs" Line="25" Column="73" />
       <File FileName="Assets/Resources/GridStatuses.txt" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/StateController.cs" Line="3" Column="14" />
+      <File FileName="Assets/Scripts/StateController.cs" Line="1" Column="7" />
+      <File FileName="Assets/Scripts/Tiles/FourPieceTile.cs" Line="9" Column="9" />
+      <File FileName="Assets/Scripts/Tiles/Tile.cs" Line="97" Column="14" />
+      <File FileName="../UrGameV1/Assets/Scripts/Tiles/Tile.cs" Line="56" Column="20" />
+      <File FileName="Assets/Scripts/Tiles/TwoPieceTile.cs" Line="10" Column="9" />
+      <File FileName="Assets/Scripts/DiceRoll.cs" Line="16" Column="42" />
+      <File FileName="Assets/Scripts/EnemyTurn.cs" Line="20" Column="13" />
     </Files>
-    <Pads>
-      <Pad Id="MonoDevelop.UnitTesting.TestPad">
-        <State name="__root__">
-          <Node name="UrGameV2" expanded="True" selected="True" />
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

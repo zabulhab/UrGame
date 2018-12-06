@@ -108,7 +108,7 @@ public abstract class Turn : MonoBehaviour
                         //    //OpenMoveUI();
                         //    MovePiece();
                         //}
-                        Debug.Log(hitPiece.GetPieceCanMove());
+                        // Debug.Log(hitPiece.GetPieceCanMove());
 
                         if (!isFrozen && hitPiece.GetPieceCanMove())
                         {
@@ -317,15 +317,13 @@ public abstract class Turn : MonoBehaviour
         // if (get tile at piece position + spaces to move)
         Tile targetTile = piece.GetTargetTile(rolledNumber);
         //      has too many tiles of the same color on it already
+        Debug.Log("MAX NUM PIECES? " + targetTile.IsMaxNumSamePieceOnTop());
         if (targetTile != null && (!targetTile.IsMaxNumSamePieceOnTop()))
         {
             piece.SetPieceCanMove(true);
+            return true;
         }
-
-        //          return false
-        // else return true
-        return true;
-
+        return false;
     }
 
     /// <summary>

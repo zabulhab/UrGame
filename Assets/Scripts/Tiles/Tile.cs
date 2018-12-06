@@ -8,7 +8,7 @@ using UnityEngine.UI;
 /// </summary>
 public abstract class Tile : MonoBehaviour //Scriptable Object?
 {
-    private bool TileInfoShow = false;
+    private bool TileInfoShow = true;
 
     // The index of this tile in the list of tiles for a player's side
     internal int TileNumber { get; set; }
@@ -44,7 +44,7 @@ public abstract class Tile : MonoBehaviour //Scriptable Object?
     /// </summary>
     protected void setSummary(string text)
     {
-        this.tileFunctionSummary = text + " and tilenum = " + TileNumber;
+        this.tileFunctionSummary = text;
     }
 
     // Adds a piece reference to this tile's piece list
@@ -98,12 +98,8 @@ public abstract class Tile : MonoBehaviour //Scriptable Object?
                 numCurSamePiece++;
             }
         }
-
-        if (numCurSamePiece == maxNumberSamePiece) // shouldn't ever be more
-        {
-            return true;
-        }
-        return false;
+        Debug.Log(PiecesOnTop);
+        return numCurSamePiece == maxNumberSamePiece;
     }
 
     /// <summary>
@@ -154,7 +150,10 @@ public abstract class Tile : MonoBehaviour //Scriptable Object?
     private void OnMouseEnter()
     {
         if (TileInfoShow == true)
+        {
             ShowTileInfo();
+            Debug.Log("HI");
+        }
     }
 
     /// <summary>
@@ -170,7 +169,9 @@ public abstract class Tile : MonoBehaviour //Scriptable Object?
     /// </summary>
     protected void ShowTileInfo()
     {
-        TileDescriptionPanel.GetComponentInChildren<Text>().text = tileFunctionSummary;
+        string infoPlusTilesOnTop = tileFunctionSummary + ", " + 
+                                        GetNumPiecesOnTile() + " pieces on top";
+        TileDescriptionPanel.GetComponentInChildren<Text>().text = infoPlusTilesOnTop;
         //TileDescriptionPanel.GetComponentInChildren<Text>().SetActive(true);
         TileDescriptionPanel.SetActive(true);
         //TileDescriptionPanel.GetComponentInParent<GameObject>().SetActive(true);

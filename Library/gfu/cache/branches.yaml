@@ -12,17 +12,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 2
-  lastUpdatedAtString: 2018-11-05T23:45:54.419-05:00
-  initializedAtString: 2018-11-05T23:44:23.032-05:00
+  lastUpdatedAtString: 2018-12-06T15:35:36.269-05:00
+  initializedAtString: 2018-12-06T15:34:52.874-05:00
   localBranches:
+  - name: DebugLandingOnTiles
+    tracking: origin/DebugLandingOnTiles
   - name: master
-    tracking: 
+    tracking: origin/master
   remoteBranches:
   - name: origin/master
     tracking: '[None]'
   remotes:
   - name: origin
-    url: https://github.com/zabulhab/UrGameRepo.git
+    url: https://github.com/zabulhab/UrGameV2.git
     login: 
     user: 
     host: 
@@ -30,13 +32,19 @@ MonoBehaviour:
     token: 
   localConfigBranches:
     keys:
+    - DebugLandingOnTiles
     - master
     values:
+    - name: DebugLandingOnTiles
+      remote:
+        name: origin
+        url: https://github.com/zabulhab/UrGameV2.git
+      trackingBranch: master
     - name: master
       remote:
-        name: 
-        url: 
-      trackingBranch: 
+        name: origin
+        url: https://github.com/zabulhab/UrGameV2.git
+      trackingBranch: master
   remoteConfigBranches:
     keys:
     - origin
@@ -48,11 +56,11 @@ MonoBehaviour:
       - name: master
         remote:
           name: origin
-          url: https://github.com/zabulhab/UrGameRepo.git
+          url: https://github.com/zabulhab/UrGameV2.git
         trackingBranch: 
   configRemotes:
     keys:
     - origin
     values:
     - name: origin
-      url: https://github.com/zabulhab/UrGameRepo.git
+      url: https://github.com/zabulhab/UrGameV2.git
