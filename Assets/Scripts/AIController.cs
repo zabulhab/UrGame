@@ -13,6 +13,10 @@ public class AIController : Turn
     // so this turn looks more "natural"
     private IEnumerator movePieceCoroutine;
 
+    // Set to true when the turn is allowed to repeat.
+    // Overrides the auto-ending done when a piece has landed on a repeat tile
+    private bool turnEndDisabled = false;
+
     // Set the side name for each piece
     protected override void Start()
     {
@@ -50,19 +54,27 @@ public class AIController : Turn
         }
         else
         {
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
         }
-
-        EndTurn(true);
+        if (!turnEndDisabled)
+        {
+            EndTurn(true);
+        }
+        else
+        {
+            ActivatePhase();
+        }
     }
 
     internal override void ActivatePhase()
     {
         DisableTurnStartPanel();
         rolledNumberText.SetActive(false); // TODO: make an elegant solution for this
-        // Don't execute if all pieces are frozen or no tile 
-        // could be reached no matter which number is rolled
-
+        // If turn end disabled last time because of repeat tile, enable ending again
+        if (turnEndDisabled == true) 
+        {
+            turnEndDisabled = false;
+        }
         StartCoroutine(WaitAndTryMovePiece());
 
     }
@@ -112,7 +124,8 @@ public class AIController : Turn
 
     private Piece ChoosePieceUsingPriorities(Dictionary<Piece, Tile> pieceToTileMap)
     {
-        Dictionary<Piece, Tile.TileType> pieceToTileTypeMap = new Dictionary<Piece, Tile.TileType>();
+        Dictionary<Piece, Tile.TileType> pieceToTileTypeMap = 
+                                         new Dictionary<Piece, Tile.TileType>();
         foreach (Piece piece in pieceToTileMap.Keys)
         {
             Tile.TileType tileName = pieceToTileMap[piece].TypeOfTile;
@@ -189,7 +202,7 @@ public class AIController : Turn
             }
             if (!CheckPieceCanMoveToTile(piece))
             {
-                Debug.Log("Cannot move to tile");
+                //Debug.Log("Cannot move to tile");
                 continue;
             }
             if (!isFrozen)
@@ -221,21 +234,25 @@ public class AIController : Turn
         {
             int pieceTileIdx = entry.Key.CurrentTileIdx;
             KeyValuePair<Piece, int> pair = 
-                new KeyValuePair<Piece, int>(entry.Key,pieceTileIdx);
+                            new KeyValuePair<Piece, int>(entry.Key,pieceTileIdx);
             pieceDistanceList.Add(pair);
         }
 
-        pieceDistanceList.OrderBy(x => x.Value); // ascending order
-        Debug.Log(pieceDistanceList.Count);
-        Piece piece = pieceDistanceList[pieceDistanceList.Count-1].Key; // last piece
+        var orderedDistList = pieceDistanceList.OrderByDescending(x => x.Value); // descending order
+        foreach (KeyValuePair<Piece, int> entry in pieceDistanceList)
+        {
+            Debug.Log("ENTRY: " + entry);
+        }
+        Piece piece = orderedDistList.ElementAt(0).Key; // last piece
         // TODO: check here if best piece lands on restart tile
-        piece.MoveValue = 1;
         return piece;
     }
 
-    // TODO: FIX THIS!
+    /// <summary>
+    /// Disables the turn ending for this turn
+    /// </summary>
     internal override void SetTurnRepeat()
     {
-        ActivatePhase();
+        turnEndDisabled = true;
     }
 }

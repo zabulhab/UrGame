@@ -12,9 +12,2379 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 3
-  lastUpdatedAtString: 2018-12-06T15:35:36.877-05:00
-  initializedAtString: 2018-12-06T15:35:36.877-05:00
+  lastUpdatedAtString: 2018-12-07T12:20:15.845-05:00
+  initializedAtString: 2018-12-07T12:20:15.845-05:00
   log:
+  - commitID: bc484fcc89edcf8767137deb0f6d82df7d18e0d8
+    mergeA: 2399d1c18c49da5067bc4d1b4af83b0246daa929
+    mergeB: 13634d2c856a3eb6bfa52975b67d3b067f563b55
+    authorName: zabulhab
+    authorEmail: zabulhab@colby.edu
+    commitEmail: zabulhab@colby.edu
+    commitName: zabulhab
+    summary: Merge remote-tracking branch 'origin/master' into DebugLandingOnTiles
+    description: Merge remote-tracking branch 'origin/master' into DebugLandingOnTiles
+    timeString: 2018-12-06T16:10:09.000-05:00
+    commitTimeString: 2018-12-06T16:10:09.000-05:00
+    changes: []
+  - commitID: 2399d1c18c49da5067bc4d1b4af83b0246daa929
+    mergeA: 
+    mergeB: 
+    authorName: zabulhab
+    authorEmail: zabulhab@colby.edu
+    commitEmail: zabulhab@colby.edu
+    commitName: zabulhab
+    summary: Fixed AI landing on occupied tiles, still debugging repeat
+    description: Fixed AI landing on occupied tiles, still debugging repeat
+    timeString: 2018-12-06T15:51:59.000-05:00
+    commitTimeString: 2018-12-06T15:51:59.000-05:00
+    changes:
+    - path: .vs/UrGameV2/xs/UserPrefs.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/.vs/UrGameV2/xs/UserPrefs.xml
+      projectPath: .vs/UrGameV2/xs/UserPrefs.xml
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: .vs/UrGameV2/xs/sqlite3/storage.ide
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/.vs/UrGameV2/xs/sqlite3/storage.ide
+      projectPath: .vs/UrGameV2/xs/sqlite3/storage.ide
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: .vs/UrGameV2/xs/sqlite3/storage.ide-shm
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/.vs/UrGameV2/xs/sqlite3/storage.ide-shm
+      projectPath: .vs/UrGameV2/xs/sqlite3/storage.ide-shm
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: .vs/UrGameV2/xs/sqlite3/storage.ide-wal
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/.vs/UrGameV2/xs/sqlite3/storage.ide-wal
+      projectPath: .vs/UrGameV2/xs/sqlite3/storage.ide-wal
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: Assets/Resources/GridStatuses.txt
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Assets/Resources/GridStatuses.txt
+      projectPath: Assets/Resources/GridStatuses.txt
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: Assets/Scenes/SampleScene.unity
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Assets/Scenes/SampleScene.unity
+      projectPath: Assets/Scenes/SampleScene.unity
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: Assets/Scripts/AIController.cs
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Assets/Scripts/AIController.cs
+      projectPath: Assets/Scripts/AIController.cs
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: Assets/Scripts/DiceRoll.cs
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Assets/Scripts/DiceRoll.cs
+      projectPath: Assets/Scripts/DiceRoll.cs
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: Assets/Scripts/Tiles/Tile.cs
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Assets/Scripts/Tiles/Tile.cs
+      projectPath: Assets/Scripts/Tiles/Tile.cs
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: Assets/Scripts/Turn.cs
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Assets/Scripts/Turn.cs
+      projectPath: Assets/Scripts/Turn.cs
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: Library/CurrentLayout.dwlt
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Library/CurrentLayout.dwlt
+      projectPath: Library/CurrentLayout.dwlt
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: Library/EditorInstance.json
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Library/EditorInstance.json
+      projectPath: Library/EditorInstance.json
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: Library/ScriptAssemblies/Assembly-CSharp.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Library/ScriptAssemblies/Assembly-CSharp.dll
+      projectPath: Library/ScriptAssemblies/Assembly-CSharp.dll
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: Library/ScriptAssemblies/Assembly-CSharp.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Library/ScriptAssemblies/Assembly-CSharp.dll.mdb
+      projectPath: Library/ScriptAssemblies/Assembly-CSharp.dll.mdb
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: Library/assetDatabase3
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Library/assetDatabase3
+      projectPath: Library/assetDatabase3
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: Library/gfu/cache/branches.yaml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Library/gfu/cache/branches.yaml
+      projectPath: Library/gfu/cache/branches.yaml
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: Library/gfu/cache/gitlocks.yaml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Library/gfu/cache/gitlocks.yaml
+      projectPath: Library/gfu/cache/gitlocks.yaml
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: Library/gfu/cache/gitlog.yaml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Library/gfu/cache/gitlog.yaml
+      projectPath: Library/gfu/cache/gitlog.yaml
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: Library/gfu/cache/gitstatusentries.yaml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Library/gfu/cache/gitstatusentries.yaml
+      projectPath: Library/gfu/cache/gitstatusentries.yaml
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: Library/gfu/cache/gittrackingstatus.yaml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Library/gfu/cache/gittrackingstatus.yaml
+      projectPath: Library/gfu/cache/gittrackingstatus.yaml
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: Library/gfu/cache/repoinfo.yaml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Library/gfu/cache/repoinfo.yaml
+      projectPath: Library/gfu/cache/repoinfo.yaml
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: Library/metadata/12/127b2e585b76e41d1b8f4905db9e12b4
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Library/metadata/12/127b2e585b76e41d1b8f4905db9e12b4
+      projectPath: Library/metadata/12/127b2e585b76e41d1b8f4905db9e12b4
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: Library/metadata/21/21a9e787e36144f668d7b870a628988a
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Library/metadata/21/21a9e787e36144f668d7b870a628988a
+      projectPath: Library/metadata/21/21a9e787e36144f668d7b870a628988a
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: Library/metadata/46/461ea0da1544a44d985a2a04d3501366
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Library/metadata/46/461ea0da1544a44d985a2a04d3501366
+      projectPath: Library/metadata/46/461ea0da1544a44d985a2a04d3501366
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: Library/metadata/57/57d29e57c60f744ce970d2bccd9831f3
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Library/metadata/57/57d29e57c60f744ce970d2bccd9831f3
+      projectPath: Library/metadata/57/57d29e57c60f744ce970d2bccd9831f3
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: Library/metadata/69/694378b146a874d1bad24256c2d35620
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Library/metadata/69/694378b146a874d1bad24256c2d35620
+      projectPath: Library/metadata/69/694378b146a874d1bad24256c2d35620
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: Library/shadercompiler-UnityShaderCompiler0.log
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Library/shadercompiler-UnityShaderCompiler0.log
+      projectPath: Library/shadercompiler-UnityShaderCompiler0.log
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: Temp/UnityTempFile-08f2ae37d0be54d679e2de3289bd6838
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-08f2ae37d0be54d679e2de3289bd6838
+      projectPath: Temp/UnityTempFile-08f2ae37d0be54d679e2de3289bd6838
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/UnityTempFile-09f59963dbf8a4445bf142776fc9c845
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-09f59963dbf8a4445bf142776fc9c845
+      projectPath: Temp/UnityTempFile-09f59963dbf8a4445bf142776fc9c845
+      originalPath: Temp/UnityTempFile-d9ba96bcf951b4f9fa8dc85de3c72400
+      status: 6
+      staged: 0
+    - path: Temp/UnityTempFile-1ee47e89496de477b8aa95c8e9279ac8
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-1ee47e89496de477b8aa95c8e9279ac8
+      projectPath: Temp/UnityTempFile-1ee47e89496de477b8aa95c8e9279ac8
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/UnityTempFile-2820c0974a1be4e8596867fa67573c61
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-2820c0974a1be4e8596867fa67573c61
+      projectPath: Temp/UnityTempFile-2820c0974a1be4e8596867fa67573c61
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/UnityTempFile-2cd40d423cd8847af845962abead118a
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-2cd40d423cd8847af845962abead118a
+      projectPath: Temp/UnityTempFile-2cd40d423cd8847af845962abead118a
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/UnityTempFile-30302642fdeca433e8557f6ea1730eba
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-30302642fdeca433e8557f6ea1730eba
+      projectPath: Temp/UnityTempFile-30302642fdeca433e8557f6ea1730eba
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/UnityTempFile-37a628c84a1334eb2a1af550d34e9180
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-37a628c84a1334eb2a1af550d34e9180
+      projectPath: Temp/UnityTempFile-37a628c84a1334eb2a1af550d34e9180
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/UnityTempFile-3d667fe764aea4441a5196dd7aa29893
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-3d667fe764aea4441a5196dd7aa29893
+      projectPath: Temp/UnityTempFile-3d667fe764aea4441a5196dd7aa29893
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/UnityTempFile-4193a0badcaa4465c9440a6dc8c5c829
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-4193a0badcaa4465c9440a6dc8c5c829
+      projectPath: Temp/UnityTempFile-4193a0badcaa4465c9440a6dc8c5c829
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/UnityTempFile-425ed50c0116340f993a7c6dbaca6583
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-425ed50c0116340f993a7c6dbaca6583
+      projectPath: Temp/UnityTempFile-425ed50c0116340f993a7c6dbaca6583
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/UnityTempFile-4cbae042a01d34564bb74b90e267cf88
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-4cbae042a01d34564bb74b90e267cf88
+      projectPath: Temp/UnityTempFile-4cbae042a01d34564bb74b90e267cf88
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/UnityTempFile-5810b8d1b85be4363b89b5b743427581
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-5810b8d1b85be4363b89b5b743427581
+      projectPath: Temp/UnityTempFile-5810b8d1b85be4363b89b5b743427581
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/UnityTempFile-5827582268ced4656bbab7971ab74110
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-5827582268ced4656bbab7971ab74110
+      projectPath: Temp/UnityTempFile-5827582268ced4656bbab7971ab74110
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/UnityTempFile-618903a50daa14dfd85c6aea531a60be
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-618903a50daa14dfd85c6aea531a60be
+      projectPath: Temp/UnityTempFile-618903a50daa14dfd85c6aea531a60be
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/UnityTempFile-66c64fce7af5447279615ccea8a013ac
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-66c64fce7af5447279615ccea8a013ac
+      projectPath: Temp/UnityTempFile-66c64fce7af5447279615ccea8a013ac
+      originalPath: Temp/UnityTempFile-fc224c0e96c4948d681f14f531c6ad47
+      status: 6
+      staged: 0
+    - path: Temp/UnityTempFile-6842ebd5c714e45e3be9cc9d36f22f4b
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-6842ebd5c714e45e3be9cc9d36f22f4b
+      projectPath: Temp/UnityTempFile-6842ebd5c714e45e3be9cc9d36f22f4b
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/UnityTempFile-6b6885a837255402a9bd9782462f744f
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-6b6885a837255402a9bd9782462f744f
+      projectPath: Temp/UnityTempFile-6b6885a837255402a9bd9782462f744f
+      originalPath: Temp/UnityTempFile-a4fb4347897b441dfae1003434968968
+      status: 6
+      staged: 0
+    - path: Temp/UnityTempFile-77a0dc5198443420591e1eebf234bd09
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-77a0dc5198443420591e1eebf234bd09
+      projectPath: Temp/UnityTempFile-77a0dc5198443420591e1eebf234bd09
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/UnityTempFile-7db5df03b9c9b453cb0823ab58a36e38
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-7db5df03b9c9b453cb0823ab58a36e38
+      projectPath: Temp/UnityTempFile-7db5df03b9c9b453cb0823ab58a36e38
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/UnityTempFile-7f8e86dddb9bf4ed8bafca0d57efd85e
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-7f8e86dddb9bf4ed8bafca0d57efd85e
+      projectPath: Temp/UnityTempFile-7f8e86dddb9bf4ed8bafca0d57efd85e
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/UnityTempFile-8fcfa946b42964405bcdab0a8c891de3
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-8fcfa946b42964405bcdab0a8c891de3
+      projectPath: Temp/UnityTempFile-8fcfa946b42964405bcdab0a8c891de3
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/UnityTempFile-97ea03ea908ba476f872ab670de2a0a1
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-97ea03ea908ba476f872ab670de2a0a1
+      projectPath: Temp/UnityTempFile-97ea03ea908ba476f872ab670de2a0a1
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/UnityTempFile-994ef1b85d8134a0a88f91cf4374ec94
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-994ef1b85d8134a0a88f91cf4374ec94
+      projectPath: Temp/UnityTempFile-994ef1b85d8134a0a88f91cf4374ec94
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/UnityTempFile-a80600e86a4c54f29afa63adfa3ead11
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-a80600e86a4c54f29afa63adfa3ead11
+      projectPath: Temp/UnityTempFile-a80600e86a4c54f29afa63adfa3ead11
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/UnityTempFile-aa5b7fc1bd03f414cb234162c68d7659
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-aa5b7fc1bd03f414cb234162c68d7659
+      projectPath: Temp/UnityTempFile-aa5b7fc1bd03f414cb234162c68d7659
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/UnityTempFile-ab13b76e0f59940beb38d0c1e97d352b
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-ab13b76e0f59940beb38d0c1e97d352b
+      projectPath: Temp/UnityTempFile-ab13b76e0f59940beb38d0c1e97d352b
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/UnityTempFile-ad079a33629254079877e514d0970864
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-ad079a33629254079877e514d0970864
+      projectPath: Temp/UnityTempFile-ad079a33629254079877e514d0970864
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/UnityTempFile-b2aef91b8b83a459ea8e4ca5876b35be
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-b2aef91b8b83a459ea8e4ca5876b35be
+      projectPath: Temp/UnityTempFile-b2aef91b8b83a459ea8e4ca5876b35be
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/UnityTempFile-b3c5fa5fff7c74cbd8faeb7c94f80f25
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-b3c5fa5fff7c74cbd8faeb7c94f80f25
+      projectPath: Temp/UnityTempFile-b3c5fa5fff7c74cbd8faeb7c94f80f25
+      originalPath: Temp/UnityTempFile-be07622202b8e40fb978be641aa95eb1
+      status: 6
+      staged: 0
+    - path: Temp/UnityTempFile-b576fa463cb9e4ee7b7213bb5c863412
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-b576fa463cb9e4ee7b7213bb5c863412
+      projectPath: Temp/UnityTempFile-b576fa463cb9e4ee7b7213bb5c863412
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/UnityTempFile-b7ad68ae3b7994700a8174ba18d9df5c
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-b7ad68ae3b7994700a8174ba18d9df5c
+      projectPath: Temp/UnityTempFile-b7ad68ae3b7994700a8174ba18d9df5c
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/UnityTempFile-b932806b93c02416887585176901ea3f
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-b932806b93c02416887585176901ea3f
+      projectPath: Temp/UnityTempFile-b932806b93c02416887585176901ea3f
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/UnityTempFile-bdea053bda4b04641b26ac9b5f37ae09
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-bdea053bda4b04641b26ac9b5f37ae09
+      projectPath: Temp/UnityTempFile-bdea053bda4b04641b26ac9b5f37ae09
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/UnityTempFile-c5695ea3799e549f890fa620df527d75
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-c5695ea3799e549f890fa620df527d75
+      projectPath: Temp/UnityTempFile-c5695ea3799e549f890fa620df527d75
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/UnityTempFile-cc33675fefa9b404f8746c3f44bffeb0
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-cc33675fefa9b404f8746c3f44bffeb0
+      projectPath: Temp/UnityTempFile-cc33675fefa9b404f8746c3f44bffeb0
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/UnityTempFile-ceb7b383941d141389d9db1fb56966ff
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-ceb7b383941d141389d9db1fb56966ff
+      projectPath: Temp/UnityTempFile-ceb7b383941d141389d9db1fb56966ff
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/UnityTempFile-d163613da6f9748b1ada2f30498feae9
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-d163613da6f9748b1ada2f30498feae9
+      projectPath: Temp/UnityTempFile-d163613da6f9748b1ada2f30498feae9
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/UnityTempFile-d1d8c3b92bf554f57b80cd5ce7b5f6d8
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-d1d8c3b92bf554f57b80cd5ce7b5f6d8
+      projectPath: Temp/UnityTempFile-d1d8c3b92bf554f57b80cd5ce7b5f6d8
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/UnityTempFile-dc653d81ed3624626a8add775a0a21ab
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-dc653d81ed3624626a8add775a0a21ab
+      projectPath: Temp/UnityTempFile-dc653d81ed3624626a8add775a0a21ab
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/UnityTempFile-df45a0d442de744959a87a9560478f98
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-df45a0d442de744959a87a9560478f98
+      projectPath: Temp/UnityTempFile-df45a0d442de744959a87a9560478f98
+      originalPath: Temp/UnityTempFile-078702f181b2a4fe98180a52284abfe0
+      status: 6
+      staged: 0
+    - path: Temp/UnityTempFile-e433906f88d7c46f9a7a483f2e5aa3b7
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-e433906f88d7c46f9a7a483f2e5aa3b7
+      projectPath: Temp/UnityTempFile-e433906f88d7c46f9a7a483f2e5aa3b7
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/UnityTempFile-e9b5669d59e1a4335a0b5e75cdeb5cd1
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-e9b5669d59e1a4335a0b5e75cdeb5cd1
+      projectPath: Temp/UnityTempFile-e9b5669d59e1a4335a0b5e75cdeb5cd1
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/UnityTempFile-eafb2f28cb37a42e8a60916a44ed98a1
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-eafb2f28cb37a42e8a60916a44ed98a1
+      projectPath: Temp/UnityTempFile-eafb2f28cb37a42e8a60916a44ed98a1
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/UnityTempFile-ef73e4dd7619646ef904f98b6323439e
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-ef73e4dd7619646ef904f98b6323439e
+      projectPath: Temp/UnityTempFile-ef73e4dd7619646ef904f98b6323439e
+      originalPath: Temp/UnityTempFile-89fca26cfb8214084bcb37df64a12853
+      status: 6
+      staged: 0
+    - path: Temp/UnityTempFile-fbbe4ad121eaa46ab8cdd5eecaa0e05a
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-fbbe4ad121eaa46ab8cdd5eecaa0e05a
+      projectPath: Temp/UnityTempFile-fbbe4ad121eaa46ab8cdd5eecaa0e05a
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/UnityTempFile-ff877fdd31deb4685baf1801f9924fbd
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-ff877fdd31deb4685baf1801f9924fbd
+      projectPath: Temp/UnityTempFile-ff877fdd31deb4685baf1801f9924fbd
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/__Backupscenes/0.backup
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/__Backupscenes/0.backup
+      projectPath: Temp/__Backupscenes/0.backup
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/Assembly-CSharp-Editor-firstpass.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Assembly-CSharp-Editor-firstpass.dll
+      projectPath: Temp/bin/Debug/Assembly-CSharp-Editor-firstpass.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/Assembly-CSharp-Editor-firstpass.pdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Assembly-CSharp-Editor-firstpass.pdb
+      projectPath: Temp/bin/Debug/Assembly-CSharp-Editor-firstpass.pdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/Assembly-CSharp.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Assembly-CSharp.dll
+      projectPath: Temp/bin/Debug/Assembly-CSharp.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/Assembly-CSharp.pdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Assembly-CSharp.pdb
+      projectPath: Temp/bin/Debug/Assembly-CSharp.pdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/AsyncBridge.Net35.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/AsyncBridge.Net35.dll
+      projectPath: Temp/bin/Debug/AsyncBridge.Net35.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/Boo.Lang.Compiler.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Boo.Lang.Compiler.dll
+      projectPath: Temp/bin/Debug/Boo.Lang.Compiler.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/Boo.Lang.Parser.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Boo.Lang.Parser.dll
+      projectPath: Temp/bin/Debug/Boo.Lang.Parser.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/Boo.Lang.PatternMatching.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Boo.Lang.PatternMatching.dll
+      projectPath: Temp/bin/Debug/Boo.Lang.PatternMatching.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/Boo.Lang.Useful.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Boo.Lang.Useful.dll
+      projectPath: Temp/bin/Debug/Boo.Lang.Useful.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/Boo.Lang.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Boo.Lang.dll
+      projectPath: Temp/bin/Debug/Boo.Lang.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/ExCSS.Unity.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/ExCSS.Unity.dll
+      projectPath: Temp/bin/Debug/ExCSS.Unity.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/GitHub.Api.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/GitHub.Api.dll
+      projectPath: Temp/bin/Debug/GitHub.Api.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/GitHub.Api.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/GitHub.Api.dll.mdb
+      projectPath: Temp/bin/Debug/GitHub.Api.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/GitHub.Logging.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/GitHub.Logging.dll
+      projectPath: Temp/bin/Debug/GitHub.Logging.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/GitHub.Logging.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/GitHub.Logging.dll.mdb
+      projectPath: Temp/bin/Debug/GitHub.Logging.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/GitHub.Unity.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/GitHub.Unity.dll
+      projectPath: Temp/bin/Debug/GitHub.Unity.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/GitHub.Unity.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/GitHub.Unity.dll.mdb
+      projectPath: Temp/bin/Debug/GitHub.Unity.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/Mono.Security.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Mono.Security.dll
+      projectPath: Temp/bin/Debug/Mono.Security.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/ReadOnlyCollectionsInterfaces.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/ReadOnlyCollectionsInterfaces.dll
+      projectPath: Temp/bin/Debug/ReadOnlyCollectionsInterfaces.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/SyntaxTree.VisualStudio.Unity.Bridge.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/SyntaxTree.VisualStudio.Unity.Bridge.dll
+      projectPath: Temp/bin/Debug/SyntaxTree.VisualStudio.Unity.Bridge.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/SyntaxTree.VisualStudio.Unity.Messaging.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/SyntaxTree.VisualStudio.Unity.Messaging.dll
+      projectPath: Temp/bin/Debug/SyntaxTree.VisualStudio.Unity.Messaging.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/System.Configuration.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/System.Configuration.dll
+      projectPath: Temp/bin/Debug/System.Configuration.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/System.Core.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/System.Core.dll
+      projectPath: Temp/bin/Debug/System.Core.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/System.Runtime.Serialization.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/System.Runtime.Serialization.dll
+      projectPath: Temp/bin/Debug/System.Runtime.Serialization.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/System.Threading.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/System.Threading.dll
+      projectPath: Temp/bin/Debug/System.Threading.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/System.Xml.Linq.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/System.Xml.Linq.dll
+      projectPath: Temp/bin/Debug/System.Xml.Linq.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/System.Xml.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/System.Xml.dll
+      projectPath: Temp/bin/Debug/System.Xml.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/System.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/System.dll
+      projectPath: Temp/bin/Debug/System.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/Unity.Cecil.Mdb.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Unity.Cecil.Mdb.dll
+      projectPath: Temp/bin/Debug/Unity.Cecil.Mdb.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/Unity.Cecil.Pdb.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Unity.Cecil.Pdb.dll
+      projectPath: Temp/bin/Debug/Unity.Cecil.Pdb.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/Unity.Cecil.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Unity.Cecil.dll
+      projectPath: Temp/bin/Debug/Unity.Cecil.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/Unity.CecilTools.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Unity.CecilTools.dll
+      projectPath: Temp/bin/Debug/Unity.CecilTools.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/Unity.DataContract.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Unity.DataContract.dll
+      projectPath: Temp/bin/Debug/Unity.DataContract.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/Unity.IvyParser.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Unity.IvyParser.dll
+      projectPath: Temp/bin/Debug/Unity.IvyParser.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/Unity.IvyParser.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Unity.IvyParser.dll.mdb
+      projectPath: Temp/bin/Debug/Unity.IvyParser.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/Unity.Legacy.NRefactory.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Unity.Legacy.NRefactory.dll
+      projectPath: Temp/bin/Debug/Unity.Legacy.NRefactory.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/Unity.Locator.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Unity.Locator.dll
+      projectPath: Temp/bin/Debug/Unity.Locator.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/Unity.Locator.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Unity.Locator.dll.mdb
+      projectPath: Temp/bin/Debug/Unity.Locator.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/Unity.PackageManagerUI.Editor.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Unity.PackageManagerUI.Editor.dll
+      projectPath: Temp/bin/Debug/Unity.PackageManagerUI.Editor.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/Unity.PackageManagerUI.Editor.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Unity.PackageManagerUI.Editor.dll.mdb
+      projectPath: Temp/bin/Debug/Unity.PackageManagerUI.Editor.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/Unity.SerializationLogic.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Unity.SerializationLogic.dll
+      projectPath: Temp/bin/Debug/Unity.SerializationLogic.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/Unity.TextMeshPro.Editor.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Unity.TextMeshPro.Editor.dll
+      projectPath: Temp/bin/Debug/Unity.TextMeshPro.Editor.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/Unity.TextMeshPro.Editor.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Unity.TextMeshPro.Editor.dll.mdb
+      projectPath: Temp/bin/Debug/Unity.TextMeshPro.Editor.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/Unity.TextMeshPro.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Unity.TextMeshPro.dll
+      projectPath: Temp/bin/Debug/Unity.TextMeshPro.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/Unity.TextMeshPro.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Unity.TextMeshPro.dll.mdb
+      projectPath: Temp/bin/Debug/Unity.TextMeshPro.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/Unity.UNetWeaver.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Unity.UNetWeaver.dll
+      projectPath: Temp/bin/Debug/Unity.UNetWeaver.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/Unity.UNetWeaver.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Unity.UNetWeaver.dll.mdb
+      projectPath: Temp/bin/Debug/Unity.UNetWeaver.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.Advertisements.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.Advertisements.dll
+      projectPath: Temp/bin/Debug/UnityEditor.Advertisements.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.Advertisements.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.Advertisements.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEditor.Advertisements.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.Analytics.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.Analytics.dll
+      projectPath: Temp/bin/Debug/UnityEditor.Analytics.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.Analytics.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.Analytics.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEditor.Analytics.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.Android.Extensions.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.Android.Extensions.dll
+      projectPath: Temp/bin/Debug/UnityEditor.Android.Extensions.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.GoogleAudioSpatializer.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.GoogleAudioSpatializer.dll
+      projectPath: Temp/bin/Debug/UnityEditor.GoogleAudioSpatializer.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.GoogleAudioSpatializer.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.GoogleAudioSpatializer.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEditor.GoogleAudioSpatializer.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.GoogleAudioSpatializer.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.GoogleAudioSpatializer.xml
+      projectPath: Temp/bin/Debug/UnityEditor.GoogleAudioSpatializer.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.Graphs.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.Graphs.dll
+      projectPath: Temp/bin/Debug/UnityEditor.Graphs.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.Graphs.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.Graphs.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEditor.Graphs.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.HoloLens.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.HoloLens.dll
+      projectPath: Temp/bin/Debug/UnityEditor.HoloLens.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.HoloLens.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.HoloLens.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEditor.HoloLens.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.HoloLens.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.HoloLens.xml
+      projectPath: Temp/bin/Debug/UnityEditor.HoloLens.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.LinuxStandalone.Extensions.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.LinuxStandalone.Extensions.dll
+      projectPath: Temp/bin/Debug/UnityEditor.LinuxStandalone.Extensions.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.LinuxStandalone.Extensions.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.LinuxStandalone.Extensions.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEditor.LinuxStandalone.Extensions.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.Networking.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.Networking.dll
+      projectPath: Temp/bin/Debug/UnityEditor.Networking.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.Networking.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.Networking.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEditor.Networking.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.Networking.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.Networking.xml
+      projectPath: Temp/bin/Debug/UnityEditor.Networking.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.OSXStandalone.Extensions.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.OSXStandalone.Extensions.dll
+      projectPath: Temp/bin/Debug/UnityEditor.OSXStandalone.Extensions.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.OSXStandalone.Extensions.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.OSXStandalone.Extensions.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEditor.OSXStandalone.Extensions.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.Purchasing.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.Purchasing.dll
+      projectPath: Temp/bin/Debug/UnityEditor.Purchasing.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.Purchasing.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.Purchasing.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEditor.Purchasing.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.SpatialTracking.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.SpatialTracking.dll
+      projectPath: Temp/bin/Debug/UnityEditor.SpatialTracking.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.SpatialTracking.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.SpatialTracking.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEditor.SpatialTracking.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.SpatialTracking.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.SpatialTracking.xml
+      projectPath: Temp/bin/Debug/UnityEditor.SpatialTracking.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.StandardEvents.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.StandardEvents.dll
+      projectPath: Temp/bin/Debug/UnityEditor.StandardEvents.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.StandardEvents.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.StandardEvents.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEditor.StandardEvents.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.TestRunner.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.TestRunner.dll
+      projectPath: Temp/bin/Debug/UnityEditor.TestRunner.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.TestRunner.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.TestRunner.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEditor.TestRunner.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.TestRunner.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.TestRunner.xml
+      projectPath: Temp/bin/Debug/UnityEditor.TestRunner.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.Timeline.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.Timeline.dll
+      projectPath: Temp/bin/Debug/UnityEditor.Timeline.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.Timeline.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.Timeline.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEditor.Timeline.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.Timeline.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.Timeline.xml
+      projectPath: Temp/bin/Debug/UnityEditor.Timeline.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.TreeEditor.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.TreeEditor.dll
+      projectPath: Temp/bin/Debug/UnityEditor.TreeEditor.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.TreeEditor.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.TreeEditor.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEditor.TreeEditor.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.TreeEditor.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.TreeEditor.xml
+      projectPath: Temp/bin/Debug/UnityEditor.TreeEditor.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.UI.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.UI.dll
+      projectPath: Temp/bin/Debug/UnityEditor.UI.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.UI.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.UI.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEditor.UI.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.UI.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.UI.xml
+      projectPath: Temp/bin/Debug/UnityEditor.UI.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.VR.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.VR.dll
+      projectPath: Temp/bin/Debug/UnityEditor.VR.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.VR.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.VR.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEditor.VR.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.VR.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.VR.xml
+      projectPath: Temp/bin/Debug/UnityEditor.VR.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.dll
+      projectPath: Temp/bin/Debug/UnityEditor.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEditor.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.iOS.Extensions.Common.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.iOS.Extensions.Common.dll
+      projectPath: Temp/bin/Debug/UnityEditor.iOS.Extensions.Common.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.iOS.Extensions.Common.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.iOS.Extensions.Common.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEditor.iOS.Extensions.Common.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.iOS.Extensions.Xcode.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.iOS.Extensions.Xcode.dll
+      projectPath: Temp/bin/Debug/UnityEditor.iOS.Extensions.Xcode.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.iOS.Extensions.Xcode.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.iOS.Extensions.Xcode.xml
+      projectPath: Temp/bin/Debug/UnityEditor.iOS.Extensions.Xcode.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.iOS.Extensions.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.iOS.Extensions.dll
+      projectPath: Temp/bin/Debug/UnityEditor.iOS.Extensions.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.iOS.Extensions.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.iOS.Extensions.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEditor.iOS.Extensions.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEditor.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.xml
+      projectPath: Temp/bin/Debug/UnityEditor.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.AIModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.AIModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.AIModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.AIModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.AIModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.AIModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.AIModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.AIModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.AIModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.ARModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.ARModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.ARModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.ARModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.ARModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.ARModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.ARModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.ARModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.ARModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.AccessibilityModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.AccessibilityModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.AccessibilityModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.AccessibilityModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.AccessibilityModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.AccessibilityModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.AccessibilityModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.AccessibilityModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.AccessibilityModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.Analytics.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.Analytics.dll
+      projectPath: Temp/bin/Debug/UnityEngine.Analytics.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.Analytics.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.Analytics.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.Analytics.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.AnimationModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.AnimationModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.AnimationModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.AnimationModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.AnimationModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.AnimationModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.AnimationModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.AnimationModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.AnimationModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.AssetBundleModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.AssetBundleModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.AssetBundleModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.AssetBundleModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.AssetBundleModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.AssetBundleModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.AssetBundleModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.AssetBundleModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.AssetBundleModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.AudioModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.AudioModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.AudioModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.AudioModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.AudioModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.AudioModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.AudioModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.AudioModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.AudioModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.BaselibModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.BaselibModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.BaselibModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.BaselibModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.BaselibModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.BaselibModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.BaselibModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.BaselibModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.BaselibModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.ClothModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.ClothModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.ClothModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.ClothModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.ClothModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.ClothModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.ClothModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.ClothModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.ClothModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.CloudWebServicesModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.CloudWebServicesModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.CloudWebServicesModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.CloudWebServicesModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.CloudWebServicesModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.CloudWebServicesModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.CloudWebServicesModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.CloudWebServicesModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.CloudWebServicesModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.ClusterInputModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.ClusterInputModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.ClusterInputModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.ClusterInputModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.ClusterInputModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.ClusterInputModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.ClusterInputModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.ClusterInputModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.ClusterInputModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.ClusterRendererModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.ClusterRendererModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.ClusterRendererModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.ClusterRendererModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.ClusterRendererModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.ClusterRendererModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.ClusterRendererModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.ClusterRendererModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.ClusterRendererModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.CoreModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.CoreModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.CoreModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.CoreModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.CoreModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.CoreModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.CoreModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.CoreModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.CoreModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.CrashReportingModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.CrashReportingModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.CrashReportingModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.CrashReportingModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.CrashReportingModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.CrashReportingModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.CrashReportingModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.CrashReportingModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.CrashReportingModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.DirectorModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.DirectorModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.DirectorModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.DirectorModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.DirectorModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.DirectorModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.DirectorModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.DirectorModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.DirectorModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.FacebookModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.FacebookModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.FacebookModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.FacebookModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.FacebookModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.FacebookModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.FacebookModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.FacebookModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.FacebookModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.FileSystemHttpModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.FileSystemHttpModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.FileSystemHttpModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.FileSystemHttpModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.FileSystemHttpModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.FileSystemHttpModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.FileSystemHttpModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.FileSystemHttpModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.FileSystemHttpModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.GameCenterModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.GameCenterModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.GameCenterModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.GameCenterModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.GameCenterModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.GameCenterModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.GameCenterModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.GameCenterModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.GameCenterModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.GoogleAudioSpatializer.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.GoogleAudioSpatializer.dll
+      projectPath: Temp/bin/Debug/UnityEngine.GoogleAudioSpatializer.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.GoogleAudioSpatializer.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.GoogleAudioSpatializer.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.GoogleAudioSpatializer.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.GoogleAudioSpatializer.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.GoogleAudioSpatializer.xml
+      projectPath: Temp/bin/Debug/UnityEngine.GoogleAudioSpatializer.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.GridModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.GridModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.GridModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.GridModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.GridModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.GridModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.GridModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.GridModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.GridModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.HoloLens.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.HoloLens.dll
+      projectPath: Temp/bin/Debug/UnityEngine.HoloLens.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.HoloLens.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.HoloLens.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.HoloLens.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.HoloLens.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.HoloLens.xml
+      projectPath: Temp/bin/Debug/UnityEngine.HoloLens.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.HotReloadModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.HotReloadModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.HotReloadModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.HotReloadModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.HotReloadModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.HotReloadModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.HotReloadModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.HotReloadModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.HotReloadModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.IMGUIModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.IMGUIModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.IMGUIModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.IMGUIModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.IMGUIModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.IMGUIModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.IMGUIModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.IMGUIModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.IMGUIModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.ImageConversionModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.ImageConversionModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.ImageConversionModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.ImageConversionModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.ImageConversionModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.ImageConversionModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.ImageConversionModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.ImageConversionModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.ImageConversionModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.InputModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.InputModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.InputModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.InputModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.InputModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.InputModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.InputModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.InputModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.InputModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.JSONSerializeModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.JSONSerializeModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.JSONSerializeModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.JSONSerializeModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.JSONSerializeModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.JSONSerializeModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.JSONSerializeModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.JSONSerializeModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.JSONSerializeModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.LocalizationModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.LocalizationModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.LocalizationModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.LocalizationModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.LocalizationModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.LocalizationModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.LocalizationModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.LocalizationModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.LocalizationModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.Networking.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.Networking.dll
+      projectPath: Temp/bin/Debug/UnityEngine.Networking.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.Networking.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.Networking.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.Networking.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.Networking.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.Networking.xml
+      projectPath: Temp/bin/Debug/UnityEngine.Networking.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.ParticleSystemModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.ParticleSystemModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.ParticleSystemModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.ParticleSystemModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.ParticleSystemModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.ParticleSystemModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.ParticleSystemModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.ParticleSystemModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.ParticleSystemModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.ParticlesLegacyModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.ParticlesLegacyModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.ParticlesLegacyModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.ParticlesLegacyModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.ParticlesLegacyModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.ParticlesLegacyModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.ParticlesLegacyModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.ParticlesLegacyModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.ParticlesLegacyModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.PerformanceReportingModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.PerformanceReportingModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.PerformanceReportingModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.PerformanceReportingModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.PerformanceReportingModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.PerformanceReportingModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.PerformanceReportingModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.PerformanceReportingModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.PerformanceReportingModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.Physics2DModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.Physics2DModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.Physics2DModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.Physics2DModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.Physics2DModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.Physics2DModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.Physics2DModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.Physics2DModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.Physics2DModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.PhysicsModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.PhysicsModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.PhysicsModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.PhysicsModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.PhysicsModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.PhysicsModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.PhysicsModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.PhysicsModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.PhysicsModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.ProfilerModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.ProfilerModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.ProfilerModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.ProfilerModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.ProfilerModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.ProfilerModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.ProfilerModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.ProfilerModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.ProfilerModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.ScreenCaptureModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.ScreenCaptureModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.ScreenCaptureModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.ScreenCaptureModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.ScreenCaptureModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.ScreenCaptureModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.ScreenCaptureModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.ScreenCaptureModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.ScreenCaptureModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.SharedInternalsModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.SharedInternalsModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.SharedInternalsModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.SharedInternalsModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.SharedInternalsModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.SharedInternalsModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.SharedInternalsModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.SharedInternalsModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.SharedInternalsModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.SpatialTracking.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.SpatialTracking.dll
+      projectPath: Temp/bin/Debug/UnityEngine.SpatialTracking.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.SpatialTracking.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.SpatialTracking.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.SpatialTracking.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.SpatialTracking.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.SpatialTracking.xml
+      projectPath: Temp/bin/Debug/UnityEngine.SpatialTracking.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.SpatialTrackingModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.SpatialTrackingModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.SpatialTrackingModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.SpatialTrackingModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.SpatialTrackingModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.SpatialTrackingModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.SpatialTrackingModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.SpatialTrackingModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.SpatialTrackingModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.SpriteMaskModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.SpriteMaskModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.SpriteMaskModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.SpriteMaskModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.SpriteMaskModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.SpriteMaskModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.SpriteMaskModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.SpriteMaskModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.SpriteMaskModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.SpriteShapeModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.SpriteShapeModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.SpriteShapeModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.SpriteShapeModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.SpriteShapeModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.SpriteShapeModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.SpriteShapeModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.SpriteShapeModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.SpriteShapeModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.StandardEvents.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.StandardEvents.dll
+      projectPath: Temp/bin/Debug/UnityEngine.StandardEvents.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.StandardEvents.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.StandardEvents.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.StandardEvents.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.StreamingModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.StreamingModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.StreamingModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.StreamingModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.StreamingModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.StreamingModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.StreamingModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.StreamingModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.StreamingModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.StyleSheetsModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.StyleSheetsModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.StyleSheetsModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.StyleSheetsModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.StyleSheetsModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.StyleSheetsModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.StyleSheetsModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.StyleSheetsModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.StyleSheetsModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.SubstanceModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.SubstanceModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.SubstanceModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.SubstanceModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.SubstanceModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.SubstanceModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.SubstanceModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.SubstanceModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.SubstanceModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.TLSModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.TLSModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.TLSModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.TLSModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.TLSModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.TLSModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.TLSModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.TLSModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.TLSModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.TerrainModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.TerrainModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.TerrainModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.TerrainModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.TerrainModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.TerrainModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.TerrainModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.TerrainModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.TerrainModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.TerrainPhysicsModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.TerrainPhysicsModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.TerrainPhysicsModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.TerrainPhysicsModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.TerrainPhysicsModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.TerrainPhysicsModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.TerrainPhysicsModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.TerrainPhysicsModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.TerrainPhysicsModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.TestRunner.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.TestRunner.dll
+      projectPath: Temp/bin/Debug/UnityEngine.TestRunner.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.TestRunner.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.TestRunner.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.TestRunner.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.TestRunner.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.TestRunner.xml
+      projectPath: Temp/bin/Debug/UnityEngine.TestRunner.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.TextRenderingModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.TextRenderingModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.TextRenderingModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.TextRenderingModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.TextRenderingModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.TextRenderingModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.TextRenderingModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.TextRenderingModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.TextRenderingModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.TilemapModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.TilemapModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.TilemapModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.TilemapModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.TilemapModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.TilemapModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.TilemapModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.TilemapModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.TilemapModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.Timeline.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.Timeline.dll
+      projectPath: Temp/bin/Debug/UnityEngine.Timeline.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.Timeline.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.Timeline.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.Timeline.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.Timeline.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.Timeline.xml
+      projectPath: Temp/bin/Debug/UnityEngine.Timeline.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.TimelineModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.TimelineModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.TimelineModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.TimelineModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.TimelineModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.TimelineModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.TimelineModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.TimelineModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.TimelineModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.UI.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.UI.dll
+      projectPath: Temp/bin/Debug/UnityEngine.UI.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.UI.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.UI.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.UI.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.UI.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.UI.xml
+      projectPath: Temp/bin/Debug/UnityEngine.UI.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.UIElementsModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.UIElementsModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.UIElementsModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.UIElementsModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.UIElementsModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.UIElementsModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.UIElementsModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.UIElementsModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.UIElementsModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.UIModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.UIModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.UIModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.UIModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.UIModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.UIModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.UIModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.UIModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.UIModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.UNETModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.UNETModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.UNETModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.UNETModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.UNETModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.UNETModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.UNETModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.UNETModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.UNETModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.UmbraModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.UmbraModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.UmbraModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.UmbraModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.UmbraModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.UmbraModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.UmbraModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.UmbraModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.UmbraModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.UnityAnalyticsModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.UnityAnalyticsModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.UnityAnalyticsModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.UnityAnalyticsModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.UnityAnalyticsModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.UnityAnalyticsModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.UnityAnalyticsModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.UnityAnalyticsModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.UnityAnalyticsModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.UnityConnectModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.UnityConnectModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.UnityConnectModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.UnityConnectModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.UnityConnectModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.UnityConnectModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.UnityConnectModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.UnityConnectModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.UnityConnectModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.UnityWebRequestAssetBundleModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.UnityWebRequestAssetBundleModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.UnityWebRequestAssetBundleModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.UnityWebRequestAssetBundleModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.UnityWebRequestAssetBundleModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.UnityWebRequestAssetBundleModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.UnityWebRequestAssetBundleModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.UnityWebRequestAssetBundleModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.UnityWebRequestAssetBundleModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.UnityWebRequestAudioModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.UnityWebRequestAudioModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.UnityWebRequestAudioModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.UnityWebRequestAudioModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.UnityWebRequestAudioModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.UnityWebRequestAudioModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.UnityWebRequestAudioModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.UnityWebRequestAudioModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.UnityWebRequestAudioModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.UnityWebRequestModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.UnityWebRequestModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.UnityWebRequestModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.UnityWebRequestModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.UnityWebRequestModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.UnityWebRequestModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.UnityWebRequestModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.UnityWebRequestModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.UnityWebRequestModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.UnityWebRequestTextureModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.UnityWebRequestTextureModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.UnityWebRequestTextureModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.UnityWebRequestTextureModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.UnityWebRequestTextureModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.UnityWebRequestTextureModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.UnityWebRequestTextureModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.UnityWebRequestTextureModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.UnityWebRequestTextureModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.UnityWebRequestWWWModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.UnityWebRequestWWWModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.UnityWebRequestWWWModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.UnityWebRequestWWWModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.UnityWebRequestWWWModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.UnityWebRequestWWWModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.UnityWebRequestWWWModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.UnityWebRequestWWWModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.UnityWebRequestWWWModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.VRModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.VRModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.VRModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.VRModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.VRModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.VRModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.VRModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.VRModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.VRModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.VehiclesModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.VehiclesModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.VehiclesModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.VehiclesModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.VehiclesModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.VehiclesModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.VehiclesModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.VehiclesModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.VehiclesModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.VideoModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.VideoModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.VideoModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.VideoModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.VideoModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.VideoModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.VideoModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.VideoModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.VideoModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.WindModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.WindModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.WindModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.WindModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.WindModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.WindModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.WindModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.WindModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.WindModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.XRModule.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.XRModule.dll
+      projectPath: Temp/bin/Debug/UnityEngine.XRModule.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.XRModule.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.XRModule.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.XRModule.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.XRModule.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.XRModule.xml
+      projectPath: Temp/bin/Debug/UnityEngine.XRModule.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.dll
+      projectPath: Temp/bin/Debug/UnityEngine.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.dll.mdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.dll.mdb
+      projectPath: Temp/bin/Debug/UnityEngine.dll.mdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityEngine.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.xml
+      projectPath: Temp/bin/Debug/UnityEngine.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityScript.Lang.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityScript.Lang.dll
+      projectPath: Temp/bin/Debug/UnityScript.Lang.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/UnityScript.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityScript.dll
+      projectPath: Temp/bin/Debug/UnityScript.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/mscorlib.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/mscorlib.dll
+      projectPath: Temp/bin/Debug/mscorlib.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/nunit.framework.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/nunit.framework.dll
+      projectPath: Temp/bin/Debug/nunit.framework.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/nunit.framework.pdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/nunit.framework.pdb
+      projectPath: Temp/bin/Debug/nunit.framework.pdb
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/nunit.framework.xml
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/nunit.framework.xml
+      projectPath: Temp/bin/Debug/nunit.framework.xml
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Temp/bin/Debug/sfw.net.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/sfw.net.dll
+      projectPath: Temp/bin/Debug/sfw.net.dll
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: obj/Debug/Assembly-CSharp-Editor-firstpass.csprojAssemblyReference.cache
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/obj/Debug/Assembly-CSharp-Editor-firstpass.csprojAssemblyReference.cache
+      projectPath: obj/Debug/Assembly-CSharp-Editor-firstpass.csprojAssemblyReference.cache
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache
+      projectPath: obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: obj/Debug/Assembly-CSharp.dll
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/obj/Debug/Assembly-CSharp.dll
+      projectPath: obj/Debug/Assembly-CSharp.dll
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: obj/Debug/Assembly-CSharp.pdb
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/obj/Debug/Assembly-CSharp.pdb
+      projectPath: obj/Debug/Assembly-CSharp.pdb
+      originalPath: 
+      status: 3
+      staged: 0
   - commitID: 6acc3b5753f06f3f3182362f89e43150f2a14f54
     mergeA: 
     mergeB: 
@@ -2802,6 +5172,24 @@ MonoBehaviour:
     - path: Temp/UnityTempFile-de7eb3c6d0ba24f3e86dba81e480ee33
       fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-de7eb3c6d0ba24f3e86dba81e480ee33
       projectPath: Temp/UnityTempFile-de7eb3c6d0ba24f3e86dba81e480ee33
+      originalPath: 
+      status: 4
+      staged: 0
+  - commitID: 13634d2c856a3eb6bfa52975b67d3b067f563b55
+    mergeA: 
+    mergeB: 
+    authorName: zabulhab
+    authorEmail: zabulhab@colby.edu
+    commitEmail: noreply@github.com
+    commitName: GitHub
+    summary: Create Unity.gitignore
+    description: Create Unity.gitignore
+    timeString: 2018-12-03T10:16:09.000-05:00
+    commitTimeString: 2018-12-03T10:16:09.000-05:00
+    changes:
+    - path: Unity.gitignore
+      fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Unity.gitignore
+      projectPath: Unity.gitignore
       originalPath: 
       status: 4
       staged: 0

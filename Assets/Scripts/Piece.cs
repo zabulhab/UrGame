@@ -19,13 +19,10 @@ public class Piece : MonoBehaviour
     private Turn associatedTurnObject;
 
     // This piece's index in the list of start positions
+    // Used to place it in the correct place in the undeployed area
     private int startIndex;
 
     private Color startColor;
-
-    // For the AI enemy, this number represents how ideal this piece is to move.
-    // A higher number means more ideal.
-    internal int MoveValue { get; set; }
 
     // Reference to the grid
     [SerializeField]
@@ -147,7 +144,6 @@ public class Piece : MonoBehaviour
         // Update the current tile, current tile index, 
         // and the old tile's and new tile's lists
 
-        // TODO: Change this to use the get method
         CurrentTileIdx = tileDestIndex;
 
         // TODO: Update this to use the undeployed status of the piece
@@ -180,7 +176,7 @@ public class Piece : MonoBehaviour
     private void OnMouseEnter()
     {
         // If this piece is one that is ready to be moved
-        if (this.pieceCanMove)
+        if (this.pieceCanMove && this.associatedTurnObject.name != "AIController")
         {
             Highlight();
         }
@@ -245,8 +241,8 @@ public class Piece : MonoBehaviour
     }
 
     /// <summary>
-    /// Kicks the back to its undeployed starting state. Called when the 
-    /// active turn lands on a restart tile, with a 1/4 chance.
+    /// Kicks the piece back to its undeployed starting state. Called when the 
+    /// active turn lands on a restart tile, with a 1/2 chance.
     /// </summary>
     internal void KickBackToStart()
     {
