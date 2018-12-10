@@ -157,6 +157,7 @@ public class Piece : MonoBehaviour
         currentTile.AddPiece(this);
         status = PieceStatus.Deployed;
 
+        Debug.Log("hello");
         // Tell the tile to activate any special behavior
         currentTile.ActivateTileFunction();
 
@@ -273,5 +274,52 @@ public class Piece : MonoBehaviour
     private void Update()
     {
 
+    }
+
+    /// <summary>
+    /// Returns this piece and any piece[s] that this piece could kill on its 
+    /// next turn, assuming this turn rolls the number needed to land there.
+    /// </summary>
+    /// <returns>The piece(s) that this piece could kill on its next turn,
+    /// provided this side rolls the right number.</returns>
+    internal KeyValuePair<Piece, List<Piece>> GetPieceAndKillablePieces()
+    {
+        KeyValuePair<Piece, List<Piece>> pieceAndKillablePieces = new KeyValuePair<Piece, List<Piece>>();
+        for (int potentialRollNum = 1; potentialRollNum < 4; potentialRollNum++)
+        {
+            List<Piece> pieceList = GetKillablePieces(potentialRollNum);
+            if (!pieceList.Equals(default(List<Piece>)))
+            {
+                foreach (Piece piece in pieceList)
+                {
+                    pieceAndKillablePieces.Value.Add(piece);
+                }
+            }
+        }
+        return pieceAndKillablePieces;
+    }
+
+    /// <summary>
+    /// Helper method for GetPieceAndKillablePieces to check if any pieces
+    /// can be killed on the next turn given a potential rolled number as input
+    /// </summary>
+    /// <returns>The killable pieces.</returns>
+    /// <param name="rollNum">Roll number, used to get the landing tile.</param>
+    private List<Piece> GetKillablePieces(int rollNum)
+    {
+        List<Piece> enemyPieces = new List<Piece>();
+        Tile destinationTile = GetTargetTile(rollNum);
+        if (destinationTile != null) // not the end of the board
+        {
+            List<Piece> allPiecesOnTile = destinationTile.PiecesOnTop;
+            foreach (Piece piece in allPiecesOnTile)
+            {
+                if (SideName != piece.SideName) // if other side's piece
+                {
+                    enemyPieces.Add(piece);
+                }
+            }
+        }
+        return enemyPieces;
     }
 }

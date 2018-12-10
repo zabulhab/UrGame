@@ -22,8 +22,11 @@ public class RepeatTile : Tile
     /// </summary>
     internal override void ActivateTileFunction()
     {
+        Debug.Log("HERE");
         TryKickEnemyOut();
+        Debug.Log("There");
         topMostPiece.GetAssociatedTurnObject().SetTurnRepeat();
+        Debug.Log("EVERYWHERE");
     }
 
 }

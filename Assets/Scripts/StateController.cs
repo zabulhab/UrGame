@@ -19,17 +19,17 @@ public class StateController : MonoBehaviour
     /// <summary>
     /// Reference to the instance of the player turn
     /// </summary>
-    [SerializeField] private Turn playerTurn;
+    [SerializeField] private PlayerTurn playerTurn;
 
     /// <summary>
     /// Reference to the instance of the opponent turn
     /// </summary>
-    [SerializeField] private Turn enemyTurn;
+    [SerializeField] private EnemyTurn enemyTurn;
 
     /// <summary>
     /// Reference to the instance of the computer turn
     /// </summary>
-    [SerializeField] private Turn cpuTurn;
+    [SerializeField] private AIController cpuTurn;
 
     /// <summary>
     /// The player who goes first
@@ -47,26 +47,10 @@ public class StateController : MonoBehaviour
     [SerializeField]
     private GameObject chooseModePanel;
 
-    ///// <summary>
-    ///// Returns true if the Turn provided is the currently active turn
-    ///// </summary>
-    ///// <returns><c>true</c>, if active turn was ised, <c>false</c> otherwise.</returns>
-    //internal bool IsActiveTurn(Turn turn)
-    //{
-    //    if (this.currentTurn.GetInstanceID() == turn.GetInstanceID())
-    //    {
-    //        return true;
-    //    }
-    //    else
-    //    {
-    //        return false;
-    //    }
-    //}
-
     /// <summary>
     /// Choose a random player one and make that the current turn
     /// </summary>
-    void Start()
+    private void Start()
     {
     }
 
@@ -83,6 +67,7 @@ public class StateController : MonoBehaviour
     /// </summary>
     public void StartVsCPUMode()
     {
+        cpuTurn.AssignPlayerRef(playerTurn);
         SetupTurns(cpuTurn);
     }
 
@@ -95,11 +80,14 @@ public class StateController : MonoBehaviour
     }
 
     /// <summary>
-    /// Sets up the turns.
+    /// Sets up the turn order and activate P1.
     /// </summary>
     /// <param name="opponentTurn">Which kind of opponent to use.</param>
     private void SetupTurns(Turn opponentTurn)
     {
+        opponentTurn.TurnSetup();
+        playerTurn.TurnSetup();
+
         activeTurn = ChooseStartSide(opponentTurn);
         player1 = activeTurn;
 

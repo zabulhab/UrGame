@@ -7,8 +7,8 @@ using UnityEngine;
 /// </summary>
 public class PlayerTurn :  Turn
 {
-    // Set the side name for each piece
-    protected override void Start()
+
+    internal override void TurnSetup()
     {
         turnSideName = SideName.PlayerSide;
         int i = 0;
@@ -29,6 +29,7 @@ public class PlayerTurn :  Turn
     /// </summary>
     internal override void ActivatePhase()
     {
+        grid.WriteBoardStatusToFile();
         rolledNumberText.SetActive(false);
         //Debug.Log("Player phase activated");
         if (!AreAllPiecesFrozen() && PreRollOpenSpacesAvailable())

@@ -20,13 +20,16 @@ public class RestartTile : Tile {
 
     internal override void ActivateTileFunction()
     {
-        // With 1/2 chance, kick piece back to start
         System.Random rand = new System.Random();
         // TODO: Wait for some lag time before teleporting back to start
-        if (rand.Next(0, 2) != 0)
+        if (rand.Next(0, 2) != 0) // With 1/2 chance, move this piece to start
         {
             topMostPiece.KickBackToStart();
             this.RemovePiece(topMostPiece);
+        }
+        else // if we land successfully, try kicking any enemies on top out
+        {
+            TryKickEnemyOut();
         }
         stateController.GetActiveTurn().EndTurn();
     }

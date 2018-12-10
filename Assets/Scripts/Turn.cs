@@ -8,6 +8,9 @@ using UnityEngine;
 /// </summary>
 public abstract class Turn : MonoBehaviour
 {
+    [SerializeField]
+    protected GridSystem grid;
+
     // Reference to the diceroller class so we can 
     // use its Roll() method (no instance needed)
     public static DiceRoll DiceRoller;
@@ -68,14 +71,13 @@ public abstract class Turn : MonoBehaviour
     // moving pieces already on the board. Lasts one turn.
     protected bool isFrozen;
 
+    internal abstract void TurnSetup();
+
     /// <summary>
     /// Begins the player phase by opening the initial panel.
     /// Called from the StateController's SwitchTurn method.
     /// </summary>
     internal abstract void ActivatePhase();
-
-    // Choose which side to assign through the turn subclasses
-    protected abstract void Start();
 
     // Checks if a player clicked on a piece, and changes the selected piece
     // to that one
@@ -497,10 +499,11 @@ public abstract class Turn : MonoBehaviour
     }
 
     /// <summary>
-    /// Returns the value of the current state of the board, for the CPU's side
+    /// Returns the value of the current state of the board, for the CPU's side.
+    /// Can be accessed by 
     /// </summary>
     /// <returns>The board value.</returns>
-    protected int GetSideValue()
+    internal int GetSideValue()
     {
         // check if no piece is deployed yet
         foreach (Piece piece in allPieces)
@@ -527,6 +530,28 @@ public abstract class Turn : MonoBehaviour
             }
         }
         return totalBoardValue;
+    }
+
+    /// <summary>
+    /// Returns a dictionary with the piece(s) that can kill a piece next turn,
+    /// and the piece(s) that can be killed, provided the correct number is rolled. 
+    /// </summary>
+    /// <returns>The piece and killable pieces dict.</returns>
+    internal Dictionary<Piece, List<Piece>> GetPieceAndKillablePiecesDict()
+    {
+        Dictionary<Piece, List<Piece>> piecesToKillablePiecesMap = 
+                                            new Dictionary<Piece, List<Piece>>();
+        // Check each piece for any pieces it could kill next turn
+        foreach (Piece piece in allPieces)
+        {
+            // The piece and a list with the piece(s) it could kill
+            KeyValuePair<Piece, List<Piece>> pieces = piece.GetPieceAndKillablePieces();
+            if (!pieces.Equals(default(KeyValuePair<Piece, List<Piece>>)))
+            {
+                piecesToKillablePiecesMap.Add(pieces.Key,pieces.Value);
+            }
+        }
+        return piecesToKillablePiecesMap;
     }
 
 }

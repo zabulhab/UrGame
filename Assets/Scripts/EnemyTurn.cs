@@ -8,7 +8,12 @@ using UnityEngine;
 public class EnemyTurn : Turn
 {
     // Set the side name for each piece
-    protected override void Start()
+    protected override void Start(){}
+
+    /// <summary>
+    /// Set side name and other info if we are using this side
+    /// </summary>
+    internal override void TurnSetup()
     {
         // TODO: Make a new method to avoid code duplication in 2 turn objects
         turnSideName = SideName.EnemySide;
@@ -45,6 +50,7 @@ public class EnemyTurn : Turn
 
     internal override void SetTurnRepeat()
     {
+        Debug.Log("BBB");
         OpenRollUI();
     }
 }

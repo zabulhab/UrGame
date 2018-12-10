@@ -12,6 +12,534 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 5
-  lastUpdatedAtString: 2018-12-07T12:20:14.843-05:00
-  initializedAtString: 2018-12-07T00:55:21.537-05:00
-  entries: []
+  lastUpdatedAtString: 2018-12-10T15:27:24.268-05:00
+  initializedAtString: 2018-12-08T19:32:22.543-05:00
+  entries:
+  - path: .vs/UrGameV2/xs/UserPrefs.xml
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/.vs/UrGameV2/xs/UserPrefs.xml
+    projectPath: .vs/UrGameV2/xs/UserPrefs.xml
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Assets/Resources/GridStatuses.txt
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Assets/Resources/GridStatuses.txt
+    projectPath: Assets/Resources/GridStatuses.txt
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Assets/Scripts/AIController.cs
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Assets/Scripts/AIController.cs
+    projectPath: Assets/Scripts/AIController.cs
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Assets/Scripts/DiceRoll.cs
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Assets/Scripts/DiceRoll.cs
+    projectPath: Assets/Scripts/DiceRoll.cs
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Assets/Scripts/EnemyTurn.cs
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Assets/Scripts/EnemyTurn.cs
+    projectPath: Assets/Scripts/EnemyTurn.cs
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Assets/Scripts/GridSystem.cs
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Assets/Scripts/GridSystem.cs
+    projectPath: Assets/Scripts/GridSystem.cs
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Assets/Scripts/Piece.cs
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Assets/Scripts/Piece.cs
+    projectPath: Assets/Scripts/Piece.cs
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Assets/Scripts/PlayerTurn.cs
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Assets/Scripts/PlayerTurn.cs
+    projectPath: Assets/Scripts/PlayerTurn.cs
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Assets/Scripts/StateController.cs
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Assets/Scripts/StateController.cs
+    projectPath: Assets/Scripts/StateController.cs
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Assets/Scripts/Tiles/RepeatTile.cs
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Assets/Scripts/Tiles/RepeatTile.cs
+    projectPath: Assets/Scripts/Tiles/RepeatTile.cs
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Assets/Scripts/Tiles/RestartTile.cs
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Assets/Scripts/Tiles/RestartTile.cs
+    projectPath: Assets/Scripts/Tiles/RestartTile.cs
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Assets/Scripts/Tiles/Tile.cs
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Assets/Scripts/Tiles/Tile.cs
+    projectPath: Assets/Scripts/Tiles/Tile.cs
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Assets/Scripts/Turn.cs
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Assets/Scripts/Turn.cs
+    projectPath: Assets/Scripts/Turn.cs
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library/assetDatabase3
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Library/assetDatabase3
+    projectPath: Library/assetDatabase3
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library/EditorInstance.json
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Library/EditorInstance.json
+    projectPath: Library/EditorInstance.json
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library/gfu/cache/gitlocks.yaml
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Library/gfu/cache/gitlocks.yaml
+    projectPath: Library/gfu/cache/gitlocks.yaml
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library/gfu/cache/gitstatusentries.yaml
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Library/gfu/cache/gitstatusentries.yaml
+    projectPath: Library/gfu/cache/gitstatusentries.yaml
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library/gfu/cache/gittrackingstatus.yaml
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Library/gfu/cache/gittrackingstatus.yaml
+    projectPath: Library/gfu/cache/gittrackingstatus.yaml
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library/gfu/cache/repoinfo.yaml
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Library/gfu/cache/repoinfo.yaml
+    projectPath: Library/gfu/cache/repoinfo.yaml
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library/metadata/12/127b2e585b76e41d1b8f4905db9e12b4
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Library/metadata/12/127b2e585b76e41d1b8f4905db9e12b4
+    projectPath: Library/metadata/12/127b2e585b76e41d1b8f4905db9e12b4
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library/metadata/1e/1e9320f93a79740ba9c4374a2e7c291f
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Library/metadata/1e/1e9320f93a79740ba9c4374a2e7c291f
+    projectPath: Library/metadata/1e/1e9320f93a79740ba9c4374a2e7c291f
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library/metadata/21/21a9e787e36144f668d7b870a628988a
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Library/metadata/21/21a9e787e36144f668d7b870a628988a
+    projectPath: Library/metadata/21/21a9e787e36144f668d7b870a628988a
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library/metadata/3b/3b4dc4717b22849988256a59c8e94e76
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Library/metadata/3b/3b4dc4717b22849988256a59c8e94e76
+    projectPath: Library/metadata/3b/3b4dc4717b22849988256a59c8e94e76
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library/metadata/44/445e637b08dd54edcb848a744d3b5584
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Library/metadata/44/445e637b08dd54edcb848a744d3b5584
+    projectPath: Library/metadata/44/445e637b08dd54edcb848a744d3b5584
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library/metadata/46/461ea0da1544a44d985a2a04d3501366
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Library/metadata/46/461ea0da1544a44d985a2a04d3501366
+    projectPath: Library/metadata/46/461ea0da1544a44d985a2a04d3501366
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library/metadata/57/57d29e57c60f744ce970d2bccd9831f3
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Library/metadata/57/57d29e57c60f744ce970d2bccd9831f3
+    projectPath: Library/metadata/57/57d29e57c60f744ce970d2bccd9831f3
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library/metadata/66/668a536d4dd8649afa0f41b6b1a864a3
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Library/metadata/66/668a536d4dd8649afa0f41b6b1a864a3
+    projectPath: Library/metadata/66/668a536d4dd8649afa0f41b6b1a864a3
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library/metadata/69/694378b146a874d1bad24256c2d35620
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Library/metadata/69/694378b146a874d1bad24256c2d35620
+    projectPath: Library/metadata/69/694378b146a874d1bad24256c2d35620
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library/metadata/b7/b7856202f4af94ef58adb48de85417ac
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Library/metadata/b7/b7856202f4af94ef58adb48de85417ac
+    projectPath: Library/metadata/b7/b7856202f4af94ef58adb48de85417ac
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library/metadata/de/dea715ee6e44d4ccba18feea73b6a1f0
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Library/metadata/de/dea715ee6e44d4ccba18feea73b6a1f0
+    projectPath: Library/metadata/de/dea715ee6e44d4ccba18feea73b6a1f0
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library/metadata/f0/f0b586b3d21f74f88aceae090dcc42ae
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Library/metadata/f0/f0b586b3d21f74f88aceae090dcc42ae
+    projectPath: Library/metadata/f0/f0b586b3d21f74f88aceae090dcc42ae
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library/ScriptAssemblies/Assembly-CSharp.dll
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Library/ScriptAssemblies/Assembly-CSharp.dll
+    projectPath: Library/ScriptAssemblies/Assembly-CSharp.dll
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library/ScriptAssemblies/Assembly-CSharp.dll.mdb
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Library/ScriptAssemblies/Assembly-CSharp.dll.mdb
+    projectPath: Library/ScriptAssemblies/Assembly-CSharp.dll.mdb
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library/shadercompiler-UnityShaderCompiler0.log
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Library/shadercompiler-UnityShaderCompiler0.log
+    projectPath: Library/shadercompiler-UnityShaderCompiler0.log
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache
+    projectPath: obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: obj/Debug/Assembly-CSharp.dll
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/obj/Debug/Assembly-CSharp.dll
+    projectPath: obj/Debug/Assembly-CSharp.dll
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: obj/Debug/Assembly-CSharp.pdb
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/obj/Debug/Assembly-CSharp.pdb
+    projectPath: obj/Debug/Assembly-CSharp.pdb
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Temp/__Backupscenes/0.backup
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/__Backupscenes/0.backup
+    projectPath: Temp/__Backupscenes/0.backup
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Temp/bin/Debug/Assembly-CSharp.dll
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Assembly-CSharp.dll
+    projectPath: Temp/bin/Debug/Assembly-CSharp.dll
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Temp/bin/Debug/Assembly-CSharp.pdb
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Assembly-CSharp.pdb
+    projectPath: Temp/bin/Debug/Assembly-CSharp.pdb
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Temp/UnityTempFile-01e533421a9f740889a7fb7a937a2993
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-01e533421a9f740889a7fb7a937a2993
+    projectPath: Temp/UnityTempFile-01e533421a9f740889a7fb7a937a2993
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Temp/UnityTempFile-0a5c1e7756192433da56da49e65c0820
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-0a5c1e7756192433da56da49e65c0820
+    projectPath: Temp/UnityTempFile-0a5c1e7756192433da56da49e65c0820
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Temp/UnityTempFile-0e6cf57f7b2db468f80e9a87086e6dee
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-0e6cf57f7b2db468f80e9a87086e6dee
+    projectPath: Temp/UnityTempFile-0e6cf57f7b2db468f80e9a87086e6dee
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp/UnityTempFile-12c2bf7e664a0471db0754664d7f0070
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-12c2bf7e664a0471db0754664d7f0070
+    projectPath: Temp/UnityTempFile-12c2bf7e664a0471db0754664d7f0070
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Temp/UnityTempFile-1c7dd88b73dbc422995142541515fd40
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-1c7dd88b73dbc422995142541515fd40
+    projectPath: Temp/UnityTempFile-1c7dd88b73dbc422995142541515fd40
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp/UnityTempFile-2240480a5f7e84851b4728992510dfac
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-2240480a5f7e84851b4728992510dfac
+    projectPath: Temp/UnityTempFile-2240480a5f7e84851b4728992510dfac
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Temp/UnityTempFile-25579b59bf7ee4fea93c3e0974f59618
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-25579b59bf7ee4fea93c3e0974f59618
+    projectPath: Temp/UnityTempFile-25579b59bf7ee4fea93c3e0974f59618
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Temp/UnityTempFile-274a4703708fe4ce3b830c2a24335403
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-274a4703708fe4ce3b830c2a24335403
+    projectPath: Temp/UnityTempFile-274a4703708fe4ce3b830c2a24335403
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp/UnityTempFile-34fa2491f6733478fb97f0da3eb91914
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-34fa2491f6733478fb97f0da3eb91914
+    projectPath: Temp/UnityTempFile-34fa2491f6733478fb97f0da3eb91914
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Temp/UnityTempFile-39680f9f0960644259f036b97130e750
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-39680f9f0960644259f036b97130e750
+    projectPath: Temp/UnityTempFile-39680f9f0960644259f036b97130e750
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Temp/UnityTempFile-3a874594608a54b3585b184b4902b5f2
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-3a874594608a54b3585b184b4902b5f2
+    projectPath: Temp/UnityTempFile-3a874594608a54b3585b184b4902b5f2
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Temp/UnityTempFile-4123263e08bd54035a303279bcc82fae
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-4123263e08bd54035a303279bcc82fae
+    projectPath: Temp/UnityTempFile-4123263e08bd54035a303279bcc82fae
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Temp/UnityTempFile-49bee0ff79bf745d781624e1d52bbff8
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-49bee0ff79bf745d781624e1d52bbff8
+    projectPath: Temp/UnityTempFile-49bee0ff79bf745d781624e1d52bbff8
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp/UnityTempFile-516342c5c63f448d492dbb849c6152bb
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-516342c5c63f448d492dbb849c6152bb
+    projectPath: Temp/UnityTempFile-516342c5c63f448d492dbb849c6152bb
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp/UnityTempFile-5254d9ed229fe476dadb38b8a083fe8e
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-5254d9ed229fe476dadb38b8a083fe8e
+    projectPath: Temp/UnityTempFile-5254d9ed229fe476dadb38b8a083fe8e
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Temp/UnityTempFile-541b1d4c949a64252b0ea296a9dffba4
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-541b1d4c949a64252b0ea296a9dffba4
+    projectPath: Temp/UnityTempFile-541b1d4c949a64252b0ea296a9dffba4
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp/UnityTempFile-5fea7da3616394949b09512dd51c8c12
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-5fea7da3616394949b09512dd51c8c12
+    projectPath: Temp/UnityTempFile-5fea7da3616394949b09512dd51c8c12
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Temp/UnityTempFile-633e52e8713544be5a09cb040718111a
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-633e52e8713544be5a09cb040718111a
+    projectPath: Temp/UnityTempFile-633e52e8713544be5a09cb040718111a
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp/UnityTempFile-6487d372930d04dfb827268d284536c6
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-6487d372930d04dfb827268d284536c6
+    projectPath: Temp/UnityTempFile-6487d372930d04dfb827268d284536c6
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Temp/UnityTempFile-70e3593be30c64cf9899f761cab190d6
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-70e3593be30c64cf9899f761cab190d6
+    projectPath: Temp/UnityTempFile-70e3593be30c64cf9899f761cab190d6
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Temp/UnityTempFile-7328c9b8f6d92427f9afde575c96b44c
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-7328c9b8f6d92427f9afde575c96b44c
+    projectPath: Temp/UnityTempFile-7328c9b8f6d92427f9afde575c96b44c
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Temp/UnityTempFile-79b3156ce4fd646049bf3bd1459a175d
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-79b3156ce4fd646049bf3bd1459a175d
+    projectPath: Temp/UnityTempFile-79b3156ce4fd646049bf3bd1459a175d
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp/UnityTempFile-8e73bd838bc2b49e7977d3ca0e935be0
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-8e73bd838bc2b49e7977d3ca0e935be0
+    projectPath: Temp/UnityTempFile-8e73bd838bc2b49e7977d3ca0e935be0
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Temp/UnityTempFile-91d6ffa8961154b7688c02aa62b78693
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-91d6ffa8961154b7688c02aa62b78693
+    projectPath: Temp/UnityTempFile-91d6ffa8961154b7688c02aa62b78693
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp/UnityTempFile-96bd5494d5fe04535bede0f533dd2b27
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-96bd5494d5fe04535bede0f533dd2b27
+    projectPath: Temp/UnityTempFile-96bd5494d5fe04535bede0f533dd2b27
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Temp/UnityTempFile-9b12be7c10d2f49feaedbe65b6233a5a
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-9b12be7c10d2f49feaedbe65b6233a5a
+    projectPath: Temp/UnityTempFile-9b12be7c10d2f49feaedbe65b6233a5a
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Temp/UnityTempFile-9e09ffb40437d4fbf8b66f59794ba8ca
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-9e09ffb40437d4fbf8b66f59794ba8ca
+    projectPath: Temp/UnityTempFile-9e09ffb40437d4fbf8b66f59794ba8ca
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Temp/UnityTempFile-a09138b23d0f44b8283fba04a5481224
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-a09138b23d0f44b8283fba04a5481224
+    projectPath: Temp/UnityTempFile-a09138b23d0f44b8283fba04a5481224
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp/UnityTempFile-a8e4ca715c4384587b29be93950cb47b
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-a8e4ca715c4384587b29be93950cb47b
+    projectPath: Temp/UnityTempFile-a8e4ca715c4384587b29be93950cb47b
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp/UnityTempFile-ac309d6c5ad224c77beab94330fb5c44
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-ac309d6c5ad224c77beab94330fb5c44
+    projectPath: Temp/UnityTempFile-ac309d6c5ad224c77beab94330fb5c44
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp/UnityTempFile-ac59d02895a8c438bb644a30b5d62b34
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-ac59d02895a8c438bb644a30b5d62b34
+    projectPath: Temp/UnityTempFile-ac59d02895a8c438bb644a30b5d62b34
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Temp/UnityTempFile-ba979192e1d9648a5abcbe27fcc87550
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-ba979192e1d9648a5abcbe27fcc87550
+    projectPath: Temp/UnityTempFile-ba979192e1d9648a5abcbe27fcc87550
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Temp/UnityTempFile-bbe907689ccbd47b5830fe876b271b50
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-bbe907689ccbd47b5830fe876b271b50
+    projectPath: Temp/UnityTempFile-bbe907689ccbd47b5830fe876b271b50
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Temp/UnityTempFile-bc7e270d744d048e889a351797148bbc
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-bc7e270d744d048e889a351797148bbc
+    projectPath: Temp/UnityTempFile-bc7e270d744d048e889a351797148bbc
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp/UnityTempFile-c2c0d443ac45241069144262d01f3713
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-c2c0d443ac45241069144262d01f3713
+    projectPath: Temp/UnityTempFile-c2c0d443ac45241069144262d01f3713
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp/UnityTempFile-c2ff5461fbd774db6901b109c53acaf6
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-c2ff5461fbd774db6901b109c53acaf6
+    projectPath: Temp/UnityTempFile-c2ff5461fbd774db6901b109c53acaf6
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Temp/UnityTempFile-d0483ee333d0b4c3bb659877367e4981
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-d0483ee333d0b4c3bb659877367e4981
+    projectPath: Temp/UnityTempFile-d0483ee333d0b4c3bb659877367e4981
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Temp/UnityTempFile-d138e022249284fde8774c1b5504c120
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-d138e022249284fde8774c1b5504c120
+    projectPath: Temp/UnityTempFile-d138e022249284fde8774c1b5504c120
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Temp/UnityTempFile-d3f36872f4c7a4c12bdd413353aa032a
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-d3f36872f4c7a4c12bdd413353aa032a
+    projectPath: Temp/UnityTempFile-d3f36872f4c7a4c12bdd413353aa032a
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp/UnityTempFile-d784f08ea8e8746ddac50217aa5d632d
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-d784f08ea8e8746ddac50217aa5d632d
+    projectPath: Temp/UnityTempFile-d784f08ea8e8746ddac50217aa5d632d
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Temp/UnityTempFile-dd361a48995114d948e0d0cc773cd3d4
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-dd361a48995114d948e0d0cc773cd3d4
+    projectPath: Temp/UnityTempFile-dd361a48995114d948e0d0cc773cd3d4
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp/UnityTempFile-dd39bd67a2c574ab992a428cff754d2a
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-dd39bd67a2c574ab992a428cff754d2a
+    projectPath: Temp/UnityTempFile-dd39bd67a2c574ab992a428cff754d2a
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp/UnityTempFile-dd9729203a2c7428d817946a764ee833
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-dd9729203a2c7428d817946a764ee833
+    projectPath: Temp/UnityTempFile-dd9729203a2c7428d817946a764ee833
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Temp/UnityTempFile-e00f080b5fe78476f825ef32f5e7bb41
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-e00f080b5fe78476f825ef32f5e7bb41
+    projectPath: Temp/UnityTempFile-e00f080b5fe78476f825ef32f5e7bb41
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Temp/UnityTempFile-e5a5527e26fe74372bb6ecc246ac49af
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-e5a5527e26fe74372bb6ecc246ac49af
+    projectPath: Temp/UnityTempFile-e5a5527e26fe74372bb6ecc246ac49af
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Temp/UnityTempFile-f97335143a5ca4e519b82820ae265ab8
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-f97335143a5ca4e519b82820ae265ab8
+    projectPath: Temp/UnityTempFile-f97335143a5ca4e519b82820ae265ab8
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Temp/UnityTempFile-fca627f92c7614357bc644b0187c6ca8
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-fca627f92c7614357bc644b0187c6ca8
+    projectPath: Temp/UnityTempFile-fca627f92c7614357bc644b0187c6ca8
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Temp/UnityTempFile-fe01d3dca7b614af28d351bb0a341cbe
+    fullPath: /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/UnityTempFile-fe01d3dca7b614af28d351bb0a341cbe
+    projectPath: Temp/UnityTempFile-fe01d3dca7b614af28d351bb0a341cbe
+    originalPath: 
+    status: 5
+    staged: 0

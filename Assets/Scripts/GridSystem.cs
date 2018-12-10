@@ -33,15 +33,6 @@ public class GridSystem : MonoBehaviour
         ClearBoardOutputFile(); // clear the board output file on restart
     }
 
-   // private void OnValidate()
-   // {
-   //     if (accessibleTilesPlayer.Length != TILE_COUNT || 
-   //         accessibleTilesEnemy.Length != TILE_COUNT)
-   //     {
-   //         Debug.LogError("The length of the Accessible Tile arrays must be 14!");
-   //     }
-   // }
-
    /// <summary>
    /// Takes in the desired index of a piece and returns the tile to move it to
    /// </summary>
@@ -60,15 +51,6 @@ public class GridSystem : MonoBehaviour
         Debug.LogError("The phase names are wrong");
         return null;
     }
-
-    ///// <summary>
-    ///// Returns how many tiles one side can have access to.
-    ///// Hard-coded to return 14 right now.
-    ///// </summary>
-    //internal int NumTilesAccessiblePerTurn()
-    //{
-    //    return 14;
-    //}
 
     /// <summary>
     /// Clears the board output file so we can write newly to it on startup

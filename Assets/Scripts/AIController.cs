@@ -4,24 +4,34 @@ using UnityEngine;
 using System.Linq; // for sorting
 using System;
 
-public class AIController : Turn 
+public class AIController : Turn
 {
-    [SerializeField]
-    private GridSystem grid;
-
-    // The amount of time to wait before moving a piece, 
-    // so this turn looks more "natural"
+    /// <summary>
+    /// The coroutine for the time to wait before moving a piece, 
+    /// so that this turn looks more "natural" to the naked eye
+    /// </summary>
     private IEnumerator movePieceCoroutine;
 
-    // Set to true when the turn is allowed to repeat.
-    // Overrides the auto-ending done when a piece has landed on a repeat tile
+    /// <summary>
+    /// Set to true when the turn is allowed to repeat.
+    /// Overrides the auto-ending done when a piece has landed on a repeat tile
+    /// </summary>
     private bool turnEndDisabled = false;
 
-    // Set the side name for each piece
-    protected override void Start()
+    /// <summary>
+    /// Reference to the player turn for AI decision-making purposes
+    /// </summary>
+    private Turn playerSide; 
+    
+    /// <summary>
+    /// Set side name and other info if we are using this side
+    /// </summary>
+    internal override void TurnSetup()
     {
+        Debug.Log("AI TURN STARTED");
         // TODO: Make a new method to avoid code duplication in 2 turn objects
         turnSideName = SideName.EnemySide;
+
         int i = 0;
         foreach (Piece piece in allPieces)
         {
@@ -38,6 +48,16 @@ public class AIController : Turn
     }
 
     /// <summary>
+    /// Specific to the AI Turn setup. Gives a reference to the player side,
+    /// so that we can analyze its pieces for our decision-making logic.
+    /// </summary>
+    /// <param name="playerTurn">Player turn.</param>
+    internal void AssignPlayerRef(PlayerTurn playerTurn)
+    {
+        playerSide = playerTurn;
+    }
+
+    /// <summary>
     /// Used by the movePieceCouroutine. Waits before moving a piece.
     /// </summary>
     /// <returns>The to move piece.</returns>
@@ -49,7 +69,7 @@ public class AIController : Turn
             yield return new WaitForSeconds(2f);
             if (rolledNumber != 0)
             {
-                MakeIdealMove();  
+                MakeIdealMove();
             }
         }
         else
@@ -71,7 +91,7 @@ public class AIController : Turn
         DisableTurnStartPanel();
         rolledNumberText.SetActive(false); // TODO: make an elegant solution for this
         // If turn end disabled last time because of repeat tile, enable ending again
-        if (turnEndDisabled == true) 
+        if (turnEndDisabled == true)
         {
             turnEndDisabled = false;
         }
@@ -98,7 +118,7 @@ public class AIController : Turn
     /// </summary>
     private Piece GetIdealPieceToMove()
     {
-        Dictionary<Piece,Tile> possibleTiles = GetPossibleTileDestinations(rolledNumber);
+        Dictionary<Piece, Tile> possibleTiles = GetPossibleTileDestinations(rolledNumber);
         if (possibleTiles.Count == 0)
         {
             return null; // can't make any moves
@@ -116,26 +136,46 @@ public class AIController : Turn
     /// <returns>The optimal piece.</returns>
     private Piece GetOptimalPiece(Dictionary<Piece, Tile> pieceToTileMap)
     {
-        int CPUBoardVal = GetSideValue();
-        grid.WriteBoardStatusToFile();
-        // call ChoosePieceUsingPriorities(pieceToTileMap)
-        return GetPieceFarthestOnBoard(pieceToTileMap);
+        return ChoosePieceUsingPriorities(pieceToTileMap);
+        //return GetPieceFarthestOnBoard(pieceToTileMap);
     }
 
+    /// <summary>
+    /// Contains the main logic for choosing a piece to move while
+    /// considering different factors related to the state of the game.
+    /// </summary>
+    /// <returns>The piece to move.</returns>
+    /// <param name="pieceToTileMap">Piece to tile dictionary.</param>
     private Piece ChoosePieceUsingPriorities(Dictionary<Piece, Tile> pieceToTileMap)
     {
-        Dictionary<Piece, Tile.TileType> pieceToTileTypeMap = 
+        Dictionary<Piece, Tile.TileType> pieceToTileTypeMap =
                                          new Dictionary<Piece, Tile.TileType>();
         foreach (Piece piece in pieceToTileMap.Keys)
         {
             Tile.TileType tileName = pieceToTileMap[piece].TypeOfTile;
             pieceToTileTypeMap.Add(piece, tileName);
         }
+        // Get the pieces and their tile indexes, ordered highest to lowest
+        IOrderedEnumerable < KeyValuePair<Piece, int> > piecesDescendingDistList = 
+                                        GetPiecesAndDistDescList(pieceToTileMap);
+        Piece farthestPiece = piecesDescendingDistList.ElementAt(0).Key; // last piece
 
-        Piece idealPiece; //return from this loop
-        foreach (Piece piece in pieceToTileTypeMap.Keys)
+        Dictionary<Piece, List<Piece>> killablePlayerPcs = GetPieceAndKillablePiecesDict();
+        Dictionary<Piece, List<Piece>> killableAIPcs = playerSide.GetPieceAndKillablePiecesDict();
+
+        int CPUBoardVal = GetSideValue();
+        int playerBoardVal = playerSide.GetSideValue();
+
+        // make <tileType, piece[]> dictionary that has null for pieces, 
+        // unless a piece will be able to land on that tile type
+        // if multiple pieces will be able to land on that tile type, 
+        // then check how close player piece is
+
+        Piece repeatPiece = null; //return from this loop
+        foreach (KeyValuePair<Piece, int> pair in piecesDescendingDistList)
         {
-            Tile.TileType tileType = pieceToTileTypeMap[piece];
+            Piece curPiece = pair.Key;
+            Tile.TileType tileType = pieceToTileTypeMap[curPiece];
 
             switch (tileType)
             {
@@ -155,11 +195,25 @@ public class AIController : Turn
                     break;
                 case Tile.TileType.Repeat:
                     // Most likely
+                    repeatPiece = curPiece; // ideal piece is this
                     break;
                 case Tile.TileType.Restart:
                     // Least likely
                     break;
             }
+        }
+
+        if (repeatPiece != null)
+        {
+            return repeatPiece;
+        }
+        else
+        {
+            //if (farthestPiece.GetTargetTile(rolledNumber).TypeOfTile==Tile.TileType.Restart)
+            //{
+            //    return second-farthest number in list
+            //}
+            return farthestPiece;
         }
 
         // make a list of pieces to move
@@ -179,9 +233,8 @@ public class AIController : Turn
         // player pieces on board being frozen next turn has higher value
         // the further the player pieces are on the board
         // prioritize freezing over repeat tile when the CPUBoardVal is lower
-        return null;
     }
-   
+
 
     /// <summary>
     /// Returns the key-value pair map of the pieces and 
@@ -211,7 +264,7 @@ public class AIController : Turn
             }
             else // it is frozen
             {
-                if (piece.GetPieceStatus()==Piece.PieceStatus.Undeployed)
+                if (piece.GetPieceStatus() == Piece.PieceStatus.Undeployed)
                 {
                     tileDict.Add(piece, piece.GetTargetTile(rolledNum));
                 }
@@ -222,30 +275,27 @@ public class AIController : Turn
     }
 
     /// <summary>
-    /// Returns the piece farthest forward on the board, if applicable.
+    /// Returns the list of pieces sorted from farthest to least farthest on board
     /// </summary>
     /// <returns>The piece farthest on board.</returns>
     /// <param name="pieceToTileMap">Piece to tile destinations map.</param>
-    private Piece GetPieceFarthestOnBoard(Dictionary<Piece, Tile> pieceToTileMap)
+    private IOrderedEnumerable<KeyValuePair<Piece,int>> GetPiecesAndDistDescList
+                                        (Dictionary<Piece, Tile> pieceToTileMap)
     {
-        List<KeyValuePair<Piece, int>> pieceDistanceList = 
+        List<KeyValuePair<Piece, int>> pieceDistanceList =
             new List<KeyValuePair<Piece, int>>();
         foreach (KeyValuePair<Piece, Tile> entry in pieceToTileMap)
         {
             int pieceTileIdx = entry.Key.CurrentTileIdx;
-            KeyValuePair<Piece, int> pair = 
-                            new KeyValuePair<Piece, int>(entry.Key,pieceTileIdx);
+            KeyValuePair<Piece, int> pair =
+                            new KeyValuePair<Piece, int>(entry.Key, pieceTileIdx);
             pieceDistanceList.Add(pair);
         }
 
         var orderedDistList = pieceDistanceList.OrderByDescending(x => x.Value); // descending order
-        foreach (KeyValuePair<Piece, int> entry in pieceDistanceList)
-        {
-            Debug.Log("ENTRY: " + entry);
-        }
-        Piece piece = orderedDistList.ElementAt(0).Key; // last piece
+
         // TODO: check here if best piece lands on restart tile
-        return piece;
+        return orderedDistList;
     }
 
     /// <summary>
@@ -253,6 +303,7 @@ public class AIController : Turn
     /// </summary>
     internal override void SetTurnRepeat()
     {
+        Debug.Log("JHH");
         turnEndDisabled = true;
     }
 }

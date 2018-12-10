@@ -8,32 +8,65 @@ using UnityEngine.UI;
 /// </summary>
 public abstract class Tile : MonoBehaviour //Scriptable Object?
 {
-    private bool TileInfoShow = true;
+    /// <summary>
+    /// Whether or not to show info for this tile when hovering over it
+    /// </summary>
+    private bool TileInfoShow = false;
 
-    // The index of this tile in the list of tiles for a player's side
+    /// <summary>
+    /// The index of this tile in the list of tiles for a player's side
+    /// </summary>
+    /// <value>The tile number.</value>
     internal int TileNumber { get; set; }
 
-    // The types for the tile subclasses
+    /// <summary>
+    /// The types for the tile subclasses
+    /// </summary>
     internal enum TileType { OnePiece, TwoPiece, FourPiece, Freeze, Repeat, Restart};
 
+    /// <summary>
+    /// The tile type for this tile.
+    /// </summary>
+    /// <value>The type of tile.</value>
     internal TileType TypeOfTile { get; set; }
 
-    // A list of all pieces on top of this tile, which can be added to
+    /// <summary>
+    /// A list of all pieces on top of this tile, which can be added to
+    /// </summary>
+    /// <value>The pieces on top.</value>
     internal List<Piece> PiecesOnTop { get; set; }
 
+    /// <summary>
+    /// The ID for this tile, which has an E, P, or N,
+    /// (enemy, player, or neutral side) and a number after.
+    /// Intended to be more readable as opposed to raw numbers.
+    /// </summary>
+    /// <value>The tile identifier.</value>
     internal string TileID { get; set; }
 
-    // The piece that most recently landed on this tile
+    /// <summary>
+    /// The piece that most recently landed on this tile
+    /// </summary>
     protected Piece topMostPiece;
 
-    // The maximum amount of pieces of the same color that can be on this tile
+    /// <summary>
+    /// The maximum amount of pieces of the same color that can be on this tile
+    /// </summary>
     protected int maxNumberSamePiece;
 
+    /// <summary>
+    /// The state controller for this game
+    /// </summary>
     public StateController stateController;
 
-    // The string to put in the tile function pop-up window
+    /// <summary>
+    /// The string to put in the tile function pop-up window
+    /// </summary>
     protected string tileFunctionSummary;
 
+    /// <summary>
+    /// Reference to the panel used to display the tile description
+    /// </summary>
     [SerializeField]
     private GameObject TileDescriptionPanel;
 
@@ -47,14 +80,20 @@ public abstract class Tile : MonoBehaviour //Scriptable Object?
         this.tileFunctionSummary = text;
     }
 
-    // Adds a piece reference to this tile's piece list
+    /// <summary>
+    /// Adds a piece reference to this tile's piece list
+    /// </summary>
+    /// <param name="piece">Piece.</param>
     internal void AddPiece(Piece piece)
     {
         PiecesOnTop.Add(piece);
         topMostPiece = PiecesOnTop[PiecesOnTop.Count - 1];
     }
 
-    // Removes a piece from this tile's piece list
+    /// <summary>
+    /// Removes a piece from this tile's piece list
+    /// </summary>
+    /// <param name="piece">Piece.</param>
     internal void RemovePiece(Piece piece)
     {
         PiecesOnTop.Remove(piece);
@@ -78,7 +117,6 @@ public abstract class Tile : MonoBehaviour //Scriptable Object?
     /// <returns>The number pieces on tile.</returns>
     internal int GetNumPiecesOnTile()
     {
-        Debug.Log("PIECES ON TOP: " + PiecesOnTop.Count);
         return PiecesOnTop.Count;
     }
 
@@ -107,16 +145,6 @@ public abstract class Tile : MonoBehaviour //Scriptable Object?
     /// Implemented in each tile subclass
     /// </summary>
     internal abstract void ActivateTileFunction();
-	
-    /// <summary>
-    /// Sets the color of the tile. Used to indicate different tiles, for now
-    /// TODO: Put actual textures in instead
-    /// </summary>
-    /// <param name="color">Color.</param>
-    protected void setTileColor(Color color )
-    {
-
-    }
 
     /// <summary>
     /// Used when a piece lands on a tile with an enemy piece on it. Kicks
@@ -171,7 +199,7 @@ public abstract class Tile : MonoBehaviour //Scriptable Object?
     {
         string infoPlusTilesOnTop = tileFunctionSummary + ", " + 
                                         GetNumPiecesOnTile() + " pieces on top";
-        TileDescriptionPanel.GetComponentInChildren<Text>().text = infoPlusTilesOnTop;
+        //TileDescriptionPanel.GetComponentInChildren<Text>().text = infoPlusTilesOnTop;
         //TileDescriptionPanel.GetComponentInChildren<Text>().SetActive(true);
         TileDescriptionPanel.SetActive(true);
         //TileDescriptionPanel.GetComponentInParent<GameObject>().SetActive(true);
@@ -184,12 +212,4 @@ public abstract class Tile : MonoBehaviour //Scriptable Object?
     {
         TileDescriptionPanel.SetActive(false);
     }
-
-    /// <summary>
-    /// Hides tile info window
-    /// </summary>
-    //protected void HideTileInfo()
-    //{
-    //    TileDescriptionPanel.SetActive(false);
-    //}
 }
