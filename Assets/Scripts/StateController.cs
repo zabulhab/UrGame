@@ -80,7 +80,7 @@ public class StateController : MonoBehaviour
     }
 
     /// <summary>
-    /// Sets up the turn order and activate P1.
+    /// Sets up the turn order and activates P1.
     /// </summary>
     /// <param name="opponentTurn">Which kind of opponent to use.</param>
     private void SetupTurns(Turn opponentTurn)
@@ -117,22 +117,18 @@ public class StateController : MonoBehaviour
     }
 
     /// <summary>
-    /// Switches the turn to the other player
+    /// Switches the turn to the other player. Called from the end turn button.
     /// </summary>
     public void SwitchTurn()
     {
         if (activeTurn.GetInstanceID() == player1.GetInstanceID())
         {
-            player1.SetTurnActive(false);
-            player2.SetTurnActive(true);
             activeTurn = player2;
             inactiveTurn = player1;
 
         }
         else if (activeTurn.GetInstanceID() == player2.GetInstanceID())
         {
-            player2.SetTurnActive(false);
-            player1.SetTurnActive(true);
             activeTurn = player1;
             inactiveTurn = player2;
         }

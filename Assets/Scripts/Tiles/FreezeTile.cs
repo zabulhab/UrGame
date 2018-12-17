@@ -12,7 +12,7 @@ public class FreezeTile : Tile {
     {
         PiecesOnTop = new List<Piece>();
         maxNumberSamePiece = 1;
-        setSummary("Enemy is unable to take action with on-field pieces for their next roll.");
+        setSummary("Enemy may only deploy new pieces on their next roll, shown with a light blue screen. Holds one piece.");
         TypeOfTile = TileType.Freeze;
         TileID = gameObject.name;
     }
@@ -20,7 +20,6 @@ public class FreezeTile : Tile {
     internal override void ActivateTileFunction()
     {
         TryKickEnemyOut();
-        //Debug.Log("FREEZING " + stateController.GetInactiveTurn().getSideName()+ "!");
         stateController.GetInactiveTurn().FreezeBoardPieces();
         stateController.GetActiveTurn().EndTurn();
     }

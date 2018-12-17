@@ -95,7 +95,6 @@ public class Piece : MonoBehaviour
                 (desiredIdx,
                  SideName);
         tileDestIndex = desiredIdx;
-        Debug.Log("Moved " + numberOfSpaces + " space(s)!");
     }
 
     /// <summary>
@@ -132,6 +131,10 @@ public class Piece : MonoBehaviour
             currentTile.RemovePiece(this);
             this.Disappear();
             associatedTurnObject.EndTurn();
+            if (associatedTurnObject.AreAllPiecesFinished())
+            {
+                associatedTurnObject.GameIsOver = true;
+            }
             return;
         }
         int otherPiecesOnTile = tileDestination.GetNumPiecesOnTile();
@@ -157,10 +160,38 @@ public class Piece : MonoBehaviour
         currentTile.AddPiece(this);
         status = PieceStatus.Deployed;
 
-        Debug.Log("hello");
         // Tell the tile to activate any special behavior
         currentTile.ActivateTileFunction();
 
+    }
+
+    internal bool CheckPieceCanMoveToTile(int rolledNumber)
+    {
+        //// if (get tile at piece position + spaces to move)
+        //Tile targetTile = piece.GetTargetTile(rolledNumber);
+        ////      has too many tiles of the same color on it already
+        //if (targetTile != null && (!targetTile.IsMaxNumSamePieceOnTop()))
+        //{
+        //    piece.SetPieceCanMove(true);
+        //    return true;
+        //}
+        //return false;
+        Tile targetTile = this.GetTargetTile(rolledNumber);
+        if (targetTile != null && (!targetTile.IsMaxNumSamePieceOnTop()))
+        {
+            return true;
+        }
+        // If this piece is at the end of the board and
+        // theoretically targeting a tile at the beginning 
+        // of the board that has a piece on it already
+        else if (targetTile != null && (targetTile.IsMaxNumSamePieceOnTop()))
+        {
+            if (targetTile.TileNumber < this.CurrentTileIdx)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     // Makes a piece that has finished the board disappear
@@ -177,19 +208,15 @@ public class Piece : MonoBehaviour
     private void OnMouseEnter()
     {
         // If this piece is one that is ready to be moved
-        if (this.pieceCanMove && this.associatedTurnObject.name != "AIController")
+        if (this.pieceCanMove)
         {
-            Highlight();
+            HighlightGreen();
         }
     }
 
     private void OnMouseExit()
     {
-        // If this piece is one that is ready to be moved
-        if (this.pieceCanMove)
-        {
-            UnHighlight();
-        }
+        UnHighlight();
     }
 
     /// <summary>
@@ -226,9 +253,9 @@ public class Piece : MonoBehaviour
     }
 
     ///<summary>
-    /// Sets the color of the piece to green
+    /// Sets the color of the piece to green to indicate that it can be moved
     /// </summary>
-    internal void Highlight()
+    internal void HighlightGreen()
     {
         GetComponent<Renderer>().material.color = Color.green;
     }
@@ -282,21 +309,34 @@ public class Piece : MonoBehaviour
     /// </summary>
     /// <returns>The piece(s) that this piece could kill on its next turn,
     /// provided this side rolls the right number.</returns>
-    internal KeyValuePair<Piece, List<Piece>> GetPieceAndKillablePieces()
+    internal KeyValuePair<Piece, List<Piece>> GetPieceAndKillablePiecesNextTurn(int numRolled)
     {
         KeyValuePair<Piece, List<Piece>> pieceAndKillablePieces = new KeyValuePair<Piece, List<Piece>>();
-        for (int potentialRollNum = 1; potentialRollNum < 4; potentialRollNum++)
+        List<Piece> overallKillables = new List<Piece>();
+        for (int potentialRollNum = numRolled+1; potentialRollNum < numRolled+4; potentialRollNum++)
         {
-            List<Piece> pieceList = GetKillablePieces(potentialRollNum);
-            if (!pieceList.Equals(default(List<Piece>)))
+            List<Piece> numSpecificKillables = GetKillablePieces(potentialRollNum);
+            if (!numSpecificKillables.Equals(default(List<Piece>)))
             {
-                foreach (Piece piece in pieceList)
+                // add each killable piece for this number 
+                // to the overall killable pieces list
+                foreach (Piece piece in numSpecificKillables)
                 {
-                    pieceAndKillablePieces.Value.Add(piece);
+                    overallKillables.Add(piece);
                 }
             }
         }
+        pieceAndKillablePieces = new KeyValuePair<Piece, List<Piece>>(this, overallKillables);
         return pieceAndKillablePieces;
+    }
+
+    /// <summary>
+    /// Returns this piece and any piece[s] that this piece could kill on this turn
+    /// </summary>
+    /// <returns>The piece(s) that this piece could kill on this turn.</returns>
+    internal KeyValuePair<Piece, List<Piece>> GetPieceAndKillablePiecesThisTurn(int numRolled)
+    {
+        return new KeyValuePair<Piece, List<Piece>>(this, GetKillablePieces(numRolled));
     }
 
     /// <summary>

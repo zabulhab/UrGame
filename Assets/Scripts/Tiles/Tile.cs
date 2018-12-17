@@ -11,7 +11,7 @@ public abstract class Tile : MonoBehaviour //Scriptable Object?
     /// <summary>
     /// Whether or not to show info for this tile when hovering over it
     /// </summary>
-    private bool TileInfoShow = false;
+    private bool TileInfoShow = true;
 
     /// <summary>
     /// The index of this tile in the list of tiles for a player's side
@@ -136,7 +136,6 @@ public abstract class Tile : MonoBehaviour //Scriptable Object?
                 numCurSamePiece++;
             }
         }
-        Debug.Log(PiecesOnTop);
         return numCurSamePiece == maxNumberSamePiece;
     }
 
@@ -177,10 +176,9 @@ public abstract class Tile : MonoBehaviour //Scriptable Object?
     /// </summary>
     private void OnMouseEnter()
     {
-        if (TileInfoShow == true)
+        if (TileInfoShow == true && stateController.GetActiveTurn().PieceSelectionPhase)
         {
             ShowTileInfo();
-            Debug.Log("HI");
         }
     }
 
@@ -197,12 +195,10 @@ public abstract class Tile : MonoBehaviour //Scriptable Object?
     /// </summary>
     protected void ShowTileInfo()
     {
-        string infoPlusTilesOnTop = tileFunctionSummary + ", " + 
-                                        GetNumPiecesOnTile() + " pieces on top";
-        //TileDescriptionPanel.GetComponentInChildren<Text>().text = infoPlusTilesOnTop;
-        //TileDescriptionPanel.GetComponentInChildren<Text>().SetActive(true);
+        string infoPlusTilesOnTop = tileFunctionSummary;
+        TileDescriptionPanel.GetComponentInChildren<Text>().text = infoPlusTilesOnTop;
         TileDescriptionPanel.SetActive(true);
-        //TileDescriptionPanel.GetComponentInParent<GameObject>().SetActive(true);
+
     }
 
     /// <summary>

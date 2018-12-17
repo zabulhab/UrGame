@@ -7,29 +7,28 @@ using System;
 public class AIController : Turn
 {
     /// <summary>
-    /// The coroutine for the time to wait before moving a piece, 
-    /// so that this turn looks more "natural" to the naked eye
-    /// </summary>
-    private IEnumerator movePieceCoroutine;
-
-    /// <summary>
     /// Set to true when the turn is allowed to repeat.
     /// Overrides the auto-ending done when a piece has landed on a repeat tile
     /// </summary>
     private bool turnEndDisabled = false;
 
     /// <summary>
+    /// Passed in to end turn call to invoke turn end method
+    /// so we can bypass needing to click the button
+    /// </summary>
+    [SerializeField]
+    private StateController phaseController;
+
+    /// <summary>
     /// Reference to the player turn for AI decision-making purposes
     /// </summary>
-    private Turn playerSide; 
+    private PlayerTurn playerSide;
     
     /// <summary>
     /// Set side name and other info if we are using this side
     /// </summary>
     internal override void TurnSetup()
     {
-        Debug.Log("AI TURN STARTED");
-        // TODO: Make a new method to avoid code duplication in 2 turn objects
         turnSideName = SideName.EnemySide;
 
         int i = 0;
@@ -43,8 +42,6 @@ public class AIController : Turn
             piece.SetStartIndex(i);
             i++;
         }
-
-        movePieceCoroutine = WaitAndTryMovePiece();
     }
 
     /// <summary>
@@ -74,11 +71,13 @@ public class AIController : Turn
         }
         else
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(.5f);
         }
+        // End turn normally unless AI landed on a repeat tile
         if (!turnEndDisabled)
         {
-            EndTurn(true);
+            SetFreezePanelVisible(false);
+            EndTurn(true, phaseController);
         }
         else
         {
@@ -88,6 +87,10 @@ public class AIController : Turn
 
     internal override void ActivatePhase()
     {
+        if (isFrozen)
+        {
+            SetFreezePanelVisible(true);
+        }
         DisableTurnStartPanel();
         rolledNumberText.SetActive(false); // TODO: make an elegant solution for this
         // If turn end disabled last time because of repeat tile, enable ending again
@@ -108,6 +111,7 @@ public class AIController : Turn
         if (piece != null)
         {
             piece.SetNumSpacesToMove(rolledNumber);
+            ClickSFX.Play(0); // play move sound
             piece.MoveToTargetTile();
         }
     }
@@ -137,7 +141,6 @@ public class AIController : Turn
     private Piece GetOptimalPiece(Dictionary<Piece, Tile> pieceToTileMap)
     {
         return ChoosePieceUsingPriorities(pieceToTileMap);
-        //return GetPieceFarthestOnBoard(pieceToTileMap);
     }
 
     /// <summary>
@@ -148,6 +151,22 @@ public class AIController : Turn
     /// <param name="pieceToTileMap">Piece to tile dictionary.</param>
     private Piece ChoosePieceUsingPriorities(Dictionary<Piece, Tile> pieceToTileMap)
     {
+#region local variables setup
+
+        // Get the pieces and their tile indices, ordered highest to lowest
+        IOrderedEnumerable<KeyValuePair<Piece, int>> piecesDescendingDistList =
+                                       GetPiecesAndDistDescList(pieceToTileMap);
+        // For given AI pieces, get the pieces we might be able to kill next turn 
+        Dictionary<Piece, List<Piece>> killablePlayerPcsNextTurn = 
+                            GetPieceAndNextTurnKillablePiecesDict(rolledNumber);
+        Dictionary<Piece, List<Piece>> KillablePlayerPcsThisTurn =
+                            GetPieceAndThisTurnKillablePiecesDict(rolledNumber);
+        List<Piece> killableAIPcsNextTurn = 
+            playerSide.GetKillableAIPiecesNextTurn(pieceToTileMap);
+
+        int CPUBoardVal = GetSideValue();
+        int playerBoardVal = playerSide.GetSideValue();
+
         Dictionary<Piece, Tile.TileType> pieceToTileTypeMap =
                                          new Dictionary<Piece, Tile.TileType>();
         foreach (Piece piece in pieceToTileMap.Keys)
@@ -155,66 +174,75 @@ public class AIController : Turn
             Tile.TileType tileName = pieceToTileMap[piece].TypeOfTile;
             pieceToTileTypeMap.Add(piece, tileName);
         }
-        // Get the pieces and their tile indexes, ordered highest to lowest
-        IOrderedEnumerable < KeyValuePair<Piece, int> > piecesDescendingDistList = 
-                                        GetPiecesAndDistDescList(pieceToTileMap);
-        Piece farthestPiece = piecesDescendingDistList.ElementAt(0).Key; // last piece
-
-        Dictionary<Piece, List<Piece>> killablePlayerPcs = GetPieceAndKillablePiecesDict();
-        Dictionary<Piece, List<Piece>> killableAIPcs = playerSide.GetPieceAndKillablePiecesDict();
-
-        int CPUBoardVal = GetSideValue();
-        int playerBoardVal = playerSide.GetSideValue();
-
+#endregion local variables setup
         // make <tileType, piece[]> dictionary that has null for pieces, 
         // unless a piece will be able to land on that tile type
         // if multiple pieces will be able to land on that tile type, 
         // then check how close player piece is
 
-        Piece repeatPiece = null; //return from this loop
+        // Default best piece is the one that is farthest ahead on the board
+        Piece bestPiece = piecesDescendingDistList.ElementAt(0).Key;
+        List<bool> killableStatsCurBestPiece = AIHelperChecks.GetPieceKillableStats(bestPiece,
+                         KillablePlayerPcsThisTurn,
+                         killablePlayerPcsNextTurn,
+                         killableAIPcsNextTurn);
+        // Finding a new best piece is similar to 1 pass of a bubble sort
+
         foreach (KeyValuePair<Piece, int> pair in piecesDescendingDistList)
         {
+
             Piece curPiece = pair.Key;
-            Tile.TileType tileType = pieceToTileTypeMap[curPiece];
-
-            switch (tileType)
+            // skip over best piece because nothing to compare
+            if (curPiece.Equals(bestPiece))
             {
-                // Kick out player piece #1 priority if player winning
-                // check how likely piece if can be killed after
-                // Order risky to least risky behavior?
-                // Weigh risks when 
-                // TODO: make & call GetBoardValuePlayerSide
-                case Tile.TileType.OnePiece:
-                    break;
-                case Tile.TileType.TwoPiece:
-                    break;
-                case Tile.TileType.FourPiece:
-                    break;
-                case Tile.TileType.Freeze:
-                    // 2nd Most likely
-                    break;
-                case Tile.TileType.Repeat:
-                    // Most likely
-                    repeatPiece = curPiece; // ideal piece is this
-                    break;
-                case Tile.TileType.Restart:
-                    // Least likely
-                    break;
+                continue;
             }
+            Tile.TileType tileType = pieceToTileTypeMap[curPiece];
+            List<bool> killableStatsThisPiece = AIHelperChecks.GetPieceKillableStats(curPiece,
+                                                 KillablePlayerPcsThisTurn,
+                                                 killablePlayerPcsNextTurn,
+                                                 killableAIPcsNextTurn);
+
+
+            // if the piece is a better piece, update current best piece
+            if (ComparePieceKillableStats(bestPiece, 
+                                          killableStatsThisPiece[0], 
+                                          killableStatsThisPiece[1],
+                                          killableStatsThisPiece[2],
+                                          killableStatsCurBestPiece[0],
+                                          killableStatsCurBestPiece[1],
+                                          killableStatsCurBestPiece[2]))
+            {
+                bestPiece = curPiece;
+                killableStatsCurBestPiece = killableStatsThisPiece;
+            }
+            //switch (tileType)
+            //{
+            //    // Kick out player piece #1 priority if player winning
+            //    // check how likely piece if can be killed after
+            //    // Order risky to least risky behavior?
+            //    // Weigh risks when 
+            //    // TODO: make & call GetBoardValuePlayerSide
+            //    case Tile.TileType.OnePiece:
+            //        break;
+            //    case Tile.TileType.TwoPiece:
+            //        break;
+            //    case Tile.TileType.FourPiece:
+            //        break;
+            //    case Tile.TileType.Freeze:
+            //        // 2nd Most likely
+            //        break;
+            //    case Tile.TileType.Repeat:
+            //        // Most likely
+            //        bestPiece = curPiece;
+            //        break;
+            //    case Tile.TileType.Restart:
+            //        // Least likely
+            //        break;
+            //}
         }
 
-        if (repeatPiece != null)
-        {
-            return repeatPiece;
-        }
-        else
-        {
-            //if (farthestPiece.GetTargetTile(rolledNumber).TypeOfTile==Tile.TileType.Restart)
-            //{
-            //    return second-farthest number in list
-            //}
-            return farthestPiece;
-        }
+        return bestPiece;
 
         // make a list of pieces to move
         // get potential board value for each, by adding to current one
@@ -235,10 +263,132 @@ public class AIController : Turn
         // prioritize freezing over repeat tile when the CPUBoardVal is lower
     }
 
+    /// <summary>
+    /// Helper method to check which combination of killable stats the current
+    /// piece has as compared to the current best piece, and see if the current 
+    /// piece is better than the current best piece
+    /// </summary>
+    /// <returns><c>true</c>, if piece killable bools was checked, <c>false</c> otherwise.</returns>
+    /// <param name="curPcCanKillThisTurn">If set to <c>true</c> can kill this turn.</param>
+    /// <param name="curPcCanKillNextTurn">If set to <c>true</c> can kill next turn.</param>
+    /// <param name="curPcCanBeKilledNextTurn">If set to <c>true</c> can be killed next turn.</param>
+    private bool ComparePieceKillableStats(Piece bestPiece, 
+                                           bool curPcCanKillThisTurn, 
+                                           bool curPcCanKillNextTurn,
+                                           bool curPcCanBeKilledNextTurn,
+                                           bool bestPcCanKillThisTurn,
+                                           bool bestPcCanKillNextTurn,
+                                           bool bestPcCanBeKilledNextTurn)
+    {
+        bool isBetterPiece = false;
+        int priorityNum = 0;
+        // can kill this turn and next turn, and might get killed
+        if (curPcCanKillThisTurn && curPcCanKillNextTurn && curPcCanBeKilledNextTurn)
+        {
+            priorityNum = 1;
+        }
+        // can kill this turn and next turn, and won't get killed
+        else if (curPcCanKillThisTurn && curPcCanKillNextTurn && !curPcCanBeKilledNextTurn) 
+        {
+            priorityNum = 3;
+        }
+        // can kill this turn, but not next turn, and might get killed
+        else if (curPcCanKillThisTurn && !curPcCanKillNextTurn && curPcCanBeKilledNextTurn) 
+        {
+            priorityNum = 2;
+        }
+        // can kill this turn, but not next turn, and won't get killed
+        else if (curPcCanKillThisTurn && !curPcCanKillNextTurn && !curPcCanBeKilledNextTurn) 
+        {
+            priorityNum = 4;
+        }
+        // can't kill this turn, but can kill next turn, and might get killed
+        else if (!curPcCanKillThisTurn && curPcCanKillNextTurn && curPcCanBeKilledNextTurn) 
+        {
+            priorityNum = 6;
+        }
+        // can't kill this turn, but can kill next turn, and won't get killed
+        else if (!curPcCanKillThisTurn && curPcCanKillNextTurn && !curPcCanBeKilledNextTurn) 
+        {
+            priorityNum = 7;
+        }
+        // can't kill anyone this or next turn but might get killed
+        else if (!curPcCanKillThisTurn && !curPcCanKillNextTurn && curPcCanBeKilledNextTurn) 
+        {
+            priorityNum = 5;
+        }
+        // can't kill anyone this or next turn, and won't get killed either
+        else if (!curPcCanKillThisTurn && !curPcCanKillNextTurn && !curPcCanBeKilledNextTurn) 
+        {
+            priorityNum = 8;
+        }
+        else
+        {
+            Debug.LogError("AI priority check failed!");
+        }
+        isBetterPiece = ComparePieceStatHelper(bestPcCanKillThisTurn,
+           bestPcCanKillNextTurn,
+           bestPcCanBeKilledNextTurn,
+           priorityNum);
+        return isBetterPiece;
+    }
 
     /// <summary>
-    /// Returns the key-value pair map of the pieces and 
-    /// the tiles that they can move to
+    /// Takes in the stats for the current best piece and decides based on the
+    /// priority from the if-statement calling it, tile types, and 
+    /// risk factor if the current piece is better than the current best piece
+    /// </summary>
+    /// <returns><c>true</c>, if better piece was checked, <c>false</c> otherwise.</returns>
+    /// <param name="killThisTurn">If set to <c>true</c> kill this turn.</param>
+    /// <param name="killNextTurn">If set to <c>true</c> kill next turn.</param>
+    /// <param name="killedNextTurn">If set to <c>true</c> killed next turn.</param>
+    /// <param name="callerStatsPriority">priority of the if statement calling this method</param>
+    private bool ComparePieceStatHelper(bool killThisTurn, bool killNextTurn, bool killedNextTurn, int callerStatsPriority)
+    {
+        int priority = 0;
+        if (killThisTurn && killNextTurn && killedNextTurn)
+        {
+            priority = 1;
+        }
+        else if (killThisTurn && killNextTurn && !killedNextTurn) 
+        {
+            priority = 3;
+        }
+        else if (killThisTurn && !killNextTurn && killedNextTurn) 
+        {
+            priority = 2;
+        }
+        else if (killThisTurn && !killNextTurn && !killedNextTurn) 
+        {
+            priority = 4;
+        }
+        else if (!killThisTurn && killNextTurn && killedNextTurn) 
+        {
+            priority = 6;
+        }
+        else if (!killThisTurn && killNextTurn && !killedNextTurn) 
+        {
+            priority = 7;
+        }
+        else if (!killThisTurn && !killNextTurn && killedNextTurn) 
+        {
+            priority = 5;
+        }
+        else if (!killThisTurn && !killNextTurn && !killedNextTurn) 
+        {
+            priority = 8;
+        }
+        else
+        {
+            Debug.LogError("AI priority check failed!");
+        }
+        return (callerStatsPriority < priority);
+    }
+
+
+    /// <summary>
+    /// Returns the key-value pair dictionary of the
+    /// pieces and the tiles that they can move to
     /// </summary>
     /// <returns>The possible tile destinations.</returns>
     /// <param name="rolledNum">Rolled number.</param>
@@ -253,9 +403,8 @@ public class AIController : Turn
             {
                 continue;
             }
-            if (!CheckPieceCanMoveToTile(piece))
+            if (!piece.CheckPieceCanMoveToTile(rolledNum))
             {
-                //Debug.Log("Cannot move to tile");
                 continue;
             }
             if (!isFrozen)
@@ -299,11 +448,59 @@ public class AIController : Turn
     }
 
     /// <summary>
+    /// Returns a dictionary with the piece(s) that can kill a piece next turn, 
+    /// checking which tile each AI piece will be on for that turn, 
+    /// and the piece(s) that can be killed, provided the correct number is rolled. 
+    /// </summary>
+    /// <returns>The piece and killable pieces dict.</returns>
+    /// <param name="numRolled">The number we have rolled this turn.</param>
+    private Dictionary<Piece, List<Piece>> GetPieceAndNextTurnKillablePiecesDict(int numRolled)
+    {
+        Dictionary<Piece, List<Piece>> piecesToKillablePiecesMap =
+                                            new Dictionary<Piece, List<Piece>>();
+        // Check each piece for any pieces it could kill next turn
+        foreach (Piece piece in allPieces)
+        {
+            // The piece and a list with the piece(s) it could kill
+            KeyValuePair<Piece, List<Piece>> pieces = piece.GetPieceAndKillablePiecesNextTurn(numRolled);
+            if (!pieces.Equals(default(KeyValuePair<Piece, List<Piece>>)))
+            {
+                piecesToKillablePiecesMap.Add(pieces.Key, pieces.Value);
+            }
+        }
+        return piecesToKillablePiecesMap;
+    }
+
+    /// <summary>
+    /// Returns a dictionary with the piece(s) that can kill a piece this turn, 
+    /// checking which tile each AI piece would land on for this turn,
+    /// and the piece(s) that can be killed.
+    /// </summary>
+    /// <returns>The piece and killable pieces dict.</returns>
+    /// <param name="numRolled">The number we have rolled this turn.</param>
+    private Dictionary<Piece, List<Piece>> GetPieceAndThisTurnKillablePiecesDict(int numRolled)
+    {
+        Dictionary<Piece, List<Piece>> piecesToKillablePiecesMap =
+                                            new Dictionary<Piece, List<Piece>>();
+        // Check each piece for any pieces it could kill next turn
+        foreach (Piece piece in allPieces)
+        {
+            // The piece and a list with the piece(s) it could kill
+            KeyValuePair<Piece, List<Piece>> pieces = piece.GetPieceAndKillablePiecesThisTurn(numRolled);
+            if (pieces.Value.Count!=0)
+            {
+                piecesToKillablePiecesMap.Add(pieces.Key, pieces.Value);
+            }
+        }
+        return piecesToKillablePiecesMap;
+    }
+
+    /// <summary>
     /// Disables the turn ending for this turn
     /// </summary>
     internal override void SetTurnRepeat()
     {
-        Debug.Log("JHH");
         turnEndDisabled = true;
     }
+
 }

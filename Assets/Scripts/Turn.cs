@@ -15,6 +15,11 @@ public abstract class Turn : MonoBehaviour
     // use its Roll() method (no instance needed)
     public static DiceRoll DiceRoller;
 
+    [SerializeField]
+    protected AudioSource ClickSFX;
+
+    internal bool GameIsOver { get; set; }
+
     // The total number of pieces per side
     private static readonly int PIECE_COUNT = 7;
 
@@ -42,6 +47,17 @@ public abstract class Turn : MonoBehaviour
     [SerializeField]
     private GameObject movePhasePanel;
 
+    [SerializeField]
+    private GameObject freezeBGPanel;
+
+    // The panel to display when this turn ends the game
+    [SerializeField]
+    private GameObject gameOverPanel;
+
+    // The button that restarts the game. Moves to center on game over
+    [SerializeField]
+    private GameObject restartButton;
+
     // Displays the turn name on the top of the screen.
     // Always visible while this turn is active
     [SerializeField]
@@ -54,12 +70,9 @@ public abstract class Turn : MonoBehaviour
 
     // Whether or not the user is allowed to click on a piece yet to move it.
     // This is active only after rolling the dice
-    private bool pieceSelectionPhase;
+    internal bool PieceSelectionPhase { get; set; }
 
-    // Whether or not this turn is the active one
-    private bool isActiveTurn;
-
-    // Can either be "Player" or "Enemy". Used
+    // Can either be "PlayerSide" or "EnemySide". Used
     // to know which grid spaces to access
     [HideInInspector]
     public enum SideName { PlayerSide, EnemySide };
@@ -84,12 +97,9 @@ public abstract class Turn : MonoBehaviour
     private void Update()
     {
         // if player clicks during selection phase
-        if (pieceSelectionPhase && Input.GetMouseButtonDown(0))
+        if (PieceSelectionPhase && Input.GetMouseButtonDown(0))
         {
-            Ray ray = Camera.
-                            main.
-                            ScreenPointToRay
-                            (Input.mousePosition);
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
             // If we hit something, select that piece and open the move UI
@@ -102,75 +112,37 @@ public abstract class Turn : MonoBehaviour
                     // If the piece is on our side
                     if (allPieces.Contains(hitPiece))
                     {
-                        //if (hitPiece.GetPieceCanMove())
-                        //{
-                        //    selectedPiece = hitPiece;
-                        //    rolledNumberText.SetActive(false);
-
-                        //    //OpenMoveUI();
-                        //    MovePiece();
-                        //}
-                        // Debug.Log(hitPiece.GetPieceCanMove());
-
-                        if (!isFrozen && hitPiece.GetPieceCanMove())
-                        {
-                            // Move the piece and end the turn
-
-                            selectedPiece = hitPiece;
-                            rolledNumberText.SetActive(false);
-
-                            //OpenMoveUI();
-                            MovePiece();
-
-                            // Tile Function should now activate.
-                        }
-                        else if (isFrozen && (hitPiece.GetPieceStatus() == 
+                        // if it should be able to move
+                        if (!isFrozen && hitPiece.GetPieceCanMove() ||
+                           isFrozen && (hitPiece.GetPieceStatus() ==
                                               Piece.PieceStatus.Undeployed) &&
                                                     hitPiece.GetPieceCanMove())
                         {
-                            // TODO: Remove this code duplication
+                            // Move the piece (and possibly end the turn)
 
                             selectedPiece = hitPiece;
                             rolledNumberText.SetActive(false);
-
-                            //OpenMoveUI();
+                            ClickSFX.Play(0); // play the SFX
                             MovePiece();
-                        }
 
+                            // Tile Function will now activate.
+                        }
                     }
                 }
-                else
-                {
-                    Debug.Log("You didn't click on one of your pieces!");
-                }
+                // Else we didn't hit a piece
             }
         }
     }
 
+    /// <summary>
+    /// Checks for the correct piece array length in the editor
+    /// </summary>
     private void OnValidate()
     {
         if (allPieces.Count != PIECE_COUNT)
         {
             Debug.LogError("The length of the All Pieces array must be 7!");
         }
-    }
-
-    /// <summary>
-    /// Let the turn and its pieces know if it is the active one or inactive one.
-    /// </summary>
-    /// <param name="activeStatus">If set to <c>true</c> active status.</param>
-    internal void SetTurnActive(bool activeStatus)
-    {
-        isActiveTurn = activeStatus;
-    }
-
-    /// <summary>
-    /// Return whether or not this turn is the currently active one.
-    /// </summary>
-    /// <returns><c>true</c>, if turn is active, <c>false</c> otherwise.</returns>
-    internal bool GetTurnActive()
-    {
-        return isActiveTurn;
     }
 
     /// <summary>
@@ -188,13 +160,20 @@ public abstract class Turn : MonoBehaviour
     }
 
     /// <summary>
+    /// Sets the freeze pane to visible or invisible
+    /// </summary>
+    protected void SetFreezePanelVisible(bool visibleStatus)
+    {
+        this.freezeBGPanel.SetActive(visibleStatus);
+    }
+
+    /// <summary>
     /// Brings up the Panel that waits for the user to roll
     /// </summary>
     public void OpenRollUI()
     {
         turnStartPanel.SetActive(false);
         rollPhasePanel.SetActive(true);
-
     }
 
     /// <summary>
@@ -221,19 +200,24 @@ public abstract class Turn : MonoBehaviour
     /// when exiting the board at the finish line.
     /// Auto-ends without the End Turn button if AITurnEnded is true.
     /// </summary>
-    public void EndTurn(bool AITurnEnded = false)
+    public void EndTurn(bool AITurnEnded = false, StateController phaseController = null)
     {
-        Debug.Log("end turn");
+        SetFreezePanelVisible(false);
         UnfreezeBoardPieces();
         movePhasePanel.SetActive(false);
         turnStartPanel.SetActive(true);
-        if (AITurnEnded)
+        if (AITurnEnded) // bypass having to press the turn end button
         {
-            turnStartPanel.GetComponentInChildren<Button>().onClick.Invoke();
+            if (!GameIsOver)
+                phaseController.SwitchTurn();
         }
         // Disable clicking pieces
-        pieceSelectionPhase = false;
-        SetPiecesUnSelectable();
+        PieceSelectionPhase = false;
+        SetAllPiecesUnSelectable();
+        if (GameIsOver)
+        {
+            ActivateGameOver();
+        }
     }
 
     /// <summary>
@@ -252,7 +236,9 @@ public abstract class Turn : MonoBehaviour
         }
     }
 
-    // Sets the roll text to the number that was rolled
+    /// <summary>
+    /// Sets the roll text to the number that was rolled
+    /// </summary>
     private void UpdateRolledNumber(int rolledNum)
     {
         rolledNumberText.GetComponent<Text>().text = "Rolled: " + rolledNum;
@@ -263,27 +249,21 @@ public abstract class Turn : MonoBehaviour
     /// selectable/unselectable for potential movement.
     /// If frozen, sets only undeployed pieces selectable.
     /// </summary>
-    private void SetPiecesSelectable()
+    protected void SetPiecesSelectable()
     {
         if (!isFrozen) // allow selecting all pieces
         {
-            Debug.Log("NOT FROZEN");
             foreach (Piece piece in allPieces)
             {
-                Tile targetTile = piece.GetTargetTile(rolledNumber);
-                if (targetTile != null && (!targetTile.IsMaxNumSamePieceOnTop()))
-                {
-                    piece.SetPieceCanMove(true);
-                }
+                piece.SetPieceCanMove(piece.CheckPieceCanMoveToTile(rolledNumber));
             }
+
         }
         else // only allow selection of undeployed pieces
         {
-            Debug.Log("FROZEN");
 
             if (!PostRollOpenSpacesAvailable())
             {
-                Debug.Log("NO OPEN SPACES AVAILABLE DURING FROZEN");
                 EndTurn();
             }
             else
@@ -292,21 +272,17 @@ public abstract class Turn : MonoBehaviour
                 {
                     if (piece.GetPieceStatus() == Piece.PieceStatus.Undeployed)
                     {
-                        Tile targetTile = piece.GetTargetTile(rolledNumber);
-                        Debug.Log("Target tile:" + targetTile);
-                        Debug.Log(targetTile.IsMaxNumSamePieceOnTop());
-                        if (targetTile != null && (!targetTile.IsMaxNumSamePieceOnTop()))
-                        {
-                            piece.SetPieceCanMove(true);
-                        }
+                        piece.SetPieceCanMove(piece.CheckPieceCanMoveToTile(rolledNumber));
                     }
                 }
             }
         }
     }
 
-
-    private void SetPiecesUnSelectable()
+    /// <summary>
+    /// Sets all of the pieces to be unselectabe
+    /// </summary>
+    protected void SetAllPiecesUnSelectable()
     {
         foreach (Piece piece in allPieces)
         {
@@ -314,19 +290,34 @@ public abstract class Turn : MonoBehaviour
         }
     }
 
-    protected bool CheckPieceCanMoveToTile(Piece piece)
-    {
-        // if (get tile at piece position + spaces to move)
-        Tile targetTile = piece.GetTargetTile(rolledNumber);
-        //      has too many tiles of the same color on it already
-        Debug.Log("MAX NUM PIECES? " + targetTile.IsMaxNumSamePieceOnTop());
-        if (targetTile != null && (!targetTile.IsMaxNumSamePieceOnTop()))
-        {
-            piece.SetPieceCanMove(true);
-            return true;
-        }
-        return false;
-    }
+    //protected bool CheckPieceCanMoveToTile(Piece piece)
+    //{
+    //    //// if (get tile at piece position + spaces to move)
+    //    //Tile targetTile = piece.GetTargetTile(rolledNumber);
+    //    ////      has too many tiles of the same color on it already
+    //    //if (targetTile != null && (!targetTile.IsMaxNumSamePieceOnTop()))
+    //    //{
+    //    //    piece.SetPieceCanMove(true);
+    //    //    return true;
+    //    //}
+    //    //return false;
+    //    Tile targetTile = piece.GetTargetTile(rolledNumber);
+    //    if (targetTile != null && (!targetTile.IsMaxNumSamePieceOnTop()))
+    //    {
+    //        return true;
+    //    }
+    //    // If this piece is at the end of the board and
+    //    // theoretically targeting a tile at the beginning 
+    //    // of the board that has a piece on it already
+    //    else if (targetTile != null && (targetTile.IsMaxNumSamePieceOnTop()))
+    //    {
+    //        if (targetTile.TileNumber < piece.CurrentTileIdx)
+    //        {
+    //            return true;
+    //        }
+    //    }
+    //    return false;
+    //}
 
     /// <summary>
     /// If user has not rolled a 0, sets the appropriate pieces to be selectable
@@ -335,14 +326,13 @@ public abstract class Turn : MonoBehaviour
     {
         if (rolledNumber != 0 && PostRollOpenSpacesAvailable())
         {
-            Debug.Log("OPEN SPACES ARE AVAILABLE");
-            pieceSelectionPhase = true;
+            PieceSelectionPhase = true;
             SetPiecesSelectable();
         }
         else
         {
-            pieceSelectionPhase = false;
-            SetPiecesUnSelectable();
+            PieceSelectionPhase = false;
+            SetAllPiecesUnSelectable();
             EndTurn();
         }
     }
@@ -355,9 +345,7 @@ public abstract class Turn : MonoBehaviour
     {
         selectedPiece.SetNumSpacesToMove(rolledNumber);
         selectedPiece.UnHighlight();
-        // TODO: Call this from the tile, so if we land on a, for example,
-        // flower, the pieces are still kept selectable
-        SetPiecesUnSelectable();
+        SetAllPiecesUnSelectable(); // disable selecting other pieces
 
         UnfreezeBoardPieces();
 
@@ -380,6 +368,7 @@ public abstract class Turn : MonoBehaviour
     internal void FreezeBoardPieces()
     {
         isFrozen = true;
+        SetFreezePanelVisible(true);
         foreach (Piece piece in allPieces)
         {
             if (piece.GetPieceStatus() == Piece.PieceStatus.Undeployed)
@@ -452,9 +441,8 @@ public abstract class Turn : MonoBehaviour
                 {
                     ;
                 }
-                else
+                else // some piece can move by that roll amount
                 {
-                    Debug.Log("A piece can move by that roll amount!");
                     return true;
                 }
             }
@@ -487,9 +475,8 @@ public abstract class Turn : MonoBehaviour
                     {
                         ;
                     }
-                    else
+                    else // some piece is able to move
                     {
-                        Debug.Log("Some piece is able to move");
                         return true;
                     }
                 }
@@ -500,9 +487,9 @@ public abstract class Turn : MonoBehaviour
 
     /// <summary>
     /// Returns the value of the current state of the board, for the CPU's side.
-    /// Can be accessed by 
+    /// Intended for use in determining risk factor for the AI.
     /// </summary>
-    /// <returns>The board value.</returns>
+    /// <returns>The value for this side.</returns>
     internal int GetSideValue()
     {
         // check if no piece is deployed yet
@@ -533,25 +520,42 @@ public abstract class Turn : MonoBehaviour
     }
 
     /// <summary>
-    /// Returns a dictionary with the piece(s) that can kill a piece next turn,
-    /// and the piece(s) that can be killed, provided the correct number is rolled. 
+    /// Returns true if all of the pieces on this side are finished, 
+    /// signalling the end of the game
     /// </summary>
-    /// <returns>The piece and killable pieces dict.</returns>
-    internal Dictionary<Piece, List<Piece>> GetPieceAndKillablePiecesDict()
+    /// <returns><c>true</c>, if all pieces finished, <c>false</c> otherwise.</returns>
+    internal bool AreAllPiecesFinished()
     {
-        Dictionary<Piece, List<Piece>> piecesToKillablePiecesMap = 
-                                            new Dictionary<Piece, List<Piece>>();
-        // Check each piece for any pieces it could kill next turn
         foreach (Piece piece in allPieces)
         {
-            // The piece and a list with the piece(s) it could kill
-            KeyValuePair<Piece, List<Piece>> pieces = piece.GetPieceAndKillablePieces();
-            if (!pieces.Equals(default(KeyValuePair<Piece, List<Piece>>)))
+            // if any piece is not finished yet
+            if (piece.GetPieceStatus() != Piece.PieceStatus.Finished)
             {
-                piecesToKillablePiecesMap.Add(pieces.Key,pieces.Value);
+                return false;
             }
         }
-        return piecesToKillablePiecesMap;
+        // else all are done
+        return true;
+    }
+
+    /// <summary>
+    /// Brings up the UI for when the game has ended.
+    /// </summary>
+    private void ActivateGameOver()
+    {
+        turnStartPanel.SetActive(false);
+        rollPhasePanel.SetActive(false);
+        gameOverPanel.SetActive(true);
+        SetTurnTitleVisible(false);
+
+        // center restart button
+        float buttonHeightHalf = restartButton.GetComponent<RectTransform>().rect.height / 2;
+        float buttonWidthHalf = restartButton.GetComponent<RectTransform>().rect.width / 2;
+        // move button
+        restartButton.transform.position = 
+            (new Vector2((Screen.width/2)+buttonWidthHalf, 
+                         (Screen.height/2)-buttonHeightHalf));
+
     }
 
 }

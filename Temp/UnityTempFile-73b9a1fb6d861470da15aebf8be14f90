@@ -190,12 +190,13 @@
 -define:UNITY_TEAM_LICENSE
 -define:ENABLE_VSTU
 'Assets/Scripts/AIController.cs'
-'Assets/Scripts/AILogicTester.cs'
+'Assets/Scripts/AIHelperChecks.cs'
 'Assets/Scripts/DiceRoll.cs'
 'Assets/Scripts/EnemyTurn.cs'
 'Assets/Scripts/GridSystem.cs'
 'Assets/Scripts/Piece.cs'
 'Assets/Scripts/PlayerTurn.cs'
+'Assets/Scripts/RestartGame.cs'
 'Assets/Scripts/StateController.cs'
 'Assets/Scripts/Tiles/FourPieceTile.cs'
 'Assets/Scripts/Tiles/FreezeTile.cs'

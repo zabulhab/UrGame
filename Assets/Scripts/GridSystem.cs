@@ -12,6 +12,9 @@ public class GridSystem : MonoBehaviour
     // The number of tiles that the piece can move on
     private static readonly int TILE_COUNT = 14;
 
+    // For debugging; whether or not to write status of grid to text file
+    internal bool GridWriteEnabled { get; private set; }
+
     [SerializeField]
     private GameObject board;
 
@@ -29,8 +32,12 @@ public class GridSystem : MonoBehaviour
         for (int i = 0; i < TILE_COUNT; i++)
         {
             accessibleTilesEnemy[i].TileNumber = i;
+            accessibleTilesPlayer[i].TileNumber = i;
         }
-        ClearBoardOutputFile(); // clear the board output file on restart
+        if (GridWriteEnabled)
+        {
+            ClearBoardOutputFile(); // clear the board output file on restart
+        }
     }
 
    /// <summary>

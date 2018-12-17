@@ -7,15 +7,11 @@ using UnityEngine;
 /// </summary>
 public class EnemyTurn : Turn
 {
-    // Set the side name for each piece
-    protected override void Start(){}
-
     /// <summary>
     /// Set side name and other info if we are using this side
     /// </summary>
     internal override void TurnSetup()
     {
-        // TODO: Make a new method to avoid code duplication in 2 turn objects
         turnSideName = SideName.EnemySide;
         int i = 0;
         foreach (Piece piece in allPieces)
@@ -35,8 +31,12 @@ public class EnemyTurn : Turn
     /// </summary>
     internal override void ActivatePhase()
     {
+        if (isFrozen)
+        {
+            SetFreezePanelVisible(true);
+        }
+
         rolledNumberText.SetActive(false); // TODO: make a real solution for this
-        //Debug.Log("Enemy phase activated");
 
         if (!AreAllPiecesFrozen() && PreRollOpenSpacesAvailable())
         {
@@ -50,7 +50,6 @@ public class EnemyTurn : Turn
 
     internal override void SetTurnRepeat()
     {
-        Debug.Log("BBB");
-        OpenRollUI();
+        ActivatePhase();
     }
 }
