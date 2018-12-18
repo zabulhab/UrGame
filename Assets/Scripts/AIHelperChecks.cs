@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 
 /// <summary>
 /// Contains static helper methods for getting killable statuses of a given piece
 /// so we can use it in AI logic
 /// </summary>
-public class AIHelperChecks : MonoBehaviour 
+public static class AIHelperChecks
 {
 
     /// <summary>

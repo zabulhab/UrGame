@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -10,73 +9,115 @@ public class Piece : MonoBehaviour
     // A type for the current status of the piece (undeployed, active, finished)
     internal enum PieceStatus { Undeployed, Deployed, Finished };
 
-    // The piece's actual current status
-    private PieceStatus status;
+    /// <summary>
+    /// The tile index we use to represent an "undeployed" piece not yet on one
+    /// </summary>
+    private const int UNDEPLOYED_IDX = -1;
 
+    /// <summary>
+    /// Number of accessible tiles per side
+    /// </summary>
+    private static readonly int TILE_COUNT = 14;
+
+    /// <summary>
+    /// This piece's current deployment status
+    /// </summary>
+    internal PieceStatus Status { get; set; }
+
+    /// <summary>
+    /// Gets or sets the name of the sidename for this piece
+    /// </summary>
+    /// <value>The name of the side.</value>
     public Turn.SideName SideName { get; set; }
 
-    // This piece's associated Turn object, and getter & setter
+    /// <summary>
+    /// This piece's associated Turn object, and getter & setter
+    /// </summary>
     private Turn associatedTurnObject;
 
-    // This piece's index in the list of start positions
-    // Used to place it in the correct place in the undeployed area
-    private int startIndex;
+    /// <summary>
+    /// This piece's index in the list of start positions
+    /// Used to place it in the correct place in the undeployed area
+    /// </summary>
+    /// <value>The start index.</value>
+    internal int StartIndex { get; set; }
 
+    /// <summary>
+    /// The color of the piece before highlighting, so we can change it back
+    /// </summary>
     private Color startColor;
 
-    // Reference to the grid
+    /// <summary>
+    /// The grid system that stores data about the tiles
+    /// </summary>
     [SerializeField]
     private GridSystem grid;
 
-    // The index of the tile the piece is currently on; ranges from 0-13
+    /// <summary>
+    /// Gets or sets index of the tile the piece is currently on; ranges from 0-13
+    /// </summary>
+    /// <value>The index of the current tile.</value>
     internal int CurrentTileIdx { get; set; }
 
-    // The tile that this piece is currently on
+    /// <summary>
+    /// The tile object that this piece is currently on
+    /// </summary>
     private Tile currentTile;
 
-    // Reference to the tiles on this side, 
-    // provided by the turn subclass this piece is in
+    /// <summary>
+    /// Reference to the tiles on this side, 
+    /// provided by the turn subclass this piece is in
+    /// </summary>
     private Tile[] tilesOnSide;
 
-    private static readonly int TILE_COUNT = 14;
-
-    // Reference to the tile we want to land on
+    /// <summary>
+    /// Reference to the tile that this piece wants to land on
+    /// </summary>
     private Tile tileDestination;
 
-    // The board-index of the tile we want to land on
+    /// <summary>
+    /// The board-index of the tile that this piece wants to land on
+    /// </summary>
     private int tileDestIndex;
 
-    // Whether or not to allow this piece to move. 
-    // True if associated turn is active.
-    // Set true when turn becomes activated.
-    // False if piece cannot be moved during a turn
-    private bool pieceCanMove;
+    /// <summary>
+    /// Whether or not to allow this piece to move. 
+    /// Set true when turn becomes activated and this piece meets requirements.
+    /// Set false if piece cannot be moved during the turn
+    /// </summary>
+    internal bool PieceCanMove { get; set; }
 
     private void Start()
     {
-        CurrentTileIdx = -1;
+        CurrentTileIdx = UNDEPLOYED_IDX; 
         startColor = GetComponent<Renderer>().material.color;
-        status = PieceStatus.Undeployed;
+        Status = PieceStatus.Undeployed;
     }
 
-
-    // Assign the associated turn object. Used while initializing
+    /// <summary>
+    /// Assign the associated turn object for this piece. 
+    /// Used while initializing that turn.
+    /// </summary>
+    /// <param name="turn">Turn.</param>
     internal void SetAssociatedTurnObject(Turn turn)
     {
         associatedTurnObject = turn;
     }
 
-    // Return the Turn associated with this piece
+    /// <summary>
+    /// Return the Turn associated with this piece
+    /// </summary>
+    /// <returns>The associated turn object.</returns>
     internal Turn GetAssociatedTurnObject()
     {
         return associatedTurnObject;
     }
 
     /// <summary>
-    /// Calculates & stores the target tile for this piece for when it moves
+    /// Calculates and stores the target tile for this piece for when it moves
     /// </summary>
     /// <param name="numberOfSpaces">Number of spaces.</param>
-    internal void SetNumSpacesToMove(int numberOfSpaces)
+    internal void SetTargetTile(int numberOfSpaces)
     {
         if (numberOfSpaces == 0)
         {
@@ -90,15 +131,13 @@ public class Piece : MonoBehaviour
             desiredIdx = 0;
         }
 
-        tileDestination =
-            grid.TileToLandOn
-                (desiredIdx,
-                 SideName);
+        tileDestination = grid.TileToLandOn(desiredIdx,SideName);
         tileDestIndex = desiredIdx;
     }
 
     /// <summary>
-    /// Returns the tile that the piece will be targeting if/when it moves.
+    /// Checks and returns the tile that the piece will be targeting if/when it moves.
+    /// Used to take a glimpse instead of storing data.
     /// </summary>
     internal Tile GetTargetTile(int numberOfSpaces)
     {
@@ -118,65 +157,91 @@ public class Piece : MonoBehaviour
     }
 
     /// <summary>
+    /// Moves the piece to a new tile farther on the board, or off of the board
+    /// </summary>
+    internal void MovePieceForward()
+    {
+        // Don't let pieces at end loop around
+        if (tileDestIndex > TILE_COUNT || tileDestIndex < CurrentTileIdx)
+        {
+            MoveToFinish();
+        }
+        // moving piece within board regularly
+        else
+        {
+            MoveToTargetTile();
+        }
+    }
+
+    /// <summary>
     /// Updates the transform position of the piece, 
     /// and updates the current tile index, as well.
     /// Also activates the function of the tile the piece lands on.
     /// </summary>
-    internal void MoveToTargetTile()
+    private void MoveToTargetTile()
     {
-        // Don't let it loop around
-        if (tileDestIndex > TILE_COUNT || tileDestIndex < CurrentTileIdx)
-        {
-            status = PieceStatus.Finished;
-            currentTile.RemovePiece(this);
-            this.Disappear();
-            associatedTurnObject.EndTurn();
-            if (associatedTurnObject.AreAllPiecesFinished())
-            {
-                associatedTurnObject.GameIsOver = true;
-            }
-            return;
-        }
-        int otherPiecesOnTile = tileDestination.GetNumPiecesOnTile();
+        // Stack on top of other pieces on the tile
+        int numOtherPiecesOnDestTile = tileDestination.GetNumPiecesOnTile();
         transform.position = new Vector3
                                 (tileDestination.transform.position.x,
-                                 ((0.6f) + 
-                                  (otherPiecesOnTile * GetComponent<Renderer>().bounds.size.y)),
+                                 ((0.6f) +
+                                  (numOtherPiecesOnDestTile * GetComponent<Renderer>().bounds.size.y)),
                                  tileDestination.transform.position.z);
+
+        // If the piece is not starting out, eg is on a tile already,
+        // then remove it from that tile
+        if (!(this.Status == PieceStatus.Undeployed))
+        {
+            currentTile.RemovePiece(this);
+        }
+        else // set undeployed piece to be deployed now
+        {
+            Status = PieceStatus.Deployed;
+        }
 
         // Update the current tile, current tile index, 
         // and the old tile's and new tile's lists
-
         CurrentTileIdx = tileDestIndex;
-
-        // TODO: Update this to use the undeployed status of the piece
-        // If the piece is not starting out, eg is on a tile already,
-        // then remove it from that tile
-        if (currentTile)
-        {
-            currentTile.RemovePiece(this);
-        }
         currentTile = tileDestination;
         currentTile.AddPiece(this);
-        status = PieceStatus.Deployed;
 
         // Tell the tile to activate any special behavior
         currentTile.ActivateTileFunction();
-
     }
 
+    /// <summary>
+    /// Used to move this piece off of the board
+    /// instead of regularly onto another tile
+    /// </summary>
+    private void MoveToFinish()
+    {
+        Status = PieceStatus.Finished;
+        currentTile.RemovePiece(this);
+
+        // If this was the last piece to finish
+        if (associatedTurnObject.AreAllPiecesFinished())
+        {
+            associatedTurnObject.ActivateGameOver();
+        }
+        else // end turn normally
+        {
+            associatedTurnObject.EndTurn();
+        }
+        this.Disappear();
+    }
+
+    /// <summary>
+    /// Used to check if a piece can move to a tile, given an input roll number
+    /// </summary>
+    /// <returns><c>true</c>, if piece can move to tile, <c>false</c> otherwise.</returns>
+    /// <param name="rolledNumber">Rolled number.</param>
     internal bool CheckPieceCanMoveToTile(int rolledNumber)
     {
-        //// if (get tile at piece position + spaces to move)
-        //Tile targetTile = piece.GetTargetTile(rolledNumber);
-        ////      has too many tiles of the same color on it already
-        //if (targetTile != null && (!targetTile.IsMaxNumSamePieceOnTop()))
-        //{
-        //    piece.SetPieceCanMove(true);
-        //    return true;
-        //}
-        //return false;
         Tile targetTile = this.GetTargetTile(rolledNumber);
+        if (this.Status == PieceStatus.Finished)
+        {
+            return false;
+        }
         if (targetTile != null && (!targetTile.IsMaxNumSamePieceOnTop()))
         {
             return true;
@@ -194,62 +259,34 @@ public class Piece : MonoBehaviour
         return false;
     }
 
-    // Makes a piece that has finished the board disappear
+    /// <summary>
+    /// Makes a piece that has finished disappear from the board,
+    /// both visually and functionally
+    /// </summary>
     private void Disappear()
     {
-        this.GetComponent<Renderer>().enabled = false;
-        //Destroy(this.gameObject);
+        this.gameObject.SetActive(false); // disable interaction and hide
     }
 
     /// <summary>
     /// Calls the highlight method on the mouse enter event if this 
-    /// piece is on the side that has a currently active team
+    /// piece is on the side that is currently active
     /// </summary>
     private void OnMouseEnter()
     {
         // If this piece is one that is ready to be moved
-        if (this.pieceCanMove)
+        if (this.PieceCanMove)
         {
             HighlightGreen();
         }
     }
 
+    /// <summary>
+    /// Unhighlights the piece
+    /// </summary>
     private void OnMouseExit()
     {
         UnHighlight();
-    }
-
-    /// <summary>
-    /// Whether or not this piece is able to be selected for movement.
-    /// Called from the associated Turn object.
-    /// </summary>
-    internal void SetPieceCanMove(bool canMove)
-    {
-        pieceCanMove = canMove;
-    }
-
-    internal bool GetPieceCanMove()
-    {
-        return pieceCanMove;
-    }
-
-    /// <summary>
-    /// Set this piece to its appropriate status.
-    /// Based on whether it is undeployed, deployed, or finished.
-    /// </summary>
-    /// <param name="newStatus">Changes piece to this status</param>
-    internal void SetPieceStatus(PieceStatus newStatus)
-    {
-        status = newStatus;
-    }
-
-    /// <summary>
-    /// Returns the deployment status of this piece. 
-    /// </summary>
-    /// <returns>The piece status.</returns>
-    internal Piece.PieceStatus GetPieceStatus()
-    {
-        return status;
     }
 
     ///<summary>
@@ -269,38 +306,15 @@ public class Piece : MonoBehaviour
     }
 
     /// <summary>
-    /// Kicks the piece back to its undeployed starting state. Called when the 
+    /// Kicks this piece back to its undeployed starting state. Called when the 
     /// active turn lands on a restart tile, with a 1/2 chance.
     /// </summary>
     internal void KickBackToStart()
     {
-        SetPieceStatus(PieceStatus.Undeployed);
-        MovePieceToStart();
-    }
-
-    /// <summary>
-    /// Sets the index of this piece in terms of undeployed starting position
-    /// </summary>
-    /// <param name="index">Index.</param>
-    internal void SetStartIndex(int index)
-    {
-        startIndex = index;
-    }
-
-    /// <summary>
-    /// Moves this piece into its starting position. Called from restart tiles.
-    /// </summary>
-    private void MovePieceToStart()
-    {
+        Status = PieceStatus.Undeployed;
         gameObject.transform.position =
-                      associatedTurnObject.pieceStartLocations[startIndex];
-        CurrentTileIdx = -1;
-    }
-
-    // TODO: Use for lerping the piece
-    private void Update()
-    {
-
+              associatedTurnObject.pieceStartLocations[StartIndex];
+        CurrentTileIdx = UNDEPLOYED_IDX;
     }
 
     /// <summary>

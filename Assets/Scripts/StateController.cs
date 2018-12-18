@@ -4,16 +4,18 @@ using UnityEditor;
 using UnityEngine;
 
 /// <summary>
-/// Controls 
+/// Handles setup and overall control flow of turns 
 /// </summary>
 public class StateController : MonoBehaviour
 {
     /// <summary>
-    /// Reference to the active Turn object
+    /// The turn that is currently active
     /// </summary>
     private Turn activeTurn;
 
-    // Reference to the inactive Turn object
+    /// <summary>
+    /// The turn that is currently inactive
+    /// </summary>
     private Turn inactiveTurn;
 
     /// <summary>
@@ -22,9 +24,9 @@ public class StateController : MonoBehaviour
     [SerializeField] private PlayerTurn playerTurn;
 
     /// <summary>
-    /// Reference to the instance of the opponent turn
+    /// Reference to the instance of the opponent turn, for manual 2P mode
     /// </summary>
-    [SerializeField] private EnemyTurn enemyTurn;
+    [SerializeField] private Turn enemyTurn;
 
     /// <summary>
     /// Reference to the instance of the computer turn
@@ -41,18 +43,17 @@ public class StateController : MonoBehaviour
     /// </summary>
     private Turn player2;
 
+    /// <summary>
+    /// The panel that switches between turns with the end turn button
+    /// </summary>
     [SerializeField]
     private GameObject phasePanel;
 
+    /// <summary>
+    /// The intial panel for choosing the game mode
+    /// </summary>
     [SerializeField]
     private GameObject chooseModePanel;
-
-    /// <summary>
-    /// Choose a random player one and make that the current turn
-    /// </summary>
-    private void Start()
-    {
-    }
 
     /// <summary>
     /// Called when the mode is selected. Handles setting UI active/inactive
@@ -85,8 +86,14 @@ public class StateController : MonoBehaviour
     /// <param name="opponentTurn">Which kind of opponent to use.</param>
     private void SetupTurns(Turn opponentTurn)
     {
-        opponentTurn.TurnSetup();
-        playerTurn.TurnSetup();
+        if (opponentTurn is AIController)
+        {
+            // Cast to AI first so we used overloaded instead of virtual method
+            opponentTurn = ((AIController)opponentTurn);
+        }
+
+        opponentTurn.TurnSetup(Turn.SideName.EnemySide);
+        playerTurn.TurnSetup(Turn.SideName.PlayerSide);
 
         activeTurn = ChooseStartSide(opponentTurn);
         player1 = activeTurn;

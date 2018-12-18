@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// The generic tile class, from which we derive each subclass of tile
+/// The abstract tile class, from which we derive each subclass of tile
 /// </summary>
 public abstract class Tile : MonoBehaviour //Scriptable Object?
 {
@@ -25,7 +24,8 @@ public abstract class Tile : MonoBehaviour //Scriptable Object?
     internal enum TileType { OnePiece, TwoPiece, FourPiece, Freeze, Repeat, Restart};
 
     /// <summary>
-    /// The tile type for this tile.
+    /// The tile type for this tile. 
+    /// Can be taken into consideration for AI in the future.
     /// </summary>
     /// <value>The type of tile.</value>
     internal TileType TypeOfTile { get; set; }
@@ -39,7 +39,8 @@ public abstract class Tile : MonoBehaviour //Scriptable Object?
     /// <summary>
     /// The ID for this tile, which has an E, P, or N,
     /// (enemy, player, or neutral side) and a number after.
-    /// Intended to be more readable as opposed to raw numbers.
+    /// Intended to be more readable as opposed to raw numbers
+    /// in the text file written to in GridSystem's WriteBoardStatusToFile method
     /// </summary>
     /// <value>The tile identifier.</value>
     internal string TileID { get; set; }
@@ -70,14 +71,20 @@ public abstract class Tile : MonoBehaviour //Scriptable Object?
     [SerializeField]
     private GameObject TileDescriptionPanel;
 
-    protected abstract void Start();
-
     /// <summary>
-    /// Sets the tile's function summary.
+    /// Used by all tile subclasses to set up info about this tile
     /// </summary>
-    protected void setSummary(string text)
+    /// <param name="summaryText">Summary text.</param>
+    /// <param name="tileType">Tile type.</param>
+    /// <param name="tileID">Tile identifier.</param>
+    /// <param name="maxNumSamePcs">Max number same pcs.</param>
+    internal virtual void Start(string summaryText, TileType tileType, string tileID, int maxNumSamePcs = 1)
     {
-        this.tileFunctionSummary = text;
+        PiecesOnTop = new List<Piece>();
+        this.tileFunctionSummary = summaryText;
+        TypeOfTile = tileType;
+        TileID = tileID;
+        maxNumberSamePiece = maxNumSamePcs;
     }
 
     /// <summary>
@@ -130,8 +137,8 @@ public abstract class Tile : MonoBehaviour //Scriptable Object?
         int numCurSamePiece = 0;
         foreach (Piece piece in PiecesOnTop)
         {
-            Turn.SideName pieceSide = piece.GetAssociatedTurnObject().getSideName();
-            if (pieceSide == stateController.GetActiveTurn().getSideName())
+            Turn.SideName pieceSide = piece.GetAssociatedTurnObject().TurnSideName;
+            if (pieceSide == stateController.GetActiveTurn().TurnSideName)
             {
                 numCurSamePiece++;
             }
@@ -156,8 +163,8 @@ public abstract class Tile : MonoBehaviour //Scriptable Object?
             List<Piece> piecesToRemove = new List<Piece>();
             foreach (Piece piece in PiecesOnTop)
             {
-                Turn.SideName pieceSide = piece.GetAssociatedTurnObject().getSideName();
-                if (pieceSide != stateController.GetActiveTurn().getSideName())
+                Turn.SideName pieceSide = piece.GetAssociatedTurnObject().TurnSideName;
+                if (pieceSide != stateController.GetActiveTurn().TurnSideName)
                 {
                     piece.KickBackToStart();
                     piecesToRemove.Add(piece);
@@ -183,7 +190,7 @@ public abstract class Tile : MonoBehaviour //Scriptable Object?
     }
 
     /// <summary>
-    /// Makes the title info window disappear
+    /// Makes the tile info window disappear
     /// </summary>
     private void OnMouseExit()
     {

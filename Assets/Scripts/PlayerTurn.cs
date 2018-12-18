@@ -1,61 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 
 /// <summary>
-/// The turn controller for the player
+/// The turn controller for the player. Contains a method that analyzes 
+/// the state of the pieces on this side for the AI's logic
 /// </summary>
 public class PlayerTurn :  Turn
 {
-    internal override void TurnSetup()
-    {
-        turnSideName = SideName.PlayerSide;
-        int i = 0;
-        foreach (Piece piece in allPieces)
-        {
-            piece.SideName = turnSideName;
-            piece.SetAssociatedTurnObject(this);
-
-            // store start location and index of each piece
-            pieceStartLocations.Add(piece.transform.position);
-            piece.SetStartIndex(i);
-            i++;
-        }
-    }
-
-    /// <summary>
-    /// Begins the player phase
-    /// </summary>
-    internal override void ActivatePhase()
-    {
-        if (isFrozen)
-        {
-            SetFreezePanelVisible(true);
-        }
-
-        // Write the grid status to a file, if desired
-        if (grid.GridWriteEnabled)
-        {
-            grid.WriteBoardStatusToFile();
-        }
-
-        rolledNumberText.SetActive(false); // get rid of old rolled number
-
-        if (!AreAllPiecesFrozen() && PreRollOpenSpacesAvailable())
-        {
-            OpenRollUI();
-        }
-        else
-        {
-            EndTurn();
-        }
-    }
-
-    internal override void SetTurnRepeat()
-    {
-        ActivatePhase();
-    }
-
     /// <summary>
     /// Provided a list of tiles that the enemy could be on for the next turn,
     /// returns a list of pieces that this playerturn is within range to kill
@@ -73,7 +23,7 @@ public class PlayerTurn :  Turn
             // Checks if any player piece can move to that tile
             foreach (Piece playerPiece in this.allPieces)
             {
-                if (playerPiece.GetPieceStatus()==Piece.PieceStatus.Deployed)
+                if (playerPiece.Status == Piece.PieceStatus.Deployed)
                 {
                     for (int i = 1; i < 4; i++)
                     {

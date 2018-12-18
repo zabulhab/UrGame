@@ -1,16 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿public class TwoPieceTile : Tile 
+{
 
-public class TwoPieceTile : Tile {
-
-    protected override void Start()
+    protected void Start()
     {
-        PiecesOnTop = new List<Piece>();
-        maxNumberSamePiece = 2;
-        setSummary("Two of your pieces can occupy this tile at a time.");
-        TypeOfTile = TileType.TwoPiece;
-        TileID = gameObject.name;
+        base.Start("Two of your pieces can occupy this tile at a time.", 
+                    TileType.TwoPiece, gameObject.name, 2);
     }
 
     internal override void ActivateTileFunction()

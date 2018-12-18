@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-using UnityEditor;
 
 /// <summary>
 /// Stores a list and sublists of all tiles on the board
@@ -12,11 +10,16 @@ public class GridSystem : MonoBehaviour
     // The number of tiles that the piece can move on
     private static readonly int TILE_COUNT = 14;
 
-    // For debugging; whether or not to write status of grid to text file
-    internal bool GridWriteEnabled { get; private set; }
+    /// <summary>
+    /// Gets or sets a value indicating whether this <see cref="T:GridSystem"/>'s
+    /// grid write function is enabled or not.
+    /// Used for debugging.
+    /// </summary>
+    /// <value><c>true</c> if grid write enabled; otherwise, <c>false</c>.</value>
+    internal bool GridWriteEnabled { get; set; }
 
     [SerializeField]
-    private GameObject board;
+    private readonly GameObject board;
 
     [SerializeField]
     private Tile[] allTiles = new Tile[20];
@@ -127,7 +130,7 @@ public class GridSystem : MonoBehaviour
         writer.Close();
 
         //Re-import the file to update the reference in the editor
-        AssetDatabase.ImportAsset(path);
+        //AssetDatabase.ImportAsset(path);
         TextAsset asset = (TextAsset)Resources.Load("test");
 
     }

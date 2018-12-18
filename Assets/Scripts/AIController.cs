@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq; // for sorting
-using System;
 
 public class AIController : Turn
 {
@@ -23,30 +22,16 @@ public class AIController : Turn
     /// Reference to the player turn for AI decision-making purposes
     /// </summary>
     private PlayerTurn playerSide;
-    
-    /// <summary>
-    /// Set side name and other info if we are using this side
-    /// </summary>
-    internal override void TurnSetup()
+
+    internal void TurnSetup()
     {
-        turnSideName = SideName.EnemySide;
-
-        int i = 0;
-        foreach (Piece piece in allPieces)
-        {
-            piece.SideName = turnSideName;
-            piece.SetAssociatedTurnObject(this);
-
-            // store start location and index of each piece
-            pieceStartLocations.Add(piece.transform.position);
-            piece.SetStartIndex(i);
-            i++;
-        }
+        base.TurnSetup(SideName.EnemySide);
     }
 
     /// <summary>
-    /// Specific to the AI Turn setup. Gives a reference to the player side,
-    /// so that we can analyze its pieces for our decision-making logic.
+    /// Specific to the AI Turn setup in the statecontroller. 
+    /// Gives a reference to the player side, so that we can
+    /// analyze its pieces for our decision-making logic.
     /// </summary>
     /// <param name="playerTurn">Player turn.</param>
     internal void AssignPlayerRef(PlayerTurn playerTurn)
@@ -55,7 +40,7 @@ public class AIController : Turn
     }
 
     /// <summary>
-    /// Used by the movePieceCouroutine. Waits before moving a piece.
+    /// Used upon activating the phase. Waits before moving a piece.
     /// </summary>
     /// <returns>The to move piece.</returns>
     private IEnumerator WaitAndTryMovePiece()
@@ -71,6 +56,7 @@ public class AIController : Turn
         }
         else
         {
+            // Wait for a bit even if we aren't going to move a piece
             yield return new WaitForSeconds(.5f);
         }
         // End turn normally unless AI landed on a repeat tile
@@ -85,15 +71,25 @@ public class AIController : Turn
         }
     }
 
+    /// <summary>
+    /// Overrides the default virtual method ActivatePhase in Turn
+    /// so we can use a coroutine and other AI-exclusive features.
+    /// </summary>
     internal override void ActivatePhase()
     {
         if (isFrozen)
         {
             SetFreezePanelVisible(true);
         }
-        DisableTurnStartPanel();
-        rolledNumberText.SetActive(false); // TODO: make an elegant solution for this
-        // If turn end disabled last time because of repeat tile, enable ending again
+
+        // Disables the turn end panel, because the AI should end the turn
+        // on its own without the user having to click on anything.
+        // The same applies for the rolled number
+        turnEndPanel.SetActive(false);
+        rolledNumberText.SetActive(false);
+
+        // If turn end disabled last time because of repeat tile, 
+        // enable auto-ending again
         if (turnEndDisabled == true)
         {
             turnEndDisabled = false;
@@ -110,9 +106,9 @@ public class AIController : Turn
         Piece piece = GetIdealPieceToMove();
         if (piece != null)
         {
-            piece.SetNumSpacesToMove(rolledNumber);
-            ClickSFX.Play(0); // play move sound
-            piece.MoveToTargetTile();
+            piece.SetTargetTile(rolledNumber);
+            clickSFX.Play(0); // play move sound
+            piece.MovePieceForward();
         }
     }
 
@@ -175,10 +171,6 @@ public class AIController : Turn
             pieceToTileTypeMap.Add(piece, tileName);
         }
 #endregion local variables setup
-        // make <tileType, piece[]> dictionary that has null for pieces, 
-        // unless a piece will be able to land on that tile type
-        // if multiple pieces will be able to land on that tile type, 
-        // then check how close player piece is
 
         // Default best piece is the one that is farthest ahead on the board
         Piece bestPiece = piecesDescendingDistList.ElementAt(0).Key;
@@ -216,51 +208,9 @@ public class AIController : Turn
                 bestPiece = curPiece;
                 killableStatsCurBestPiece = killableStatsThisPiece;
             }
-            //switch (tileType)
-            //{
-            //    // Kick out player piece #1 priority if player winning
-            //    // check how likely piece if can be killed after
-            //    // Order risky to least risky behavior?
-            //    // Weigh risks when 
-            //    // TODO: make & call GetBoardValuePlayerSide
-            //    case Tile.TileType.OnePiece:
-            //        break;
-            //    case Tile.TileType.TwoPiece:
-            //        break;
-            //    case Tile.TileType.FourPiece:
-            //        break;
-            //    case Tile.TileType.Freeze:
-            //        // 2nd Most likely
-            //        break;
-            //    case Tile.TileType.Repeat:
-            //        // Most likely
-            //        bestPiece = curPiece;
-            //        break;
-            //    case Tile.TileType.Restart:
-            //        // Least likely
-            //        break;
-            //}
         }
 
         return bestPiece;
-
-        // make a list of pieces to move
-        // get potential board value for each, by adding to current one
-        // order by highest to lowest move value
-        // make category for each move?
-
-        // if no pieces in shared middle section:
-        // a move has the highest value if it lands on a repeat tile
-        // if pieces in shared middle section:
-        // if within 3 spaces of a player piece, prioritize moving it
-        // pieces in the finish strip have a lower priority
-
-        // if the CPUBoardVal is significantly higher, there is a lower chance of taking risks
-        // less likely to move pieces to be near player piece, eg jumping 
-        // on a piece to kill it then being in a vulnerable spot
-        // player pieces on board being frozen next turn has higher value
-        // the further the player pieces are on the board
-        // prioritize freezing over repeat tile when the CPUBoardVal is lower
     }
 
     /// <summary>
@@ -399,7 +349,7 @@ public class AIController : Turn
 
         foreach (Piece piece in allPieces)
         {
-            if (piece.GetPieceStatus() == Piece.PieceStatus.Finished)
+            if (piece.Status == Piece.PieceStatus.Finished)
             {
                 continue;
             }
@@ -413,7 +363,7 @@ public class AIController : Turn
             }
             else // it is frozen
             {
-                if (piece.GetPieceStatus() == Piece.PieceStatus.Undeployed)
+                if (piece.Status == Piece.PieceStatus.Undeployed)
                 {
                     tileDict.Add(piece, piece.GetTargetTile(rolledNum));
                 }
@@ -496,7 +446,7 @@ public class AIController : Turn
     }
 
     /// <summary>
-    /// Disables the turn ending for this turn
+    /// Disables the auto turn-ending for this turn for repeat tiles
     /// </summary>
     internal override void SetTurnRepeat()
     {

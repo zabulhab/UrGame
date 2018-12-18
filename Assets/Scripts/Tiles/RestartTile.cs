@@ -1,14 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-/// <summary>
+﻿/// <summary>
 /// Moves the piece that landed on it back to its 
 /// starting position, with a 50-50 chance. 
-/// TODO: Add rolling visualization to this chance.
+/// TODO: Add a rolling visualization to this chance.
 /// </summary>
 public class RestartTile : Tile 
 {
+    protected void Start()
+    {
+        base.Start("You might go back to start with a 50% chance. Holds one piece.",
+                                            TileType.Restart, gameObject.name);
+    }
 
     /// <summary>
     /// Used to make a time delay before kicking a piece back to start.
@@ -21,15 +22,6 @@ public class RestartTile : Tile
         topMostPiece.KickBackToStart();
         this.RemovePiece(topMostPiece);
         stateController.GetActiveTurn().EndTurn();
-    }
-
-    protected override void Start()
-    {
-        PiecesOnTop = new List<Piece>();
-        maxNumberSamePiece = 1;
-        setSummary("You might go back to start with a 50% chance. Holds one piece.");
-        TypeOfTile = TileType.Restart;
-        TileID = gameObject.name;
     }
 
     internal override void ActivateTileFunction()

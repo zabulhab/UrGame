@@ -1,99 +1,178 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
 /// <summary>
-/// The basic turn class, from which we derive the player and enemy turn classes
+/// The basic turn class, from which we create the player and enemy turns for 
+/// manual 2p mode, and also the AI controller for the vs CPU mode. PlayerTurn
+/// derives from this class, while the manual 2p mode enemy is an instance of this.
 /// </summary>
-public abstract class Turn : MonoBehaviour
+public class Turn : MonoBehaviour
 {
     [SerializeField]
     protected GridSystem grid;
 
-    // Reference to the diceroller class so we can 
-    // use its Roll() method (no instance needed)
-    public static DiceRoll DiceRoller;
-
+    /// <summary>
+    /// The click sfx.
+    /// </summary>
     [SerializeField]
-    protected AudioSource ClickSFX;
-
-    internal bool GameIsOver { get; set; }
+    protected AudioSource clickSFX;
 
     // The total number of pieces per side
     private static readonly int PIECE_COUNT = 7;
 
-    // A list of all pieces that can be moved for this side
+    /// <summary>
+    /// A list of all pieces that this turn starts off with
+    /// </summary>
     [SerializeField]
     [Header("Don't change size from 7!")]
     protected List<Piece> allPieces = new List<Piece>();
 
-    // List of starting locations for pieces
+    /// <summary>
+    /// List of starting locations for pieces, so they can teleport back
+    /// </summary>
     internal List<Vector3> pieceStartLocations = new List<Vector3>();
 
+    /// <summary>
+    /// The piece that the user clicks on that will move
+    /// </summary>
     private Piece selectedPiece;
 
-    // The last number that the user has rolled
+    /// <summary>
+    /// The last number that has been rolled on this side's turn.
+    /// </summary>
     protected int rolledNumber;
 
-    // TODO: Rename this to turnEndPanel
-    // Displays at the end of the turn; used to start the other player's phase
+    /// <summary>
+    /// Displays at the end of the turn; used to end 
+    /// this phase and start the other player's phase
+    /// </summary>
     [SerializeField]
-    private GameObject turnStartPanel;
+    protected GameObject turnEndPanel;
 
+    /// <summary>
+    /// The panel that shows up for the user to roll the dice
+    /// </summary>
     [SerializeField]
     private GameObject rollPhasePanel;
 
-    [SerializeField]
-    private GameObject movePhasePanel;
-
+    /// <summary>
+    /// The light blue panel that indicates that a turn is currently frozen
+    /// </summary>
     [SerializeField]
     private GameObject freezeBGPanel;
 
-    // The panel to display when this turn ends the game
+    /// <summary>
+    /// The panel to display when this turn ends the game
+    /// </summary>
     [SerializeField]
     private GameObject gameOverPanel;
 
-    // The button that restarts the game. Moves to center on game over
+    /// <summary>
+    /// The button that restarts the game. Moves to center on game over
+    /// </summary>
     [SerializeField]
     private GameObject restartButton;
 
-    // Displays the turn name on the top of the screen.
-    // Always visible while this turn is active
+    /// <summary>
+    /// Displays the turn name on the top of the screen.
+    /// Always visible while this turn is active
+    /// </summary>
     [SerializeField]
     private GameObject turnTitleText;
 
-    // Reference to the text object that displays the rolled number.
-    // Right now, both sides share one object for this
+    /// <summary>
+    /// Reference to the text object that displays the
+    /// rolled number, shared by both sides
+    /// </summary>
     [SerializeField]
     protected GameObject rolledNumberText;
 
-    // Whether or not the user is allowed to click on a piece yet to move it.
-    // This is active only after rolling the dice
+    /// <summary>
+    /// Whether or not the user is allowed to click on a piece yet to move it.
+    /// This is active only after rolling the dice
+    /// </summary>
+    /// <value><c>true</c> if piece selection phase; otherwise, <c>false</c>.</value>
     internal bool PieceSelectionPhase { get; set; }
 
-    // Can either be "PlayerSide" or "EnemySide". Used
-    // to know which grid spaces to access
+    /// <summary>
+    /// Can either be "PlayerSide" or "EnemySide". Used
+    /// to know which grid spaces to access
+    /// </summary>
     [HideInInspector]
     public enum SideName { PlayerSide, EnemySide };
 
-    // side name of this turn
-    protected SideName turnSideName;
+    /// <summary>
+    /// The name of this side
+    /// </summary>
+    internal SideName TurnSideName;
 
     // Whether or not this side has been frozen from 
     // moving pieces already on the board. Lasts one turn.
     protected bool isFrozen;
 
-    internal abstract void TurnSetup();
+    /// <summary>
+    /// Gets or sets a value indicating whether the game is over. 
+    /// Used by AI to avoid auto-switching the turn after the game is finished.
+    /// </summary>
+    /// <value><c>true</c> if game is over; otherwise, <c>false</c>.</value>
+    internal bool GameIsOver { get; set; }
+
+
+    /// <summary>
+    /// Sets up this turn's information. Used by all sides, with 
+    /// different turn side names passed in through overloading
+    /// </summary>
+    /// <param name="sideName">Side name.</param>
+    internal virtual void TurnSetup(SideName sideName)
+    {
+        this.TurnSideName = sideName;
+        int i = 0;
+        foreach (Piece piece in allPieces)
+        {
+            piece.SideName = TurnSideName;
+            piece.SetAssociatedTurnObject(this);
+
+            // store start location and index of each piece
+            pieceStartLocations.Add(piece.transform.position);
+            piece.StartIndex = i;
+            i++;
+        }
+    }
 
     /// <summary>
     /// Begins the player phase by opening the initial panel.
     /// Called from the StateController's SwitchTurn method.
     /// </summary>
-    internal abstract void ActivatePhase();
+    internal virtual void ActivatePhase()
+    {
+        if (isFrozen)
+        {
+            SetFreezePanelVisible(true);
+        }
 
-    // Checks if a player clicked on a piece, and changes the selected piece
-    // to that one
+        // Write the grid status to a file, if desired
+        if (grid.GridWriteEnabled)
+        {
+            grid.WriteBoardStatusToFile();
+        }
+
+        rolledNumberText.SetActive(false); // get rid of old rolled number
+
+        if (!AreAllPiecesFrozen() && PreRollOpenSpacesAvailable())
+        {
+            OpenRollUI();
+        }
+        else
+        {
+            EndTurn();
+        }
+    }
+
+    /// <summary>
+    /// Checks if a player clicked on a piece, and changes the selected piece
+    /// to that one
+    /// </summary>
     private void Update()
     {
         // if player clicks during selection phase
@@ -113,16 +192,16 @@ public abstract class Turn : MonoBehaviour
                     if (allPieces.Contains(hitPiece))
                     {
                         // if it should be able to move
-                        if (!isFrozen && hitPiece.GetPieceCanMove() ||
-                           isFrozen && (hitPiece.GetPieceStatus() ==
+                        if (!isFrozen && hitPiece.PieceCanMove ||
+                           isFrozen && (hitPiece.Status ==
                                               Piece.PieceStatus.Undeployed) &&
-                                                    hitPiece.GetPieceCanMove())
+                                                    hitPiece.PieceCanMove)
                         {
                             // Move the piece (and possibly end the turn)
 
                             selectedPiece = hitPiece;
                             rolledNumberText.SetActive(false);
-                            ClickSFX.Play(0); // play the SFX
+                            clickSFX.Play(0); // play the SFX
                             MovePiece();
 
                             // Tile Function will now activate.
@@ -146,20 +225,6 @@ public abstract class Turn : MonoBehaviour
     }
 
     /// <summary>
-    /// Gets the side name enum of this side.
-    /// </summary>
-    /// <returns>The side name.</returns>
-    internal Turn.SideName getSideName()
-    {
-        return turnSideName;
-    }
-
-    protected void DisableTurnStartPanel()
-    {
-        turnStartPanel.SetActive(false);
-    }
-
-    /// <summary>
     /// Sets the freeze pane to visible or invisible
     /// </summary>
     protected void SetFreezePanelVisible(bool visibleStatus)
@@ -172,17 +237,8 @@ public abstract class Turn : MonoBehaviour
     /// </summary>
     public void OpenRollUI()
     {
-        turnStartPanel.SetActive(false);
+        turnEndPanel.SetActive(false);
         rollPhasePanel.SetActive(true);
-    }
-
-    /// <summary>
-    /// Brings up the Panel that waits for the player to move a piece.
-    /// Called after any piece has been selected
-    /// </summary>
-    private void OpenMoveUI()
-    {
-        movePhasePanel.SetActive(true);
     }
 
     // Set the title of the turn to showing/hidden in the UI
@@ -191,9 +247,6 @@ public abstract class Turn : MonoBehaviour
         turnTitleText.SetActive(activeStatus);
     }
 
-    // TODO: Make two separate panels so you can end one phase
-    // and begin another from the same button press, linking
-    // the appropriate turns by dragging them
     /// <summary>
     /// Takes away the movement UI, signalling the player turn's end.
     /// Activated by landing on tiles other than repeat tiles, or 
@@ -203,10 +256,10 @@ public abstract class Turn : MonoBehaviour
     public void EndTurn(bool AITurnEnded = false, StateController phaseController = null)
     {
         SetFreezePanelVisible(false);
+        turnEndPanel.SetActive(true);
+
         UnfreezeBoardPieces();
-        movePhasePanel.SetActive(false);
-        turnStartPanel.SetActive(true);
-        if (AITurnEnded) // bypass having to press the turn end button
+        if (AITurnEnded) // bypass having to press the turn end button with AI
         {
             if (!GameIsOver)
                 phaseController.SwitchTurn();
@@ -214,10 +267,6 @@ public abstract class Turn : MonoBehaviour
         // Disable clicking pieces
         PieceSelectionPhase = false;
         SetAllPiecesUnSelectable();
-        if (GameIsOver)
-        {
-            ActivateGameOver();
-        }
     }
 
     /// <summary>
@@ -255,7 +304,7 @@ public abstract class Turn : MonoBehaviour
         {
             foreach (Piece piece in allPieces)
             {
-                piece.SetPieceCanMove(piece.CheckPieceCanMoveToTile(rolledNumber));
+                piece.PieceCanMove = piece.CheckPieceCanMoveToTile(rolledNumber);
             }
 
         }
@@ -270,9 +319,9 @@ public abstract class Turn : MonoBehaviour
             {
                 foreach (Piece piece in allPieces)
                 {
-                    if (piece.GetPieceStatus() == Piece.PieceStatus.Undeployed)
+                    if (piece.Status == Piece.PieceStatus.Undeployed)
                     {
-                        piece.SetPieceCanMove(piece.CheckPieceCanMoveToTile(rolledNumber));
+                        piece.PieceCanMove = piece.CheckPieceCanMoveToTile(rolledNumber);
                     }
                 }
             }
@@ -286,38 +335,9 @@ public abstract class Turn : MonoBehaviour
     {
         foreach (Piece piece in allPieces)
         {
-            piece.SetPieceCanMove(false);
+            piece.PieceCanMove = false;
         }
     }
-
-    //protected bool CheckPieceCanMoveToTile(Piece piece)
-    //{
-    //    //// if (get tile at piece position + spaces to move)
-    //    //Tile targetTile = piece.GetTargetTile(rolledNumber);
-    //    ////      has too many tiles of the same color on it already
-    //    //if (targetTile != null && (!targetTile.IsMaxNumSamePieceOnTop()))
-    //    //{
-    //    //    piece.SetPieceCanMove(true);
-    //    //    return true;
-    //    //}
-    //    //return false;
-    //    Tile targetTile = piece.GetTargetTile(rolledNumber);
-    //    if (targetTile != null && (!targetTile.IsMaxNumSamePieceOnTop()))
-    //    {
-    //        return true;
-    //    }
-    //    // If this piece is at the end of the board and
-    //    // theoretically targeting a tile at the beginning 
-    //    // of the board that has a piece on it already
-    //    else if (targetTile != null && (targetTile.IsMaxNumSamePieceOnTop()))
-    //    {
-    //        if (targetTile.TileNumber < piece.CurrentTileIdx)
-    //        {
-    //            return true;
-    //        }
-    //    }
-    //    return false;
-    //}
 
     /// <summary>
     /// If user has not rolled a 0, sets the appropriate pieces to be selectable
@@ -343,7 +363,7 @@ public abstract class Turn : MonoBehaviour
     /// </summary>
     public void MovePiece()
     {
-        selectedPiece.SetNumSpacesToMove(rolledNumber);
+        selectedPiece.SetTargetTile(rolledNumber);
         selectedPiece.UnHighlight();
         SetAllPiecesUnSelectable(); // disable selecting other pieces
 
@@ -351,14 +371,18 @@ public abstract class Turn : MonoBehaviour
 
         if (rolledNumber != 0)
         {
-            selectedPiece.MoveToTargetTile();
+            selectedPiece.MovePieceForward();
         }
     }
 
     /// <summary>
     /// Used by the repeat tiles. Activates this turn again.
+    /// Overridden in the AI controller.
     /// </summary>
-    internal abstract void SetTurnRepeat();
+    internal virtual void SetTurnRepeat()
+    {
+        ActivatePhase();
+    }
 
     /// <summary>
     /// Called when the other player lands on an imprisonment tile. 
@@ -371,9 +395,9 @@ public abstract class Turn : MonoBehaviour
         SetFreezePanelVisible(true);
         foreach (Piece piece in allPieces)
         {
-            if (piece.GetPieceStatus() == Piece.PieceStatus.Undeployed)
+            if (piece.Status == Piece.PieceStatus.Undeployed)
             {
-                piece.SetPieceCanMove(false);
+                piece.PieceCanMove = false;
             }
         }
     }
@@ -388,9 +412,9 @@ public abstract class Turn : MonoBehaviour
             isFrozen = false;
             foreach (Piece piece in allPieces)
             {
-                if (piece.GetPieceStatus() == Piece.PieceStatus.Undeployed)
+                if (piece.Status == Piece.PieceStatus.Undeployed)
                 {
-                    piece.SetPieceCanMove(true);
+                    piece.PieceCanMove = true;
                 }
             }
         }
@@ -407,7 +431,7 @@ public abstract class Turn : MonoBehaviour
             foreach (Piece piece in allPieces)
             {
                 // Return false if there are any undeployed pieces
-                if (piece.GetPieceStatus() == Piece.PieceStatus.Undeployed)
+                if (piece.Status == Piece.PieceStatus.Undeployed)
                 {
                     return false;
                 }
@@ -437,7 +461,7 @@ public abstract class Turn : MonoBehaviour
                 (!targetTile.IsMaxNumSamePieceOnTop()))
             {
                 // ignore if the piece is deployed already during frozen turn
-                if (isFrozen && !(piece.GetPieceStatus() == Piece.PieceStatus.Undeployed))
+                if (isFrozen && !(piece.Status == Piece.PieceStatus.Undeployed))
                 {
                     ;
                 }
@@ -457,7 +481,8 @@ public abstract class Turn : MonoBehaviour
     /// meaning that the tile does not already have the maximum number
     /// of same-side pieces on top of it.
     /// </summary>
-    /// <returns><c>true</c>, if roll is movement possible was pred, <c>false</c> otherwise.</returns>
+    /// <returns><c>true</c>, if spaces available for any possible roll, 
+    ///                                 <c>false</c> otherwise.</returns>
     internal bool PreRollOpenSpacesAvailable()
     {
         foreach (Piece piece in allPieces)
@@ -471,7 +496,7 @@ public abstract class Turn : MonoBehaviour
                     (!targetTile.IsMaxNumSamePieceOnTop()))
                 {
                     // ignore if the piece is deployed already during frozen turn
-                    if (isFrozen && !(piece.GetPieceStatus() == Piece.PieceStatus.Undeployed))
+                    if (isFrozen && !(piece.Status == Piece.PieceStatus.Undeployed))
                     {
                         ;
                     }
@@ -487,7 +512,7 @@ public abstract class Turn : MonoBehaviour
 
     /// <summary>
     /// Returns the value of the current state of the board, for the CPU's side.
-    /// Intended for use in determining risk factor for the AI.
+    /// Intended for future use in accounting for risk factor with the AI.
     /// </summary>
     /// <returns>The value for this side.</returns>
     internal int GetSideValue()
@@ -495,7 +520,7 @@ public abstract class Turn : MonoBehaviour
         // check if no piece is deployed yet
         foreach (Piece piece in allPieces)
         {
-            if (piece.GetPieceStatus() != Piece.PieceStatus.Undeployed)
+            if (piece.Status != Piece.PieceStatus.Undeployed)
             {
                 break;
             }
@@ -503,7 +528,7 @@ public abstract class Turn : MonoBehaviour
         int totalBoardValue = 0;
         foreach (Piece piece in allPieces)
         {
-            switch (piece.GetPieceStatus())
+            switch (piece.Status)
             {
                 case Piece.PieceStatus.Finished:
                     totalBoardValue += 15;
@@ -529,7 +554,7 @@ public abstract class Turn : MonoBehaviour
         foreach (Piece piece in allPieces)
         {
             // if any piece is not finished yet
-            if (piece.GetPieceStatus() != Piece.PieceStatus.Finished)
+            if (piece.Status != Piece.PieceStatus.Finished)
             {
                 return false;
             }
@@ -541,12 +566,14 @@ public abstract class Turn : MonoBehaviour
     /// <summary>
     /// Brings up the UI for when the game has ended.
     /// </summary>
-    private void ActivateGameOver()
+    internal void ActivateGameOver()
     {
-        turnStartPanel.SetActive(false);
+        // close unneccesary UI and just show game over UI
+        turnEndPanel.SetActive(false);
         rollPhasePanel.SetActive(false);
-        gameOverPanel.SetActive(true);
+        rolledNumberText.SetActive(false);
         SetTurnTitleVisible(false);
+        gameOverPanel.SetActive(true);
 
         // center restart button
         float buttonHeightHalf = restartButton.GetComponent<RectTransform>().rect.height / 2;

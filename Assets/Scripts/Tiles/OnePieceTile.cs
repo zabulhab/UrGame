@@ -1,16 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿public class OnePieceTile : Tile 
+{
 
-public class OnePieceTile : Tile {
-
-    protected override void Start()
+    protected void Start()
     {
-        PiecesOnTop = new List<Piece>();
-        maxNumberSamePiece = 1;
-        setSummary("Only one of your pieces can occupy this tile at a time.");
-        TypeOfTile = TileType.OnePiece;
-        TileID = gameObject.name;
+        base.Start("Only one of your pieces can occupy this tile at a time.", TileType.OnePiece, gameObject.name);
     }
 
     internal override void ActivateTileFunction()

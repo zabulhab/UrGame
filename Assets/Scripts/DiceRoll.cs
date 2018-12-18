@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine; // for randomness
 
 /// <summary>
-/// The basic dice rolling class
+/// The basic dice-rolling class
 /// </summary>
-public class DiceRoll : MonoBehaviour
+public static class DiceRoll
 {
    /// <summary>
    /// Implements the rolling of the dice.
@@ -13,7 +11,7 @@ public class DiceRoll : MonoBehaviour
    /// <returns>The random number rolled</returns>
     public static int Roll()
     {
-        int rolledNum = Random.Range(1, 4);
+        int rolledNum = Random.Range(1,4);
         return rolledNum;
     }
 }
