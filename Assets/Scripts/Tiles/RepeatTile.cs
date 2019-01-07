@@ -1,5 +1,5 @@
 ﻿/// <summary>
-/// A tile that gives another turn to the player who landed on it
+/// This tile gives another turn to the player who landed on it
 /// </summary>
 public class RepeatTile : Tile
 {

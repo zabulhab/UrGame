@@ -6,6 +6,7 @@ using UnityEngine;
 /// </summary>
 public class Piece : MonoBehaviour
 {
+
     // A type for the current status of the piece (undeployed, active, finished)
     internal enum PieceStatus { Undeployed, Deployed, Finished };
 
@@ -31,7 +32,7 @@ public class Piece : MonoBehaviour
     public Turn.SideName SideName { get; set; }
 
     /// <summary>
-    /// This piece's associated Turn object, and getter & setter
+    /// This piece's associated Turn object, and getter and setter
     /// </summary>
     private Turn associatedTurnObject;
 
@@ -133,6 +134,17 @@ public class Piece : MonoBehaviour
 
         tileDestination = grid.TileToLandOn(desiredIdx,SideName);
         tileDestIndex = desiredIdx;
+    }
+
+    /// <summary>
+    /// Tries to have the associated turn move this piece if it is clicked
+    /// </summary>
+    private void OnMouseDown()
+    {
+        if (PieceCanMove)
+        {
+            associatedTurnObject.PieceHitTryMove(this);
+        }
     }
 
     /// <summary>

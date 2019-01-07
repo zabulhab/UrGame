@@ -307,7 +307,6 @@
     <Compile Include="Assets\Scripts\AIController.cs" />
     <Compile Include="Assets\Scripts\AIHelperChecks.cs" />
     <Compile Include="Assets\Scripts\DiceRoll.cs" />
-    <Compile Include="Assets\Scripts\EnemyTurn.cs" />
     <Compile Include="Assets\Scripts\GridSystem.cs" />
     <Compile Include="Assets\Scripts\Piece.cs" />
     <Compile Include="Assets\Scripts\PlayerTurn.cs" />
@@ -315,7 +314,6 @@
     <Compile Include="Assets\Scripts\StateController.cs" />
     <Compile Include="Assets\Scripts\Tiles\FourPieceTile.cs" />
     <Compile Include="Assets\Scripts\Tiles\FreezeTile.cs" />
-    <Compile Include="Assets\Scripts\Tiles\NormalTile.cs" />
     <Compile Include="Assets\Scripts\Tiles\OnePieceTile.cs" />
     <Compile Include="Assets\Scripts\Tiles\RepeatTile.cs" />
     <Compile Include="Assets\Scripts\Tiles\RestartTile.cs" />

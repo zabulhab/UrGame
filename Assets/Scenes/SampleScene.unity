@@ -1093,7 +1093,7 @@ GameObject:
   - component: {fileID: 513051999}
   - component: {fileID: 513052001}
   m_Layer: 5
-  m_Name: PhasePanel
+  m_Name: TurnEndPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2637,7 +2637,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1197352738
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3016,7 +3016,6 @@ MonoBehaviour:
   playerTurn: {fileID: 1299988531}
   enemyTurn: {fileID: 1299988530}
   cpuTurn: {fileID: 1299988534}
-  phasePanel: {fileID: 513051998}
   chooseModePanel: {fileID: 567086423}
 --- !u!4 &1299988533
 Transform:

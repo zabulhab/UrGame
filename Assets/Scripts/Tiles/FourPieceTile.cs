@@ -1,4 +1,7 @@
-﻿public class FourPieceTile : Tile 
+﻿/// <summary>
+/// This tile can hold four pieces of the same side
+/// </summary>
+public class FourPieceTile : Tile 
 {
 
     protected void Start()

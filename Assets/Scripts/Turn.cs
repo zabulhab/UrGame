@@ -170,47 +170,17 @@ public class Turn : MonoBehaviour
     }
 
     /// <summary>
-    /// Checks if a player clicked on a piece, and changes the selected piece
+    /// Called by a hit piece; tries to move it
     /// to that one
     /// </summary>
-    private void Update()
+    internal void PieceHitTryMove(Piece hitPiece)
     {
-        // if player clicks during selection phase
-        if (PieceSelectionPhase && Input.GetMouseButtonDown(0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
 
-            // If we hit something, select that piece and open the move UI
-            if (Physics.Raycast(ray, out hit))
-            {
-                // If we hit a piece
-                if (hit.transform.gameObject.GetComponent<Piece>() != null)
-                {
-                    Piece hitPiece = hit.transform.gameObject.GetComponent<Piece>();
-                    // If the piece is on our side
-                    if (allPieces.Contains(hitPiece))
-                    {
-                        // if it should be able to move
-                        if (!isFrozen && hitPiece.PieceCanMove ||
-                           isFrozen && (hitPiece.Status ==
-                                              Piece.PieceStatus.Undeployed) &&
-                                                    hitPiece.PieceCanMove)
-                        {
-                            // Move the piece (and possibly end the turn)
+        selectedPiece = hitPiece;
+        rolledNumberText.SetActive(false);
+        clickSFX.Play(0); // play the SFX
+        MovePiece();
 
-                            selectedPiece = hitPiece;
-                            rolledNumberText.SetActive(false);
-                            clickSFX.Play(0); // play the SFX
-                            MovePiece();
-
-                            // Tile Function will now activate.
-                        }
-                    }
-                }
-                // Else we didn't hit a piece
-            }
-        }
     }
 
     /// <summary>

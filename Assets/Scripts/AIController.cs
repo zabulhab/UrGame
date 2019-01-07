@@ -23,11 +23,6 @@ public class AIController : Turn
     /// </summary>
     private PlayerTurn playerSide;
 
-    internal void TurnSetup()
-    {
-        base.TurnSetup(SideName.EnemySide);
-    }
-
     /// <summary>
     /// Specific to the AI Turn setup in the statecontroller. 
     /// Gives a reference to the player side, so that we can
@@ -114,7 +109,6 @@ public class AIController : Turn
 
     /// <summary>
     /// Checks the state of the board and chooses the best move.
-    /// For now, it doesn't take the opponent's actions into consideration.
     /// </summary>
     private Piece GetIdealPieceToMove()
     {
@@ -178,7 +172,7 @@ public class AIController : Turn
                          KillablePlayerPcsThisTurn,
                          killablePlayerPcsNextTurn,
                          killableAIPcsNextTurn);
-        // Finding a new best piece is similar to 1 pass of a bubble sort
+        // Finding a new best piece is similar to one pass of a bubble sort
 
         foreach (KeyValuePair<Piece, int> pair in piecesDescendingDistList)
         {

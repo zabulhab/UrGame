@@ -1,4 +1,7 @@
-﻿public class TwoPieceTile : Tile 
+﻿/// <summary>
+/// This tile can hold two pieces of the same side
+/// </summary>
+public class TwoPieceTile : Tile 
 {
 
     protected void Start()

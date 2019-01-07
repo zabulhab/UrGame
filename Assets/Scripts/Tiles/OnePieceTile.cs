@@ -1,4 +1,7 @@
-﻿public class OnePieceTile : Tile 
+﻿/// <summary>
+/// This tile can only hold one piece at a time
+/// </summary>
+public class OnePieceTile : Tile 
 {
 
     protected void Start()

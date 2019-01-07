@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 
 /// <summary>
 /// Handles setup and overall control flow of turns 
@@ -44,12 +41,6 @@ public class StateController : MonoBehaviour
     private Turn player2;
 
     /// <summary>
-    /// The panel that switches between turns with the end turn button
-    /// </summary>
-    [SerializeField]
-    private GameObject phasePanel;
-
-    /// <summary>
     /// The intial panel for choosing the game mode
     /// </summary>
     [SerializeField]
@@ -88,7 +79,7 @@ public class StateController : MonoBehaviour
     {
         if (opponentTurn is AIController)
         {
-            // Cast to AI first so we used overloaded instead of virtual method
+            // Cast to AI first so we can access correct methods
             opponentTurn = ((AIController)opponentTurn);
         }
 
