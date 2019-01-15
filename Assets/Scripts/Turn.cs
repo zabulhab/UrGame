@@ -113,10 +113,11 @@ public class Turn : MonoBehaviour
 
     /// <summary>
     /// Gets or sets a value indicating whether the game is over. 
-    /// Used by AI to avoid auto-switching the turn after the game is finished.
+    /// Used by the AI's call to ActivateGameOver method to decide whether
+    /// or not to allow the player UI to appear after
     /// </summary>
     /// <value><c>true</c> if game is over; otherwise, <c>false</c>.</value>
-    internal bool GameIsOver { get; set; }
+    private bool GameIsOver { get; set; }
 
 
     /// <summary>
@@ -229,10 +230,14 @@ public class Turn : MonoBehaviour
         turnEndPanel.SetActive(true);
 
         UnfreezeBoardPieces();
-        if (AITurnEnded) // bypass having to press the turn end button with AI
+
+        if (AITurnEnded) 
         {
+            // bypass having to press the turn end button with AI
             if (!GameIsOver)
                 phaseController.SwitchTurn();
+            else
+                turnEndPanel.SetActive(false);
         }
         // Disable clicking pieces
         PieceSelectionPhase = false;
@@ -539,6 +544,7 @@ public class Turn : MonoBehaviour
     internal void ActivateGameOver()
     {
         // close unneccesary UI and just show game over UI
+        GameIsOver = true;
         turnEndPanel.SetActive(false);
         rollPhasePanel.SetActive(false);
         rolledNumberText.SetActive(false);

@@ -7,7 +7,7 @@ using System.IO;
 /// </summary>
 public class GridSystem : MonoBehaviour 
 {
-    // The number of tiles that the piece can move on
+    // The number of tiles that pieces on a given side have access to
     private static readonly int TILE_COUNT = 14;
 
     /// <summary>
@@ -17,9 +17,6 @@ public class GridSystem : MonoBehaviour
     /// </summary>
     /// <value><c>true</c> if grid write enabled; otherwise, <c>false</c>.</value>
     internal bool GridWriteEnabled { get; set; }
-
-    [SerializeField]
-    private readonly GameObject board;
 
     [SerializeField]
     private Tile[] allTiles = new Tile[20];
