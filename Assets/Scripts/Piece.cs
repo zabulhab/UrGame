@@ -29,7 +29,7 @@ public class Piece : MonoBehaviour
     /// Gets or sets the name of the sidename for this piece
     /// </summary>
     /// <value>The name of the side.</value>
-    public Turn.SideName SideName { get; set; }
+    internal Turn.SideName SideName { get; set; }
 
     /// <summary>
     /// This piece's associated Turn object, and getter and setter

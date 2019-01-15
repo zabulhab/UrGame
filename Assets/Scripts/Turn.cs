@@ -100,7 +100,7 @@ public class Turn : MonoBehaviour
     /// to know which grid spaces to access
     /// </summary>
     [HideInInspector]
-    public enum SideName { PlayerSide, EnemySide };
+    internal enum SideName { PlayerSide, EnemySide };
 
     /// <summary>
     /// The name of this side
@@ -557,7 +557,7 @@ public class Turn : MonoBehaviour
         // move button
         restartButton.transform.position = 
             (new Vector2((Screen.width/2)+buttonWidthHalf, 
-                         (Screen.height/2)-buttonHeightHalf));
+                         (Screen.height/2)));
 
     }
 
