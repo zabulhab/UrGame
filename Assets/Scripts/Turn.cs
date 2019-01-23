@@ -144,6 +144,7 @@ public class Turn : MonoBehaviour
     /// <summary>
     /// Begins the player phase by opening the initial panel.
     /// Called from the StateController's SwitchTurn method.
+    /// Can also be called remotely with PunRPC
     /// </summary>
     internal virtual void ActivatePhase()
     {

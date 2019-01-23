@@ -16,6 +16,11 @@ public class Piece : MonoBehaviour
     private const int UNDEPLOYED_IDX = -1;
 
     /// <summary>
+    /// The vertical offset between pieces stacked on top of each other
+    /// </summary>
+    private const float stackOffset = 0.6f;
+
+    /// <summary>
     /// Number of accessible tiles per side
     /// </summary>
     private static readonly int TILE_COUNT = 14;
@@ -173,6 +178,10 @@ public class Piece : MonoBehaviour
     /// </summary>
     internal void MovePieceForward()
     {
+        if (currentTile != null)
+        {
+            Debug.Log("Leaving tile with " + currentTile.PiecesOnTop.Count + " pieces on it");
+        }
         // Don't let pieces at end loop around
         if (tileDestIndex > TILE_COUNT || tileDestIndex < CurrentTileIdx)
         {
@@ -182,6 +191,7 @@ public class Piece : MonoBehaviour
         else
         {
             MoveToTargetTile();
+            Debug.Log("New tile has " + currentTile.PiecesOnTop.Count + " pieces on it");
         }
     }
 
@@ -192,13 +202,13 @@ public class Piece : MonoBehaviour
     /// </summary>
     private void MoveToTargetTile()
     {
+
         // Stack on top of other pieces on the tile
         int numOtherPiecesOnDestTile = tileDestination.GetNumPiecesOnTile();
         transform.position = new Vector3
                                 (tileDestination.transform.position.x,
-                                 ((0.6f) +
-                                  (numOtherPiecesOnDestTile * GetComponent<Renderer>().bounds.size.y)),
-                                 tileDestination.transform.position.z);
+                                (numOtherPiecesOnDestTile * GetComponent<Renderer>().bounds.size.y) + stackOffset,
+                                tileDestination.transform.position.z);
 
         // If the piece is not starting out, eg is on a tile already,
         // then remove it from that tile
@@ -219,8 +229,11 @@ public class Piece : MonoBehaviour
 
         // Tell the tile to activate any special behavior
         currentTile.ActivateTileFunction();
-    }
 
+        // TODO: check if piece is floating in air above tile
+        // after kicking opposing piece(s) below it off the board
+    }
+    
     /// <summary>
     /// Used to move this piece off of the board
     /// instead of regularly onto another tile

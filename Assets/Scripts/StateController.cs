@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
 
 /// <summary>
 /// Handles setup and overall control flow of turns 
@@ -31,6 +33,11 @@ public class StateController : MonoBehaviour
     [SerializeField] private AIController cpuTurn;
 
     /// <summary>
+    /// Reference to the other player in online mode.
+    /// </summary>
+    private Player onlineOpponent;
+
+    /// <summary>
     /// The player who goes first
     /// </summary>
     private Turn player1;
@@ -45,6 +52,11 @@ public class StateController : MonoBehaviour
     /// </summary>
     [SerializeField]
     private GameObject chooseModePanel;
+
+    /// <summary>
+    /// Whether or not we are in online mode
+    /// </summary>
+    private bool isOnline2PMode;
 
     /// <summary>
     /// Called when the mode is selected. Handles setting UI active/inactive
@@ -69,6 +81,16 @@ public class StateController : MonoBehaviour
     public void StartManual2PMode()
     {
         SetupTurns(enemyTurn);
+    }
+
+    /// <summary>
+    /// Starts the online version of the game.
+    /// </summary>
+    public void StartOnline2PMode()
+    {
+        this.isOnline2PMode = true;
+        onlineOpponent = PhotonNetwork.PlayerListOthers[0];
+        PhotonView photonView = PhotonView.Get(this);
     }
 
     /// <summary>
@@ -119,6 +141,7 @@ public class StateController : MonoBehaviour
     /// </summary>
     public void SwitchTurn()
     {
+
         if (activeTurn.GetInstanceID() == player1.GetInstanceID())
         {
             activeTurn = player2;

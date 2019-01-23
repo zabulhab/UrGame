@@ -95,6 +95,7 @@ public abstract class Tile : MonoBehaviour //Scriptable Object?
     {
         PiecesOnTop.Add(piece);
         topMostPiece = PiecesOnTop[PiecesOnTop.Count - 1];
+        // TODO: Move the pieces left behind to look naturally stacked
     }
 
     /// <summary>
@@ -114,6 +115,7 @@ public abstract class Tile : MonoBehaviour //Scriptable Object?
         {
             topMostPiece = null;
         }
+        // TODO: Move the pieces left behind to look naturally stacked
     }
 
     /// <summary>
@@ -215,4 +217,22 @@ public abstract class Tile : MonoBehaviour //Scriptable Object?
     {
         TileDescriptionPanel.SetActive(false);
     }
+
+    //internal void LogNumPiecesOn()
+    //{
+    //    Debug.Log(this.PiecesOnTop.Count);
+    //}
+
+    /// <summary>
+    /// Checks if there are any gaps between piece(s) on top of a tile,
+    /// and updates them, if needed, so they don't look like they are floating
+    /// </summary>
+    internal void UpdatePiecePositions()
+    {
+        // Loop through pieces on top, starting with first in list, and check
+        // if their y coordinates match with the expected heights for their indices
+        // in the piece list on top of the tiles. If not, force them to be the 
+        // y values that we expect
+    }
+
 }
