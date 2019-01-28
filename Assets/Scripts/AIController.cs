@@ -16,7 +16,7 @@ public class AIController : Turn
     /// so we can bypass needing to click the button
     /// </summary>
     [SerializeField]
-    private StateController phaseController;
+    private OfflineStateController phaseController;
 
     /// <summary>
     /// Reference to the player turn for AI decision-making purposes

@@ -1,10 +1,13 @@
 ﻿using Photon.Pun;
 
 /// <summary>
-/// A turn that can be seen by the other player in a room.
+/// A turn that is intended to be used online.
 /// </summary>
 public class OnlineTurn : Turn
 {
+    [PunRPC]
+    private int TurnOrderNum { get; set; }
+
     [PunRPC]
     internal override void ActivatePhase()
     {

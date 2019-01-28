@@ -16,10 +16,16 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     private GameObject onlineOptionsPanel;
     [SerializeField]
     private GameObject mainMenuPanel;
-    //[SerializeField]
-    //private GameObject joinRoomButton;
-    //[SerializeField]
-    //private GameObject startGameButton;
+    [SerializeField]
+    private GameObject joinRoomButton;
+    [SerializeField]
+    private Button startGameButton;
+    [SerializeField]
+    private Button findNewRoomButton;
+    [SerializeField]
+    private GameObject loadingLoopImage;
+    [SerializeField]
+    private Animator loadingLoopAnimator;
 
     // whether or not this instance of the game is the host
     private bool isHost;
@@ -30,11 +36,54 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     // If we are currently trying to connect to a room. Random for now.
     private bool tryingToConnectToRoom;
 
-	// Use this for initialization
-	private void Start () 
+    /// <summary>
+    /// Whether or not we have found another player yet.
+    /// </summary>
+    private bool otherPlayerFound;
+
+    /// <summary>
+    /// Whether or not the online game has been started yet.
+    /// </summary>
+    private bool isOnlineGameStarted;
+
+    private void Update()
+    {
+        // if we still haven't found a player
+        if (!otherPlayerFound)
+        {
+            if (PhotonNetwork.PlayerListOthers.Length==0)
+            {
+                return;
+            }
+            // if other player present, enable the start game button
+            if (PhotonNetwork.PlayerListOthers[0] != null)
+            {
+                otherPlayerFound = true;
+            }
+        }
+
+    }
+
+    // Use this for initialization
+    private void Start () 
     {
         tryingToConnectToMaster = false;
         tryingToConnectToRoom = false;
+        isOnlineGameStarted = false;
+    }
+
+    /// <summary>
+    /// Once we have joined the server
+    /// </summary>
+    public override void OnConnectedToMaster()
+    {
+        tryingToConnectToMaster = false;
+
+        StopLoadingImage();
+
+        onlineOptionsPanel.SetActive(true);
+
+        Debug.Log("Connected to Master!");
     }
 
     public void OnClickConnectToMaster()
@@ -44,45 +93,18 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         PhotonNetwork.AutomaticallySyncScene = true; // to call PhotonNetwork.LoadLevel()
         PhotonNetwork.GameVersion = "v1";
 
-        // don't allow clicking anymore buttons while connecting
-        DisableAllButtonsInPanel(mainMenuPanel);
         // TODO: decide whether or not to keep disabling other buttons 
         // or to have a loading animation or something
         //mainMenuPanel.SetActive(false); 
-        tryingToConnectToMaster = true; 
+        tryingToConnectToMaster = true;
+        PlayLoadingImage();
+
+        // hide the menu but reenable its buttons for next time it opens
+        mainMenuPanel.SetActive(false);
 
         PhotonNetwork.ConnectUsingSettings();
     }
 
-    /// <summary>
-    /// Once we have joined the server
-    /// </summary>
-    public override void OnConnectedToMaster()
-    {
-        base.OnConnectedToMaster();
-        tryingToConnectToMaster = false;
-
-        // hide the menu but reenable its buttons for next time it opens
-        mainMenuPanel.SetActive(false);
-        EnableAllButtonsInPanel(mainMenuPanel);
-
-        onlineOptionsPanel.SetActive(true);
-
-        Debug.Log("Connected to Master!");
-    }
-
-    /// <summary>
-    /// When you've intentionally disconnected or
-    /// have become disconnected from the server
-    /// </summary>
-    /// <param name="cause">Cause.</param>
-    public override void OnDisconnected(DisconnectCause cause)
-    {
-        base.OnDisconnected(cause);
-        tryingToConnectToMaster = false;
-        tryingToConnectToRoom = false;
-        Debug.Log(cause);
-    }
 
     public void OnClickConnectToRoom()
     {
@@ -93,6 +115,26 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         // don't allow clicking to join room again
         DisableAllButtonsInPanel(onlineOptionsPanel);
         PhotonNetwork.JoinRandomRoom();
+        PlayLoadingImage();
+    }
+
+    public void OnClickConnectToNewRoom()
+    {
+        startGameButton.gameObject.SetActive(false);
+        PlayLoadingImage();
+        PhotonNetwork.LeaveRoom();
+    }
+
+    /// <summary>
+    /// When you've intentionally disconnected or
+    /// have become disconnected from the server
+    /// </summary>
+    /// <param name="cause">Cause.</param>
+    public override void OnDisconnected(DisconnectCause cause)
+    {
+        tryingToConnectToMaster = false;
+        tryingToConnectToRoom = false;
+        Debug.Log(cause);
     }
 
     /// <summary>
@@ -100,13 +142,14 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     /// </summary>
     public override void OnJoinedRoom()
     {
-        base.OnJoinedRoom();
-
         tryingToConnectToRoom = false;
+        loadingLoopImage.gameObject.SetActive(false);
 
         // hide the join room button but reenable it for next time it shows
         //onlineOptionsPanel.SetActive(false);
         EnableAllButtonsInPanel(onlineOptionsPanel);
+
+        StopLoadingImage();
 
         Debug.Log("Master: " + PhotonNetwork.IsMasterClient + " | Players in room: " + PhotonNetwork.CurrentRoom.PlayerCount);
         this.isHost = PhotonNetwork.IsMasterClient;
@@ -118,6 +161,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public void OnClickStartGame()
     {
         onlineOptionsPanel.SetActive(false);
+        this.isOnlineGameStarted = true;
     }
 
     /// <summary>
@@ -127,8 +171,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     /// <param name="message">Message.</param>
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
-        base.OnJoinRoomFailed(returnCode, message);
         PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = 2 });
+        StopLoadingImage();
     }
 
     /// <summary>
@@ -138,9 +182,30 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     /// <param name="message">Message.</param>
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
-        base.OnCreateRoomFailed(returnCode, message);
         Debug.Log(message);
+        StopLoadingImage();
         tryingToConnectToRoom = false;
+    }
+
+    public override void OnPlayerEnteredRoom(Player newPlayer)
+    {
+        startGameButton.gameObject.SetActive(true);
+    }
+
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        if (isOnlineGameStarted)
+        {
+
+        }
+        // the players are both in the room, but the remote player leaves
+        else // go back to the join random room button
+        {
+            startGameButton.gameObject.SetActive(false);
+            findNewRoomButton.gameObject.SetActive(false);
+            joinRoomButton.gameObject.SetActive(true);
+        }
+
     }
 
     /// <summary>
@@ -163,7 +228,21 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         foreach (Button button in panel.GetComponentsInChildren<Button>())
         {
-            button.enabled = false;
+            button.enabled = true;
         }
+    }
+
+    /// <summary>
+    /// Makes the loading gif appear and play
+    /// </summary>
+    private void PlayLoadingImage()
+    {
+        loadingLoopImage.gameObject.SetActive(true);
+        loadingLoopAnimator.Play("loading_spritesheet");
+    }
+
+    private void StopLoadingImage()
+    {
+        loadingLoopImage.gameObject.SetActive(false);
     }
 }

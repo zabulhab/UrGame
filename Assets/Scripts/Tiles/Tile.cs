@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
 
 /// <summary>
 /// The abstract tile class, from which we derive each subclass of tile
@@ -58,7 +59,7 @@ public abstract class Tile : MonoBehaviour //Scriptable Object?
     /// <summary>
     /// The state controller for this game
     /// </summary>
-    public StateController stateController;
+    protected StateController stateController;
 
     /// <summary>
     /// The string to put in the tile function pop-up window
@@ -82,6 +83,7 @@ public abstract class Tile : MonoBehaviour //Scriptable Object?
     {
         PiecesOnTop = new List<Piece>();
         this.tileFunctionSummary = summaryText;
+        this.stateController = chooseCorrectStateController();
         TypeOfTile = tileType;
         TileID = tileID;
         maxNumberSamePiece = maxNumSamePcs;
@@ -218,10 +220,16 @@ public abstract class Tile : MonoBehaviour //Scriptable Object?
         TileDescriptionPanel.SetActive(false);
     }
 
-    //internal void LogNumPiecesOn()
-    //{
-    //    Debug.Log(this.PiecesOnTop.Count);
-    //}
+    /// <summary>
+    /// Called by both state controller classes; sets up a reference
+    /// to the correct kind of state controller for this tile, based 
+    /// on whether or not we are in online mode
+    /// </summary>
+    /// <returns>The correct state controller.</returns>
+    internal void setCorrectStateController(StateController stateCtrl)
+    {
+        stateController = stateCtrl;
+    }
 
     /// <summary>
     /// Checks if there are any gaps between piece(s) on top of a tile,

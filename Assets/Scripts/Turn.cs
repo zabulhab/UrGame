@@ -225,7 +225,7 @@ public class Turn : MonoBehaviour
     /// when exiting the board at the finish line.
     /// Auto-ends without the End Turn button if AITurnEnded is true.
     /// </summary>
-    public void EndTurn(bool AITurnEnded = false, StateController phaseController = null)
+    public void EndTurn(bool AITurnEnded = false, OfflineStateController phaseController = null)
     {
         SetFreezePanelVisible(false);
         turnEndPanel.SetActive(true);

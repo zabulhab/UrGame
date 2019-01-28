@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 
 /// <summary>
@@ -252,7 +253,7 @@ public class Piece : MonoBehaviour
         {
             associatedTurnObject.EndTurn();
         }
-        this.Disappear();
+        this.ChooseDisappear();
     }
 
     /// <summary>
@@ -285,9 +286,29 @@ public class Piece : MonoBehaviour
     }
 
     /// <summary>
-    /// Makes a piece that has finished disappear from the board,
-    /// both visually and functionally
+    /// Chooses whether to call the PunRPC Disappear Method to make sure
+    /// the piece disappears on both sides (online mode), or to call Disappear 
+    /// normally (offline mode)
     /// </summary>
+    private void ChooseDisappear()
+    {
+        if (PhotonNetwork.IsConnected)
+        {
+            PhotonView photonView = PhotonView.Get(this);
+            photonView.RPC("Disappear", RpcTarget.All);
+        }
+        else
+        {
+            Disappear();
+        }
+
+    }
+
+    /// <summary>
+    /// Makes a piece that has finished disappear from the board,
+    /// both visually and functionally. 
+    /// </summary>
+    [PunRPC]
     private void Disappear()
     {
         this.gameObject.SetActive(false); // disable interaction and hide
