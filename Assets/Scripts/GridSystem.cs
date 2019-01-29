@@ -129,6 +129,17 @@ public class GridSystem : MonoBehaviour
         //Re-import the file to update the reference in the editor
         //AssetDatabase.ImportAsset(path);
         TextAsset asset = (TextAsset)Resources.Load("test");
-
     }
+
+    /// <summary>
+    /// Sets the reference to the correct state controller for each tile
+    /// </summary>
+    internal void SetTurnReferenceForAllTiles(StateController stateCtrl)
+    {
+        foreach (Tile tile in allTiles)
+        {
+            tile.setCorrectStateController(stateCtrl);
+        }
+    }
+
 }

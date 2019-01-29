@@ -57,7 +57,8 @@ public abstract class Tile : MonoBehaviour //Scriptable Object?
     protected int maxNumberSamePiece;
 
     /// <summary>
-    /// The state controller for this game
+    /// The state controller for this game. Externally set to the correct one
+    /// when starting a game, either in offline or online mode
     /// </summary>
     protected StateController stateController;
 
@@ -83,7 +84,6 @@ public abstract class Tile : MonoBehaviour //Scriptable Object?
     {
         PiecesOnTop = new List<Piece>();
         this.tileFunctionSummary = summaryText;
-        this.stateController = chooseCorrectStateController();
         TypeOfTile = tileType;
         TileID = tileID;
         maxNumberSamePiece = maxNumSamePcs;
@@ -187,6 +187,11 @@ public abstract class Tile : MonoBehaviour //Scriptable Object?
     /// </summary>
     private void OnMouseEnter()
     {
+        // ignore before the game has started
+        if (stateController == null)
+        {
+            return;
+        }
         if (TileInfoShow == true && stateController.GetActiveTurn().PieceSelectionPhase)
         {
             ShowTileInfo();

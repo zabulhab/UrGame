@@ -191,7 +191,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1299988532}
+      - m_Target: {fileID: 1299988537}
         m_MethodName: StartVsCPUMode
         m_Mode: 1
         m_Arguments:
@@ -202,7 +202,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1299988532}
+      - m_Target: {fileID: 1299988537}
         m_MethodName: CloseModeChooserPane
         m_Mode: 1
         m_Arguments:
@@ -439,7 +439,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feba04545ba3642e6a8c7b19d635a78d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateController: {fileID: 1299988532}
   TileDescriptionPanel: {fileID: 1299498846}
 --- !u!65 &86474662
 BoxCollider:
@@ -538,7 +537,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dea715ee6e44d4ccba18feea73b6a1f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateController: {fileID: 1299988532}
   TileDescriptionPanel: {fileID: 1299498846}
 --- !u!65 &111132910
 BoxCollider:
@@ -957,7 +955,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37fc176c55b5e4ad3b68ed8fe635c314, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateController: {fileID: 1299988532}
   TileDescriptionPanel: {fileID: 1299498846}
 --- !u!65 &277640637
 BoxCollider:
@@ -1519,7 +1516,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feba04545ba3642e6a8c7b19d635a78d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateController: {fileID: 1299988532}
   TileDescriptionPanel: {fileID: 1299498846}
 --- !u!65 &462396132
 BoxCollider:
@@ -1589,7 +1585,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 176fa628359804a5eb3a381b265ed108, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateController: {fileID: 1299988532}
   TileDescriptionPanel: {fileID: 1299498846}
 --- !u!65 &509971399
 BoxCollider:
@@ -1667,7 +1662,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feba04545ba3642e6a8c7b19d635a78d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateController: {fileID: 1299988532}
   TileDescriptionPanel: {fileID: 1299498846}
 --- !u!65 &525133213
 BoxCollider:
@@ -1782,7 +1776,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feba04545ba3642e6a8c7b19d635a78d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateController: {fileID: 1299988532}
   TileDescriptionPanel: {fileID: 1299498846}
 --- !u!65 &559786929
 BoxCollider:
@@ -2287,7 +2280,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b4dc4717b22849988256a59c8e94e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateController: {fileID: 1299988532}
   TileDescriptionPanel: {fileID: 1299498846}
 --- !u!65 &850569961
 BoxCollider:
@@ -2320,7 +2312,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dea715ee6e44d4ccba18feea73b6a1f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateController: {fileID: 1299988532}
   TileDescriptionPanel: {fileID: 1299498846}
 --- !u!65 &860245448
 BoxCollider:
@@ -2570,7 +2561,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4b637e457bf54ba3b98a53ab6af2f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateController: {fileID: 1299988532}
   TileDescriptionPanel: {fileID: 1299498846}
 --- !u!65 &919342733
 BoxCollider:
@@ -3178,7 +3168,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37fc176c55b5e4ad3b68ed8fe635c314, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateController: {fileID: 1299988532}
   TileDescriptionPanel: {fileID: 1299498846}
 --- !u!65 &1016935582
 BoxCollider:
@@ -3272,7 +3261,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1299988532}
+      - m_Target: {fileID: 1299988537}
         m_MethodName: StartManual2PMode
         m_Mode: 1
         m_Arguments:
@@ -3283,7 +3272,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1299988532}
+      - m_Target: {fileID: 1299988537}
         m_MethodName: CloseModeChooserPane
         m_Mode: 1
         m_Arguments:
@@ -3621,7 +3610,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dea715ee6e44d4ccba18feea73b6a1f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateController: {fileID: 1299988532}
   TileDescriptionPanel: {fileID: 1299498846}
 --- !u!65 &1180932322
 BoxCollider:
@@ -3729,7 +3717,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dea715ee6e44d4ccba18feea73b6a1f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateController: {fileID: 1299988532}
   TileDescriptionPanel: {fileID: 1299498846}
 --- !u!65 &1234140363
 BoxCollider:
@@ -3762,7 +3749,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 176fa628359804a5eb3a381b265ed108, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateController: {fileID: 1299988532}
   TileDescriptionPanel: {fileID: 1299498846}
 --- !u!65 &1243624217
 BoxCollider:
@@ -3795,7 +3781,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 176fa628359804a5eb3a381b265ed108, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateController: {fileID: 1299988532}
   TileDescriptionPanel: {fileID: 1299498846}
 --- !u!65 &1249098080
 BoxCollider:
@@ -4047,7 +4032,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1299988532}
+      - m_Target: {fileID: 0}
         m_MethodName: StartManual2PMode
         m_Mode: 1
         m_Arguments:
@@ -4214,12 +4199,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1299988533}
-  - component: {fileID: 1299988532}
   - component: {fileID: 1299988531}
   - component: {fileID: 1299988530}
   - component: {fileID: 1299988534}
   - component: {fileID: 1299988535}
   - component: {fileID: 1299988536}
+  - component: {fileID: 1299988537}
+  - component: {fileID: 1299988532}
   m_Layer: 0
   m_Name: SetupScripts
   m_TagString: Untagged
@@ -4294,13 +4280,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1299988529}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7856202f4af94ef58adb48de85417ac, type: 3}
+  m_Script: {fileID: 11500000, guid: fccf4bb454026460ea2b43df8095ae14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTurn: {fileID: 1299988531}
-  enemyTurn: {fileID: 1299988530}
-  cpuTurn: {fileID: 1299988534}
-  chooseModePanel: {fileID: 567086423}
+  grid: {fileID: 1628778921}
 --- !u!4 &1299988533
 Transform:
   m_ObjectHideFlags: 0
@@ -4344,7 +4327,7 @@ MonoBehaviour:
   restartButton: {fileID: 897481371}
   turnTitleText: {fileID: 1622679355}
   rolledNumberText: {fileID: 1780101628}
-  phaseController: {fileID: 1299988532}
+  phaseController: {fileID: 1299988537}
 --- !u!114 &1299988535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4373,11 +4356,28 @@ MonoBehaviour:
   btnConnectToHost: {fileID: 936938364}
   onlineOptionsPanel: {fileID: 1798371677}
   mainMenuPanel: {fileID: 567086423}
-  joinRoomButton: {fileID: 0}
+  joinRoomButton: {fileID: 936938362}
   startGameButton: {fileID: 1298164736}
   findNewRoomButton: {fileID: 139591678}
   loadingLoopImage: {fileID: 704106872}
   loadingLoopAnimator: {fileID: 704106873}
+--- !u!114 &1299988537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299988529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7856202f4af94ef58adb48de85417ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTurn: {fileID: 1299988531}
+  enemyTurn: {fileID: 1299988531}
+  cpuTurn: {fileID: 1299988534}
+  chooseModePanel: {fileID: 567086423}
+  grid: {fileID: 1628778921}
 --- !u!1 &1300037883
 GameObject:
   m_ObjectHideFlags: 0
@@ -4547,7 +4547,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4b637e457bf54ba3b98a53ab6af2f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateController: {fileID: 1299988532}
   TileDescriptionPanel: {fileID: 1299498846}
 --- !u!65 &1306621354
 BoxCollider:
@@ -4562,6 +4561,36 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.01, y: 0.01, z: 0.01}
   m_Center: {x: 0, y: -2.9995197e-34, z: 0}
+--- !u!1 &1328144934
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1328144935}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1328144935
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1328144934}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 632, y: 225.34, z: -469.8568}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1337799939
 GameObject:
   m_ObjectHideFlags: 0
@@ -4958,7 +4987,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dea715ee6e44d4ccba18feea73b6a1f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateController: {fileID: 1299988532}
   TileDescriptionPanel: {fileID: 1299498846}
 --- !u!65 &1446340834
 BoxCollider:
@@ -5007,7 +5035,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 29.99997}
+  m_AnchoredPosition: {x: 0, y: 30}
   m_SizeDelta: {x: 400, y: 200}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1460391367
@@ -5360,7 +5388,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 176fa628359804a5eb3a381b265ed108, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateController: {fileID: 1299988532}
   TileDescriptionPanel: {fileID: 1299498846}
 --- !u!65 &1547742419
 BoxCollider:
@@ -6640,7 +6667,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feba04545ba3642e6a8c7b19d635a78d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateController: {fileID: 1299988532}
   TileDescriptionPanel: {fileID: 1299498846}
 --- !u!65 &2011942898
 BoxCollider:
@@ -7006,7 +7032,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1299988532}
+      - m_Target: {fileID: 1299988537}
         m_MethodName: SwitchTurn
         m_Mode: 1
         m_Arguments:
@@ -7085,7 +7111,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 176fa628359804a5eb3a381b265ed108, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateController: {fileID: 1299988532}
   TileDescriptionPanel: {fileID: 1299498846}
 --- !u!65 &2109680317
 BoxCollider:

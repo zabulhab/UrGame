@@ -275,3 +275,4 @@
 /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Unity.Analytics.Tracker.dll.mdb
 /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Unity.Analytics.Editor.dll.mdb
 /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Unity.Analytics.StandardEvents.dll.mdb
+/Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Assembly-CSharp-firstpass.pdb

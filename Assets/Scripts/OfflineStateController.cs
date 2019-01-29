@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 /// <summary>
-/// Handles setup and overall control flow of turns 
+/// Handles setup and overall control flow of turns while offline.
 /// </summary>
 public class OfflineStateController : StateController
 {
@@ -51,6 +51,12 @@ public class OfflineStateController : StateController
     /// </summary>
     private bool isOnline2PMode;
 
+    [SerializeField]
+    /// <summary>
+    /// Used to setup the tiles with a reference to this statecontroller
+    /// </summary>
+    private GridSystem grid;
+
 
     /// <summary>
     /// Called when the mode is selected. Handles setting UI active/inactive
@@ -78,11 +84,13 @@ public class OfflineStateController : StateController
     }
 
     /// <summary>
-    /// Sets up the turn order and activates P1.
+    /// Sets up the turn order, references to this turn, and activates P1.
     /// </summary>
     /// <param name="opponentTurn">Which kind of opponent to use.</param>
     private void SetupTurns(Turn opponentTurn)
     {
+        SetReferenceInTiles();
+
         if (opponentTurn is AIController)
         {
             // Cast to AI first so we can access correct methods
@@ -105,7 +113,7 @@ public class OfflineStateController : StateController
     /// <summary>
     /// Switches the turn to the other player. Called from the end turn button.
     /// </summary>
-    protected override void SwitchTurn()
+    public override void SwitchTurn()
     {
 
         if (activeTurn.GetInstanceID() == player1.GetInstanceID())
@@ -160,6 +168,14 @@ public class OfflineStateController : StateController
         turnList[0] = playerTurn;
         turnList[1] = opponentTurn;
         return turnList[Random.Range(0, turnList.Length)];
+    }
+
+    /// <summary>
+    /// Sets the reference to this state controller for each tile
+    /// </summary>
+    protected override void SetReferenceInTiles()
+    {
+        grid.SetTurnReferenceForAllTiles(this);
     }
 
 }
