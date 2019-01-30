@@ -1,21 +1,21 @@
 ﻿<Properties StartupConfiguration="{0B8D570A-930F-49C7-9D97-6D62E27DA68D}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GridSystem.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Tiles/Tile.cs">
     <Files>
-      <File FileName="Assets/Scripts/OfflineStateController.cs" Line="170" Column="9" />
-      <File FileName="Assets/Scripts/OnlineStateController.cs" Line="63" Column="1" />
-      <File FileName="Assets/Scripts/StateController.cs" Line="14" Column="1" />
-      <File FileName="Assets/Scripts/GridSystem.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Tiles/Tile.cs" Line="4" Column="18" />
-      <File FileName="Assets/Scripts/Turn.cs" Line="239" Column="1" />
-      <File FileName="Assets/Plugins/Photon/PhotonUnityNetworking/UtilityScripts/TurnBased/PunTurnManager.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Piece.cs" Line="308" Column="43" />
+      <File FileName="Assets/Scripts/Networking/NetworkManager.cs" Line="59" Column="41" />
+      <File FileName="Assets/Scripts/OnlineStateController.cs" Line="69" Column="13" />
+      <File FileName="Assets/Scripts/StateController.cs" Line="15" Column="46" />
+      <File FileName="Assets/Scripts/OfflineStateController.cs" Line="144" Column="42" />
+      <File FileName="Assets/Scripts/OnlineTurn.cs" Line="35" Column="2" />
+      <File FileName="Assets/Scripts/Turn.cs" Line="230" Column="32" />
       <File FileName="Assets/Scripts/PlayerTurn.cs" Line="20" Column="10" />
+      <File FileName="Assets/Scripts/GridSystem.cs" Line="141" Column="26" />
+      <File FileName="Assets/Plugins/Photon/PhotonUnityNetworking/UtilityScripts/TurnBased/PunTurnManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Piece.cs" Line="297" Column="1" />
       <File FileName="Assets/Scripts/AIController.cs" Line="63" Column="13" />
-      <File FileName="Assets/Scripts/Networking/NetworkManager.cs" Line="154" Column="45" />
-      <File FileName="Assets/Plugins/Photon/PhotonUnityNetworking/readme.txt" Line="1" Column="1" />
-      <File FileName="Assets/Plugins/Photon/PhotonUnityNetworking/Code/PhotonNetworkPart.cs" Line="599" Column="46" />
       <File FileName="Assets/Scripts/Tiles/FourPieceTile.cs" Line="16" Column="22" />
       <File FileName="Assets/Scripts/Tiles/RestartTile.cs" Line="26" Column="1" />
+      <File FileName="Assets/Scripts/Tiles/FreezeTile.cs" Line="18" Column="45" />
+      <File FileName="Assets/Scripts/Tiles/Tile.cs" Line="145" Column="46" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
@@ -23,12 +23,12 @@
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Assets/Scripts/Turn.cs" relfile="Assets/Scripts/Turn.cs" line="288" column="1" />
-      <Breakpoint file="/Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Assets/Scripts/Turn.cs" relfile="Assets/Scripts/Turn.cs" line="279" column="1" />
-      <Breakpoint file="/Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Assets/Scripts/Turn.cs" relfile="Assets/Scripts/Turn.cs" line="549" column="29" />
-      <Breakpoint file="/Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Assets/Scripts/Turn.cs" relfile="Assets/Scripts/Turn.cs" line="245" column="1" />
-      <Breakpoint file="/Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Assets/Scripts/Turn.cs" relfile="Assets/Scripts/Turn.cs" line="241" column="45" />
-      <Breakpoint file="/Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Assets/Scripts/Networking/NetworkManager.cs" relfile="Assets/Scripts/Networking/NetworkManager.cs" line="155" column="1" />
+      <Breakpoint file="/Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Assets/Scripts/Turn.cs" relfile="Assets/Scripts/Turn.cs" line="290" column="1" />
+      <Breakpoint file="/Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Assets/Scripts/Turn.cs" relfile="Assets/Scripts/Turn.cs" line="281" column="1" />
+      <Breakpoint file="/Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Assets/Scripts/Turn.cs" relfile="Assets/Scripts/Turn.cs" line="551" column="29" />
+      <Breakpoint file="/Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Assets/Scripts/Turn.cs" relfile="Assets/Scripts/Turn.cs" line="247" column="1" />
+      <Breakpoint file="/Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Assets/Scripts/Turn.cs" relfile="Assets/Scripts/Turn.cs" line="243" column="45" />
+      <Breakpoint file="/Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Assets/Scripts/Networking/NetworkManager.cs" relfile="Assets/Scripts/Networking/NetworkManager.cs" line="135" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

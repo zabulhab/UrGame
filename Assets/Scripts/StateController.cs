@@ -12,7 +12,7 @@ public abstract class StateController : MonoBehaviour
 
     internal abstract Turn GetActiveTurn();
 
-    internal abstract Turn GetInactiveTurn();
+    internal abstract void FreezeInactiveTurn();
 
     protected abstract void SetReferenceInTiles();
 

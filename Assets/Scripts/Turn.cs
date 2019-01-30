@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using Photon.Pun;
 
 /// <summary>
 /// The basic turn class, from which we create the player and enemy turns for 
@@ -119,10 +120,11 @@ public class Turn : MonoBehaviour
     /// <value><c>true</c> if game is over; otherwise, <c>false</c>.</value>
     private bool GameIsOver { get; set; }
 
-
+    [PunRPC]
     /// <summary>
     /// Sets up this turn's information. Used by all sides, with 
-    /// different turn side names passed in through overloading
+    /// different turn side names passed in through overloading.
+    /// Can be called remotely by the master client in online mode.
     /// </summary>
     /// <param name="sideName">Side name.</param>
     internal virtual void TurnSetup(SideName sideName)
@@ -225,7 +227,7 @@ public class Turn : MonoBehaviour
     /// when exiting the board at the finish line.
     /// Auto-ends without the End Turn button if AITurnEnded is true.
     /// </summary>
-    public void EndTurn(bool AITurnEnded = false, OfflineStateController phaseController = null)
+    public virtual void EndTurn(bool AITurnEnded = false, OfflineStateController phaseController = null)
     {
         SetFreezePanelVisible(false);
         turnEndPanel.SetActive(true);
@@ -381,7 +383,7 @@ public class Turn : MonoBehaviour
     /// <summary>
     /// Unfreeze pieces on board if they were frozen this turn
     /// </summary>
-    private void UnfreezeBoardPieces()
+    protected void UnfreezeBoardPieces()
     {
         if (isFrozen)
         {

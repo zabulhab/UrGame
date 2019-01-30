@@ -5,6 +5,10 @@
 /// </summary>
 public class OnlineTurn : Turn
 {
+    /// <summary>
+    /// During turn setup, this turn is informed of whether or not 
+    /// </summary>
+    /// <value>The turn order number.</value>
     [PunRPC]
     private int TurnOrderNum { get; set; }
 
@@ -14,5 +18,18 @@ public class OnlineTurn : Turn
         base.ActivatePhase();
 
         //
+    }
+
+    [PunRPC]
+    public override void EndTurn(bool AITurnEnded = false, OfflineStateController phaseController = null)
+    {
+        SetFreezePanelVisible(false);
+        turnEndPanel.SetActive(true);
+
+        UnfreezeBoardPieces();
+
+        // Disable clicking pieces
+        PieceSelectionPhase = false;
+        SetAllPiecesUnSelectable();
     }
 }

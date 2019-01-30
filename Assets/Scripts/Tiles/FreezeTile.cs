@@ -15,7 +15,7 @@ public class FreezeTile : Tile
     internal override void ActivateTileFunction()
     {
         TryKickEnemyOut();
-        stateController.GetInactiveTurn().FreezeBoardPieces();
+        stateController.FreezeInactiveTurn();
         stateController.GetActiveTurn().EndTurn();
     }
 }

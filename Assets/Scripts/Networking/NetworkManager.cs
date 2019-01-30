@@ -26,6 +26,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     private GameObject loadingLoopImage;
     [SerializeField]
     private Animator loadingLoopAnimator;
+    [SerializeField]
+    private OnlineStateController onlineStateController;
 
     // whether or not this instance of the game is the host
     private bool isHost;
@@ -37,39 +39,16 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     private bool tryingToConnectToRoom;
 
     /// <summary>
-    /// Whether or not we have found another player yet.
-    /// </summary>
-    private bool otherPlayerFound;
-
-    /// <summary>
     /// Whether or not the online game has been started yet.
     /// </summary>
-    private bool isOnlineGameStarted;
-
-    private void Update()
-    {
-        // if we still haven't found a player
-        if (!otherPlayerFound)
-        {
-            if (PhotonNetwork.PlayerListOthers.Length==0)
-            {
-                return;
-            }
-            // if other player present, enable the start game button
-            if (PhotonNetwork.PlayerListOthers[0] != null)
-            {
-                otherPlayerFound = true;
-            }
-        }
-
-    }
+    private bool isOnlineGameInProgress;
 
     // Use this for initialization
     private void Start () 
     {
         tryingToConnectToMaster = false;
         tryingToConnectToRoom = false;
-        isOnlineGameStarted = false;
+        isOnlineGameInProgress = false;
     }
 
     /// <summary>
@@ -134,6 +113,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         tryingToConnectToMaster = false;
         tryingToConnectToRoom = false;
+        isOnlineGameInProgress = false;
         Debug.Log(cause);
     }
 
@@ -161,7 +141,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public void OnClickStartGame()
     {
         onlineOptionsPanel.SetActive(false);
-        this.isOnlineGameStarted = true;
+        this.isOnlineGameInProgress = true;
+        onlineStateController.StartOnline2PMode();
     }
 
     /// <summary>
@@ -194,7 +175,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
-        if (isOnlineGameStarted)
+        if (isOnlineGameInProgress)
         {
 
         }

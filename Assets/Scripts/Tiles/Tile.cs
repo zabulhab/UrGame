@@ -142,7 +142,7 @@ public abstract class Tile : MonoBehaviour //Scriptable Object?
         foreach (Piece piece in PiecesOnTop)
         {
             Turn.SideName pieceSide = piece.GetAssociatedTurnObject().TurnSideName;
-            if (pieceSide == stateController.GetActiveTurn().TurnSideName)
+            if (pieceSide == stateController.GetActiveTurnSideName())
             {
                 numCurSamePiece++;
             }
@@ -168,7 +168,7 @@ public abstract class Tile : MonoBehaviour //Scriptable Object?
             foreach (Piece piece in PiecesOnTop)
             {
                 Turn.SideName pieceSide = piece.GetAssociatedTurnObject().TurnSideName;
-                if (pieceSide != stateController.GetActiveTurn().TurnSideName)
+                if (pieceSide != stateController.GetActiveTurnSideName())
                 {
                     piece.KickBackToStart();
                     piecesToRemove.Add(piece);

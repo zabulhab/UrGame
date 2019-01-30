@@ -46,11 +46,6 @@ public class OfflineStateController : StateController
     [SerializeField]
     private GameObject chooseModePanel;
 
-    /// <summary>
-    /// Whether or not we are in online mode
-    /// </summary>
-    private bool isOnline2PMode;
-
     [SerializeField]
     /// <summary>
     /// Used to setup the tiles with a reference to this statecontroller
@@ -141,12 +136,12 @@ public class OfflineStateController : StateController
     }
 
     /// <summary>
-    /// Returns the turn that is not active right now.
+    /// Freezes the inactive turn. Called by the freeze tile
     /// </summary>
     /// <returns>The waiting turn.</returns>
-    internal override Turn GetInactiveTurn()
+    internal override void FreezeInactiveTurn()
     {
-        return inactiveTurn;
+        inactiveTurn.FreezeBoardPieces();
     }
 
     /// <summary>
