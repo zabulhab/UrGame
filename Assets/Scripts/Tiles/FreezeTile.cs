@@ -16,6 +16,6 @@ public class FreezeTile : Tile
     {
         TryKickEnemyOut();
         stateController.FreezeInactiveTurn();
-        stateController.GetActiveTurn().EndTurn();
+        stateController.EndActiveTurn();
     }
 }

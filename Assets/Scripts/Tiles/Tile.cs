@@ -89,6 +89,7 @@ public abstract class Tile : MonoBehaviour //Scriptable Object?
         maxNumberSamePiece = maxNumSamePcs;
     }
 
+    [PunRPC]
     /// <summary>
     /// Adds a piece reference to this tile's piece list
     /// </summary>
@@ -100,6 +101,7 @@ public abstract class Tile : MonoBehaviour //Scriptable Object?
         // TODO: Move the pieces left behind to look naturally stacked
     }
 
+    [PunRPC]
     /// <summary>
     /// Removes a piece from this tile's piece list
     /// </summary>
@@ -141,6 +143,11 @@ public abstract class Tile : MonoBehaviour //Scriptable Object?
         int numCurSamePiece = 0;
         foreach (Piece piece in PiecesOnTop)
         {
+            // If this is the other player's piece in online mode
+            if (piece.GetAssociatedTurnObject() == null)
+            {
+                continue; // not our side's piece, continue in loop
+            }
             Turn.SideName pieceSide = piece.GetAssociatedTurnObject().TurnSideName;
             if (pieceSide == stateController.GetActiveTurnSideName())
             {
@@ -167,6 +174,21 @@ public abstract class Tile : MonoBehaviour //Scriptable Object?
             List<Piece> piecesToRemove = new List<Piece>();
             foreach (Piece piece in PiecesOnTop)
             {
+                // If this is one of the remote turn's pieces
+                if (piece.GetAssociatedTurnObject() == null) 
+                {
+                    // if the remote player is kicking us out...
+                    if (stateController.GetActiveTurnSideName()==piece.SideName)
+                    {
+                        continue; // don't remove the piece doing the kicking out!
+                    }
+                    else// if we are kicking the remote player out...
+                    {
+                        piece.KickBackToStart();
+                        piecesToRemove.Add(piece);
+                        continue;
+                    }
+                }
                 Turn.SideName pieceSide = piece.GetAssociatedTurnObject().TurnSideName;
                 if (pieceSide != stateController.GetActiveTurnSideName())
                 {
@@ -192,9 +214,19 @@ public abstract class Tile : MonoBehaviour //Scriptable Object?
         {
             return;
         }
-        if (TileInfoShow == true && stateController.GetActiveTurn().PieceSelectionPhase)
+        if (!PhotonNetwork.IsConnectedAndReady)
         {
-            ShowTileInfo();
+            if (TileInfoShow == true && stateController.IsActiveTurnInPieceSelectionPhase())
+            {
+                ShowTileInfo();
+            }
+        }
+        else // online mode
+        {
+            if (TileInfoShow == true && stateController.IsActiveTurnInPieceSelectionPhase())
+            {
+                ShowTileInfo();
+            }
         }
     }
 
@@ -211,8 +243,8 @@ public abstract class Tile : MonoBehaviour //Scriptable Object?
     /// </summary>
     protected void ShowTileInfo()
     {
-        string infoPlusTilesOnTop = tileFunctionSummary;
-        TileDescriptionPanel.GetComponentInChildren<Text>().text = infoPlusTilesOnTop;
+        string infoPlusPiecesOnTop = tileFunctionSummary + " and " + this.GetNumPiecesOnTile() + " pieces on top!";
+        TileDescriptionPanel.GetComponentInChildren<Text>().text = infoPlusPiecesOnTop;
         TileDescriptionPanel.SetActive(true);
 
     }

@@ -34,10 +34,12 @@ public class Turn : MonoBehaviour
     /// </summary>
     internal List<Vector3> pieceStartLocations = new List<Vector3>();
 
+    [PunRPC]
     /// <summary>
-    /// The piece that the user clicks on that will move
+    /// The piece that the user clicks on that will move.
+    /// If online, the other turn must also know to move this piece
     /// </summary>
-    private Piece selectedPiece;
+    protected Piece selectedPiece;
 
     /// <summary>
     /// The last number that has been rolled on this side's turn.
@@ -90,12 +92,14 @@ public class Turn : MonoBehaviour
     protected GameObject rolledNumberText;
 
     /// <summary>
-    /// Whether or not the user is allowed to click on a piece yet to move it.
-    /// This is active only after rolling the dice
+    /// Whether or not this turn is currently in its piece selection phase.
+    /// Used for whether or not the user can click on a piece to move it.
+    /// This is active only after rolling the dice.
     /// </summary>
     /// <value><c>true</c> if piece selection phase; otherwise, <c>false</c>.</value>
-    internal bool PieceSelectionPhase { get; set; }
+    internal bool IsInPieceSelectionPhase { get; set; }
 
+    [PunRPC]
     /// <summary>
     /// Can either be "PlayerSide" or "EnemySide". Used
     /// to know which grid spaces to access
@@ -144,7 +148,7 @@ public class Turn : MonoBehaviour
     }
 
     /// <summary>
-    /// Begins the player phase by opening the initial panel.
+    /// Begins the phase by opening the initial panel.
     /// Called from the StateController's SwitchTurn method.
     /// Can also be called remotely with PunRPC
     /// </summary>
@@ -177,13 +181,14 @@ public class Turn : MonoBehaviour
     /// Called by a hit piece; tries to move it
     /// to that one
     /// </summary>
-    internal void PieceHitTryMove(Piece hitPiece)
+    internal virtual void PieceHitTryMove(Piece hitPiece)
     {
 
         selectedPiece = hitPiece;
         rolledNumberText.SetActive(false);
         clickSFX.Play(0); // play the SFX
-        MovePiece();
+
+        MovePiece(rolledNumber);
 
     }
 
@@ -231,6 +236,7 @@ public class Turn : MonoBehaviour
     {
         SetFreezePanelVisible(false);
         turnEndPanel.SetActive(true);
+        rolledNumberText.SetActive(false);
 
         UnfreezeBoardPieces();
 
@@ -243,7 +249,7 @@ public class Turn : MonoBehaviour
                 turnEndPanel.SetActive(false);
         }
         // Disable clicking pieces
-        PieceSelectionPhase = false;
+        IsInPieceSelectionPhase = false;
         SetAllPiecesUnSelectable();
     }
 
@@ -254,7 +260,7 @@ public class Turn : MonoBehaviour
     {
         rolledNumber = DiceRoll.Roll();
 
-        UpdateRolledNumber(rolledNumber);
+        UpdateRolledNumberText(rolledNumber);
         rolledNumberText.SetActive(true);
         rollPhasePanel.SetActive(false);
         if (rolledNumber == 0 || !PostRollOpenSpacesAvailable())
@@ -266,7 +272,7 @@ public class Turn : MonoBehaviour
     /// <summary>
     /// Sets the roll text to the number that was rolled
     /// </summary>
-    private void UpdateRolledNumber(int rolledNum)
+    private void UpdateRolledNumberText(int rolledNum)
     {
         rolledNumberText.GetComponent<Text>().text = "Rolled: " + rolledNum;
     }
@@ -324,12 +330,12 @@ public class Turn : MonoBehaviour
     {
         if (rolledNumber != 0 && PostRollOpenSpacesAvailable())
         {
-            PieceSelectionPhase = true;
+            IsInPieceSelectionPhase = true;
             SetPiecesSelectable();
         }
         else
         {
-            PieceSelectionPhase = false;
+            IsInPieceSelectionPhase = false;
             SetAllPiecesUnSelectable();
             EndTurn();
         }
@@ -339,9 +345,20 @@ public class Turn : MonoBehaviour
     /// Activated by clicking on a piece; tells the 
     /// piece to move by the last number rolled
     /// </summary>
-    public void MovePiece()
+    public virtual void MovePiece(int rolledNum)
     {
-        selectedPiece.SetTargetTile(rolledNumber);
+        //// make sure to move the piece relative to the opposite side's 
+        //// accessible tiles if we are on online mode
+        //if (selectedPiece.GetAssociatedTurnObject() == null)
+        //{
+        //    selectedPiece.SetTargetTile()
+        //}
+        //else
+        //{
+
+        //}
+        selectedPiece.SetTargetTile(rolledNum);
+
         selectedPiece.UnHighlight();
         SetAllPiecesUnSelectable(); // disable selecting other pieces
 
@@ -541,6 +558,7 @@ public class Turn : MonoBehaviour
         return true;
     }
 
+    [PunRPC]
     /// <summary>
     /// Brings up the UI for when the game has ended.
     /// </summary>
@@ -563,5 +581,4 @@ public class Turn : MonoBehaviour
                          (Screen.height/2)));
 
     }
-
 }

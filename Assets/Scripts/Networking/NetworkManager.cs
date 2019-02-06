@@ -6,7 +6,7 @@ using UnityEngine.UI;
 /// <summary>
 /// Handles all PUN callback events, enabling standard network events
 /// </summary>
-public class NetworkManager : MonoBehaviourPunCallbacks 
+public class NetworkManager : MonoBehaviourPunCallbacks
 {
     [SerializeField]
     private Button btnConnectToMaster;
@@ -28,6 +28,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     private Animator loadingLoopAnimator;
     [SerializeField]
     private OnlineStateController onlineStateController;
+    [SerializeField]
+    private GameObject btnMainMenuReturn;
 
     // whether or not this instance of the game is the host
     private bool isHost;
@@ -44,7 +46,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     private bool isOnlineGameInProgress;
 
     // Use this for initialization
-    private void Start () 
+    private void Start()
     {
         tryingToConnectToMaster = false;
         tryingToConnectToRoom = false;
@@ -80,6 +82,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
         // hide the menu but reenable its buttons for next time it opens
         mainMenuPanel.SetActive(false);
+        btnMainMenuReturn.SetActive(true);
 
         PhotonNetwork.ConnectUsingSettings();
     }
@@ -99,9 +102,11 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     public void OnClickConnectToNewRoom()
     {
+        tryingToConnectToRoom = true;
         startGameButton.gameObject.SetActive(false);
         PlayLoadingImage();
         PhotonNetwork.LeaveRoom();
+        PhotonNetwork.JoinRandomRoom();
     }
 
     /// <summary>
@@ -129,17 +134,27 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         //onlineOptionsPanel.SetActive(false);
         EnableAllButtonsInPanel(onlineOptionsPanel);
 
-        StopLoadingImage();
-
         Debug.Log("Master: " + PhotonNetwork.IsMasterClient + " | Players in room: " + PhotonNetwork.CurrentRoom.PlayerCount);
         this.isHost = PhotonNetwork.IsMasterClient;
+
+        // the second player to join enables the start button on each side
+        if (PhotonNetwork.PlayerList.Length == 2)
+        {
+            PhotonView photonV = PhotonView.Get(this);
+            photonV.RPC("OnClickStartGame", RpcTarget.All);
+            OnClickStartGame();
+            //PhotonView pView = PhotonView.Get(this);
+            //pView.RPC("showStartGameButton", RpcTarget.All);
+        }
     }
 
+    [PunRPC]
     /// <summary>
     /// Called when the player clicks the start button
     /// </summary>
     public void OnClickStartGame()
     {
+        //if (PhotonNetwork.)
         onlineOptionsPanel.SetActive(false);
         this.isOnlineGameInProgress = true;
         onlineStateController.StartOnline2PMode();
@@ -166,11 +181,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         Debug.Log(message);
         StopLoadingImage();
         tryingToConnectToRoom = false;
-    }
-
-    public override void OnPlayerEnteredRoom(Player newPlayer)
-    {
-        startGameButton.gameObject.SetActive(true);
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
@@ -225,5 +235,15 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     private void StopLoadingImage()
     {
         loadingLoopImage.gameObject.SetActive(false);
+    }
+
+    /// <summary>
+    /// Shows the start game button; should be used when room reaches 2 players
+    /// </summary>
+    [PunRPC]
+    internal void showStartGameButton()
+    {
+        startGameButton.gameObject.SetActive(true);
+        StopLoadingImage();
     }
 }

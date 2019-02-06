@@ -12,6 +12,6 @@ public class OnePieceTile : Tile
     internal override void ActivateTileFunction()
     {
         TryKickEnemyOut();
-        stateController.GetActiveTurn().EndTurn();
+        stateController.EndActiveTurn();
     }
 }

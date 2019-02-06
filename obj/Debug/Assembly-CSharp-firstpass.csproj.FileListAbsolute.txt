@@ -9,15 +9,10 @@
 /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/System.Runtime.Serialization.dll
 /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/System.Xml.dll
 /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/System.Xml.Linq.dll
-/Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Unity.Analytics.DataPrivacy.dll
 /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Unity.Analytics.Editor.dll
 /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Unity.Analytics.StandardEvents.dll
 /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Unity.Analytics.Tracker.dll
-/Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Unity.CollabProxy.Editor.dll
 /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Unity.Locator.dll
-/Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Unity.PackageManagerUI.Editor.dll
-/Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Unity.TextMeshPro.dll
-/Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Unity.TextMeshPro.Editor.dll
 /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEditor.dll
 /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.AccessibilityModule.dll
 /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/UnityEngine.AIModule.dll
@@ -275,3 +270,8 @@
 /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/obj/Debug/Assembly-CSharp-firstpass.csproj.CopyComplete
 /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/obj/Debug/Assembly-CSharp-firstpass.dll
 /Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/obj/Debug/Assembly-CSharp-firstpass.pdb
+/Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Unity.Analytics.DataPrivacy.dll
+/Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Unity.CollabProxy.Editor.dll
+/Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Unity.PackageManagerUI.Editor.dll
+/Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Unity.TextMeshPro.dll
+/Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Temp/bin/Debug/Unity.TextMeshPro.Editor.dll

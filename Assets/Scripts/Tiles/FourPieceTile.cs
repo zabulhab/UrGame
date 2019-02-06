@@ -13,6 +13,6 @@ public class FourPieceTile : Tile
     internal override void ActivateTileFunction()
     {
         TryKickEnemyOut();
-        stateController.GetActiveTurn().EndTurn();
+        stateController.EndActiveTurn();
     }
 }

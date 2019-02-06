@@ -18,7 +18,7 @@ MonoBehaviour:
     AppIdVoice: 
     AppVersion: 
     UseNameServer: 1
-    FixedRegion: 
+    FixedRegion: us
     Server: 
     Port: 0
     Protocol: 0
@@ -36,4 +36,24 @@ MonoBehaviour:
   - Disappear
   - SynchedDisappear
   - SwitchTurn
+  - EndTurn
+  - TurnSetup
+  - ActivateLocalTurn
+  - AssignOrderToLocalTurn
+  - EndActiveTurn
+  - FreezeInactiveTurn
+  - SetLocalTurnActive
+  - showStartGameButton
+  - OnClickStartGame
+  - AssignTurnOrderToLocalTurn
+  - AddPiece
+  - AddPieceToCurTile
+  - RemovePiece
+  - MovePiece
+  - ChangeSelectedPiece
+  - RestartPieceAndEndTurn
+  - CallTurnObjectRepeat
+  - OnlineTileFunction
+  - ActivateGameOver
+  - TurnEndGame
   DisableAutoOpenWizard: 1

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
 
 /// <summary>
 /// Simple class used for the game's restart button
@@ -12,5 +13,6 @@ public class RestartGame : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        PhotonNetwork.Disconnect();
     }
 }

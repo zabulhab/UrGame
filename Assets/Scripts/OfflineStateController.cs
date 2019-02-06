@@ -126,19 +126,21 @@ public class OfflineStateController : StateController
         SwapTurnTitleText();
     }
 
-    /// <summary>
-    /// Returns the Turn object of the currently active turn
-    /// </summary>
-    /// <returns>The current turn.</returns>
-    internal override Turn GetActiveTurn()
+    internal override void EndActiveTurn()
     {
-        return activeTurn;
+        activeTurn.EndTurn();
     }
 
-    /// <summary>
-    /// Freezes the inactive turn. Called by the freeze tile
-    /// </summary>
-    /// <returns>The waiting turn.</returns>
+    internal override Turn.SideName GetActiveTurnSideName()
+    {
+        return activeTurn.TurnSideName;
+    }
+
+    internal override bool IsActiveTurnInPieceSelectionPhase()
+    {
+        return activeTurn.IsInPieceSelectionPhase;
+    }
+
     internal override void FreezeInactiveTurn()
     {
         inactiveTurn.FreezeBoardPieces();

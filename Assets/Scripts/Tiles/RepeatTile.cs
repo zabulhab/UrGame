@@ -16,7 +16,14 @@ public class RepeatTile : Tile
     internal override void ActivateTileFunction()
     {
         TryKickEnemyOut();
-        topMostPiece.GetAssociatedTurnObject().SetTurnRepeat();
+        if (topMostPiece.GetAssociatedTurnObject() != null)
+        {
+            topMostPiece.GetAssociatedTurnObject().SetTurnRepeat();
+        }
+        else
+        {
+            // TODO
+        }
     }
 
 }

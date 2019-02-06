@@ -94,9 +94,28 @@ public class Piece : MonoBehaviour
     /// </summary>
     internal bool PieceCanMove { get; set; }
 
+    [SerializeField]
+    /// <summary>
+    /// The piece index among the list of all pieces.
+    /// 0-6 is the white pieces, and the black ones are 7-13
+    /// Used to identify the piece when communicating between from a local
+    /// online turn which piece needs to be moved on the remote side
+    /// </summary>
+    /// <value>The piece identifier.</value>
+    internal int IdxInAllPieces;
+
+    /// <summary>
+    /// The place where this piece starts. Called by the remote
+    /// online turn when it does not have an associated turn object
+    /// for this piece, but still has to send it back to start.
+    /// </summary>
+    Vector3 pieceStartLocation = new Vector3();
+
+
     private void Start()
     {
-        CurrentTileIdx = UNDEPLOYED_IDX; 
+        CurrentTileIdx = UNDEPLOYED_IDX;
+        pieceStartLocation = transform.position;
         startColor = GetComponent<Renderer>().material.color;
         Status = PieceStatus.Undeployed;
     }
@@ -226,7 +245,9 @@ public class Piece : MonoBehaviour
         // and the old tile's and new tile's lists
         CurrentTileIdx = tileDestIndex;
         currentTile = tileDestination;
-        currentTile.AddPiece(this);
+
+        AddPieceToCurTile();
+
 
         // Tell the tile to activate any special behavior
         currentTile.ActivateTileFunction();
@@ -247,13 +268,33 @@ public class Piece : MonoBehaviour
         // If this was the last piece to finish
         if (associatedTurnObject.AreAllPiecesFinished())
         {
-            associatedTurnObject.ActivateGameOver();
+            if (PhotonNetwork.IsConnectedAndReady)
+            {
+                TurnEndGame();
+            }
+            else
+            {
+                associatedTurnObject.ActivateGameOver();
+            }
         }
         else // end turn normally
         {
             associatedTurnObject.EndTurn();
         }
         this.ChooseDisappear();
+    }
+
+    [PunRPC]
+    private void TurnEndGame()
+    {
+        if (associatedTurnObject == null)
+        {
+            // TODO
+        }
+        else
+        {
+            associatedTurnObject.ActivateGameOver();
+        }
     }
 
     /// <summary>
@@ -358,8 +399,7 @@ public class Piece : MonoBehaviour
     internal void KickBackToStart()
     {
         Status = PieceStatus.Undeployed;
-        gameObject.transform.position =
-              associatedTurnObject.pieceStartLocations[StartIndex];
+        gameObject.transform.position = pieceStartLocation;
         CurrentTileIdx = UNDEPLOYED_IDX;
     }
 
@@ -421,5 +461,24 @@ public class Piece : MonoBehaviour
             }
         }
         return enemyPieces;
+    }
+
+    /// <summary>
+    /// Used to add the piece to the tile it has landed on.
+    /// Should be synchronize for both sides when online.
+    /// </summary>
+    [PunRPC]
+    internal void AddPieceToCurTile()
+    {
+        currentTile.AddPiece(this);
+    }
+
+    /// <summary>
+    /// Intended specifically for telling 
+    /// </summary>
+    [PunRPC]
+    internal void CallTurnObjectRepeat()
+    {
+
     }
 }
