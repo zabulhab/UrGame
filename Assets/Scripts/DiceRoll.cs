@@ -11,7 +11,7 @@ public static class DiceRoll
    /// <returns>The random number rolled</returns>
     public static int Roll()
     {
-        int rolledNum = Random.Range(4,7);
+        int rolledNum = Random.Range(1,4);
         return rolledNum;
     }
 }

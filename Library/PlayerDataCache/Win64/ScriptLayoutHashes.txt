@@ -1,6 +1,6 @@
 Win64
 PlayerPath?
-/Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Builds/2-4-19-Builds/UrGame-2-4-19-Windows/UrGameV1.exe
+/Users/School/School Stuff/CS491/UrGameVer1/UrGameV2/Builds/2-4-19-Builds/UrGame-2-4-19-OSX.app/UrGameV1.exe
 SceneListBegin?
 Assets/Scenes/SampleScene.unity
 SceneListEnd?
